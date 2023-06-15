@@ -125,6 +125,20 @@ class IieeController extends BaseController
     }
     public function subirArchivo()
     {
+        $provincias = array(
+            "abancay" => 1,
+            "andahuaylas" => 2,
+            "aymaraes" => 3,
+            "grau" => 4,
+            "antabamba" => 5,
+            "chincheros" => 6,
+            "cotabamba" => 7,
+            "huancarama" => 8,
+        );
+        // echo ($provincias['antabamba']);
+        // exit();
+
+        // --------------------
         $file = $this->request->getFile('file');
         if ($file->isValid() && !$file->hasMoved()) 
         {
@@ -167,9 +181,9 @@ class IieeController extends BaseController
                 'direccion' => $sheet->getCellByColumnAndRow(6, $row)->getValue(),
                 'localidad' => $sheet->getCellByColumnAndRow(7, $row)->getValue(),
                 'area_geografica' => $sheet->getCellByColumnAndRow(8, $row)->getValue(),
-                'provincia_idprovincia' => 1,
+                'provincia_idprovincia' => $provincias[strval($sheet->getCellByColumnAndRow(9, $row)->getValue())],
                 'distrito_iddistrito' => 1,
-                'ejecutora_idejecutora' => 1,
+                'ejecutora_idejecutora' => $provincias[strval($sheet->getCellByColumnAndRow(11, $row)->getValue())],
             ];
             $existingData = $this->m_iiee->where('cod_modular', $data['cod_modular'])->first();
             // echo '<pre>';
