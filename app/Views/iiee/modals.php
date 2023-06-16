@@ -131,17 +131,8 @@ $(document).ready( function () {
 $('.segunAccion').on('click',function(){
     segunAccion();
 });
-// $('.guardar').on('click',function(){
-//     // alert('reg nuevo');
-//     // guardar();
-// });
-// $('.actualizar').on('click',function(){
-//     alert('actualizara');
-//     actualizar();
-// });
 function accion(ban)
 {
-    // alert('si llega hasta aki---:'+ban);
     if(ban)
     {
         limpiarForm();
@@ -149,7 +140,7 @@ function accion(ban)
         $('.actualizar').removeClass('actualizar');
         $('.guardar').html('<i class="fa fa-save"></i> Guardar');
         nombreAccion = 'registrar';
-        // $(".guardar").attr('onclick', guardar());
+        $('#codmodular').prop('disabled',false);
     }
     else
     {
@@ -157,7 +148,7 @@ function accion(ban)
         $('.guardar').removeClass('guardar');
         $('.actualizar').html('<i class="fa fa-save"></i> Guardar Cambios');
         nombreAccion = 'actualizar';
-        // $(".actualizar").attr('onclick', actualizar());
+        $('#codmodular').prop('disabled',true);
     }
     $('#modalIe').modal('show');
     // 8.30 9 de julio 7.30 dni
@@ -265,34 +256,6 @@ function segunAccion()
         });
     }
 }
-function guardar()
-{
-    alert('enviara a guardar');
-	// if($('#formValidate').valid()==false)
- //    {return;}
- //    jQuery.ajax(
- //    {
- //        url: "<?php echo base_url('iiee');?>"+nombreAccion,
- //        data: data(true),
- //        method: 'post',
- //        success: function(result){
- //            let data = JSON.parse(result);
- //            $('.overReg').css('display','flex');
- //            construirTabla();
- //            fillRegistros();
- //            $('#modalIe').modal('hide');
- //            msjRee(data);
- //            limpiarForm();
- //            // accion=true;
- //        },
- //        error: function(xhr, textStatus, errorThrown) {
- //            // Maneja los errores de la petición AJAX
- //            console.log(xhr.responseText); // Muestra la respuesta del servidor
- //            console.log(textStatus); // Muestra el estado del error
- //            console.log(errorThrown); // Muestra el mensaje de error
- //        }
- //    });
-}
 function consultar(elem)
 {
     // $('#modalEditar').modal('show');
@@ -324,26 +287,6 @@ function consultar(elem)
             // accion=false;
         }
     });
-}
-function actualizar()
-{
-    alert('enviara a actualizar');
-    // if($('#formValidate').valid()==false)
-    // {return;}
-    // jQuery.ajax(
-    // {
-    //     url: "<?php echo base_url('iiee/');?>"+nombreAccion,
-    //     data: data(true),
-    //     method: 'post',
-    //     success: function(result){
-    //         let data = JSON.parse(result);
-    //         $('.overReg').css('display','flex');
-    //         construirTabla();
-    //         fillRegistros();
-    //         $('#modalIe').modal('hide');
-    //         msjRee(data);
-    //     }
-    // });
 }
 $("#formValidate").validate({
     errorClass: "text-danger font-italic font-weight-normal",

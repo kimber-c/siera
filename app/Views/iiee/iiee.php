@@ -35,12 +35,13 @@
                             <table id="registros" class="table table-hover dt-responsive nowrap">
                                 <thead class="thead-light">
                                     <tr>
-                                        <th class="text-center" data-priority="1">#</th>
-                                        <th class="text-center" data-priority="2">Cod.Modular</th>
+                                        <th class="text-center" data-priority="1">Cod.Modular</th>
                                         <th class="text-center" data-priority="2">Cod.Local</th>
                                         <th class="text-center" data-priority="3">Informacion</th>
-                                        <th class="text-center" data-priority="1">Direccion</th>
-                                        <th class="text-center" data-priority="1">Ubicacion</th>
+                                        <th class="text-center" data-priority="4">Direccion</th>
+                                        <th class="text-center" data-priority="4">Provincia</th>
+                                        <th class="text-center" data-priority="4">Distrito</th>
+                                        <th class="text-center" data-priority="4">Ugel</th>
                                         <th class="text-center" data-priority="1"></th>
                                     </tr>
                                 </thead>
@@ -77,12 +78,13 @@ function fillRegistros()
             for (var i = 0; i < data.length; i++) 
             {
                 html += '<tr class="text-center">' +
-                    '<td>' + i + '</td>' +
                     '<td>' + novDato(data[i].codmodular) + '</td>' +
                     '<td>' + novDato(data[i].cod_local) + '</td>' +
                     '<td>' + novDato(data[i].descripcion) + '</td>' +
                     '<td>' + novDato(data[i].direccion) + '</td>' +
-                    '<td>' + novDato(data[i].provincia_idprovincia) + '</td>' +
+                    '<td>' + novDato(data[i].nombreProvincia) + '</td>' +
+                    '<td>' + novDato(data[i].nombreDistrito) + '</td>' +
+                    '<td>' + novDato(data[i].nombreEjecutora) + '</td>' +
                     '<td>'+
                     '<div class="btn-group btn-group-sm" role="group">'+
                         '<button type="button" class="btn text-secondary" title="Editar registro" onclick="consultar(this);" data-id="'+data[i].codmodular+'"><i class="fa fa-edit" ></i></button>'+

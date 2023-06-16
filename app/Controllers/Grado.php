@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Models\M_grado;
 
-class GradoController extends BaseController
+class Grado extends BaseController
 {
     public function __construct() 
     {
@@ -50,9 +50,28 @@ class GradoController extends BaseController
     }
     public function eliminar()
     {
-        $estado = $this->m_iiee->delete($_POST["id"]);
+        $estado = $this->m_grado->delete($_POST["id"]);
         if($estado)
             echo json_encode(["msg"=>"Se realizo el proceso exitosamente.","estado"=>true]);
+        else
+            echo json_encode(["msg"=>"Algo salio mal.","estado"=>false]);
+    }
+    public function consultar()//con
+    {
+        $grado = $this->m_grado->where('idgrados', $_POST["id"])->get()->getResult();
+        echo json_encode($grado[0]);
+    }
+    public function actualizar()
+    {
+        $data = [
+            'idgrados' => $this->request->getPost('idgrados'),
+            'descripcion' => $this->request->getPost('descripcion'),
+        ];
+        $existingData = $this->m_grado->where('idgrados', $this->request->getPost('idgradosOld'))->first();
+        
+        $estado = $this->m_grado->update($this->request->getPost('idgradosOld'),$data);
+        if($estado)
+            echo json_encode(["msg"=>"Se guardo los cambios.","estado"=>true]);
         else
             echo json_encode(["msg"=>"Algo salio mal.","estado"=>false]);
     }

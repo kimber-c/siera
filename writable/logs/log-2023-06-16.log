@@ -1061,3 +1061,52 @@ in SYSTEMPATH\Model.php on line 391.
  5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Iiee))
  6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-16 21:13:40 --> Undefined property: App\Controllers\Grado::$m_iiee
+in APPPATH\Controllers\Grado.php on line 53.
+ 1 APPPATH\Controllers\Grado.php(53): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: App\\Controllers\\Grado::$m_iiee', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\Grado.php', 53, [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Grado->eliminar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Grado))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-16 21:14:42 --> Undefined property: App\Controllers\Grado::$m_iiee
+in APPPATH\Controllers\Grado.php on line 53.
+ 1 APPPATH\Controllers\Grado.php(53): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: App\\Controllers\\Grado::$m_iiee', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\Grado.php', 53, [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Grado->eliminar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Grado))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-16 21:14:44 --> Undefined property: App\Controllers\Grado::$m_iiee
+in APPPATH\Controllers\Grado.php on line 53.
+ 1 APPPATH\Controllers\Grado.php(53): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: App\\Controllers\\Grado::$m_iiee', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\Grado.php', 53, [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Grado->eliminar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Grado))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-16 21:56:22 --> Undefined index: id
+in APPPATH\Controllers\Grado.php on line 61.
+ 1 APPPATH\Controllers\Grado.php(61): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: id', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\Grado.php', 61, [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Grado->consultar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Grado))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-16 21:58:36 --> Undefined index: idgradosOld
+in APPPATH\Controllers\Grado.php on line 70.
+ 1 APPPATH\Controllers\Grado.php(70): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: idgradosOld', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\Grado.php', 70, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Grado->actualizar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Grado))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-16 21:58:42 --> Undefined index: idgradosOld
+in APPPATH\Controllers\Grado.php on line 70.
+ 1 APPPATH\Controllers\Grado.php(70): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: idgradosOld', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\Grado.php', 70, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Grado->actualizar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Grado))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-16 21:58:46 --> Undefined index: idgradosOld
+in APPPATH\Controllers\Grado.php on line 70.
+ 1 APPPATH\Controllers\Grado.php(70): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: idgradosOld', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\Grado.php', 70, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Grado->actualizar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Grado))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
