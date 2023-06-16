@@ -1,0 +1,437 @@
+CRITICAL - 2023-06-12 14:14:03 --> Invalid file: "dashbord/inicio.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('dashbord/inicio.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('dashbord/inicio', [], true)
+ 3 APPPATH\Controllers\LoginController.php(13): view('dashbord/inicio')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\LoginController->ingresar()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 14:15:29 --> Invalid file: "dashbord/inicio.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('dashbord/inicio.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('dashbord/inicio', [], true)
+ 3 APPPATH\Controllers\LoginController.php(13): view('dashbord/inicio')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\LoginController->ingresar()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 14:15:34 --> Invalid file: "dashbord/inicio.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('dashbord/inicio.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('dashbord/inicio', [], true)
+ 3 APPPATH\Controllers\LoginController.php(13): view('dashbord/inicio')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\LoginController->ingresar()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 14:15:42 --> Invalid file: "dashbord/inicio.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('dashbord/inicio.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('dashbord/inicio', [], true)
+ 3 APPPATH\Controllers\LoginController.php(13): view('dashbord/inicio')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\LoginController->ingresar()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 14:17:01 --> Invalid file: "dashbord/inicio.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('dashbord/inicio.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('dashbord/inicio', [], true)
+ 3 APPPATH\Controllers\LoginController.php(13): view('dashbord/inicio')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\LoginController->ingresar()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 14:17:02 --> Invalid file: "dashbord/inicio.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('dashbord/inicio.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('dashbord/inicio', [], true)
+ 3 APPPATH\Controllers\LoginController.php(13): view('dashbord/inicio')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\LoginController->ingresar()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 14:17:09 --> Invalid file: "dashbord/inicio.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('dashbord/inicio.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('dashbord/inicio', [], true)
+ 3 APPPATH\Controllers\LoginController.php(13): view('dashbord/inicio')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\LoginController->ingresar()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 14:20:04 --> Invalid file: "dashbord/inicio.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('dashbord/inicio.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('dashbord/inicio', [], true)
+ 3 APPPATH\Controllers\LoginController.php(13): view('dashbord/inicio')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\LoginController->ingresar()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 14:22:52 --> Invalid file: "dashbord/inicio.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('dashbord/inicio.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('dashbord/inicio', [], true)
+ 3 APPPATH\Controllers\LoginController.php(13): view('dashbord/inicio')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\LoginController->ingresar()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 17:14:50 --> Undefined property: App\Controllers\UgelController::$db
+in APPPATH\Controllers\UgelController.php on line 16.
+ 1 APPPATH\Controllers\UgelController.php(16): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: App\\Controllers\\UgelController::$db', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\UgelController.php', 16, [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\UgelController->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UgelController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 17:15:23 --> Undefined property: App\Controllers\UgelController::$db
+in APPPATH\Controllers\UgelController.php on line 17.
+ 1 APPPATH\Controllers\UgelController.php(17): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: App\\Controllers\\UgelController::$db', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\UgelController.php', 17, [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\UgelController->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UgelController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 17:16:03 --> Undefined property: App\Controllers\UgelController::$db
+in APPPATH\Controllers\UgelController.php on line 17.
+ 1 APPPATH\Controllers\UgelController.php(17): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: App\\Controllers\\UgelController::$db', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\UgelController.php', 17, [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\UgelController->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UgelController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 17:16:17 --> Undefined property: App\Controllers\UgelController::$db
+in APPPATH\Controllers\UgelController.php on line 17.
+ 1 APPPATH\Controllers\UgelController.php(17): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: App\\Controllers\\UgelController::$db', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\UgelController.php', 17, [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\UgelController->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UgelController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 17:18:07 --> Undefined property: App\Controllers\UgelController::$db
+in APPPATH\Controllers\UgelController.php on line 17.
+ 1 APPPATH\Controllers\UgelController.php(17): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: App\\Controllers\\UgelController::$db', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\UgelController.php', 17, [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\UgelController->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UgelController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 17:25:20 --> Undefined property: App\Controllers\UgelController::$db
+in APPPATH\Controllers\UgelController.php on line 19.
+ 1 APPPATH\Controllers\UgelController.php(19): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: App\\Controllers\\UgelController::$db', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\UgelController.php', 19, [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\UgelController->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UgelController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 17:25:34 --> Undefined property: App\Controllers\UgelController::$db
+in APPPATH\Controllers\UgelController.php on line 19.
+ 1 APPPATH\Controllers\UgelController.php(19): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: App\\Controllers\\UgelController::$db', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\UgelController.php', 19, [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\UgelController->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UgelController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 17:27:35 --> Cannot use object of type App\Models\M_ugel as array
+in APPPATH\Controllers\UgelController.php on line 18.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\UgelController->listar()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UgelController))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 17:27:59 --> Undefined variable: data
+in APPPATH\Controllers\UgelController.php on line 21.
+ 1 APPPATH\Controllers\UgelController.php(21): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: data', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\UgelController.php', 21, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\UgelController->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UgelController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 17:28:16 --> Undefined variable: data
+in APPPATH\Controllers\UgelController.php on line 21.
+ 1 APPPATH\Controllers\UgelController.php(21): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: data', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\UgelController.php', 21, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\UgelController->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UgelController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 17:28:30 --> Undefined variable: data
+in APPPATH\Controllers\UgelController.php on line 21.
+ 1 APPPATH\Controllers\UgelController.php(21): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: data', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\UgelController.php', 21, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\UgelController->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UgelController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 17:28:51 --> Undefined variable: data
+in APPPATH\Controllers\UgelController.php on line 20.
+ 1 APPPATH\Controllers\UgelController.php(20): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: data', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\UgelController.php', 20, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\UgelController->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UgelController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 17:48:10 --> Class 'App\Models\M_distrito' not found
+in APPPATH\Controllers\DistritoController.php on line 12.
+ 1 SYSTEMPATH\CodeIgniter.php(906): App\Controllers\DistritoController->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 17:48:10 --> Class 'App\Controllers\M_M_provinciaugel' not found
+in APPPATH\Controllers\ProvinciaController.php on line 12.
+ 1 SYSTEMPATH\CodeIgniter.php(906): App\Controllers\ProvinciaController->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 17:48:24 --> Class 'App\Controllers\M_M_provinciaugel' not found
+in APPPATH\Controllers\ProvinciaController.php on line 12.
+ 1 SYSTEMPATH\CodeIgniter.php(906): App\Controllers\ProvinciaController->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 17:48:24 --> Class 'App\Models\M_distrito' not found
+in APPPATH\Controllers\DistritoController.php on line 12.
+ 1 SYSTEMPATH\CodeIgniter.php(906): App\Controllers\DistritoController->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 17:49:29 --> Class 'App\Models\M_distrito' not found
+in APPPATH\Controllers\DistritoController.php on line 12.
+ 1 SYSTEMPATH\CodeIgniter.php(906): App\Controllers\DistritoController->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 22:01:41 --> Undefined index: nombre
+in APPPATH\Controllers\IieeController.php on line 14.
+ 1 APPPATH\Controllers\IieeController.php(14): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: nombre', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\IieeController.php', 14, [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\IieeController->registrar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IieeController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 22:02:23 --> Undefined index: nombre
+in APPPATH\Controllers\IieeController.php on line 15.
+ 1 APPPATH\Controllers\IieeController.php(15): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: nombre', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\IieeController.php', 15, [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\IieeController->registrar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IieeController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 22:02:38 --> Undefined index: nombre
+in APPPATH\Controllers\IieeController.php on line 13.
+ 1 APPPATH\Controllers\IieeController.php(13): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: nombre', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\IieeController.php', 13, [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\IieeController->registrar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IieeController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 22:02:56 --> Array to string conversion
+in APPPATH\Controllers\IieeController.php on line 13.
+ 1 APPPATH\Controllers\IieeController.php(13): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Array to string conversion', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\IieeController.php', 13, [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\IieeController->registrar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IieeController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 22:03:04 --> Trying to get property 'nombre' of non-object
+in APPPATH\Controllers\IieeController.php on line 13.
+ 1 APPPATH\Controllers\IieeController.php(13): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get property \'nombre\' of non-object', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\IieeController.php', 13, [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\IieeController->registrar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IieeController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 22:03:11 --> Undefined index: nombre
+in APPPATH\Controllers\IieeController.php on line 13.
+ 1 APPPATH\Controllers\IieeController.php(13): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: nombre', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\IieeController.php', 13, [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\IieeController->registrar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IieeController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 22:03:30 --> Undefined index: nombre
+in APPPATH\Controllers\IieeController.php on line 15.
+ 1 APPPATH\Controllers\IieeController.php(15): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: nombre', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\IieeController.php', 15, [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\IieeController->registrar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IieeController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 22:04:14 --> Undefined index: nombre
+in APPPATH\Controllers\IieeController.php on line 15.
+ 1 APPPATH\Controllers\IieeController.php(15): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: nombre', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\IieeController.php', 15, [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\IieeController->registrar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IieeController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 22:04:24 --> Undefined index: nombre
+in APPPATH\Controllers\IieeController.php on line 15.
+ 1 APPPATH\Controllers\IieeController.php(15): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: nombre', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\IieeController.php', 15, [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\IieeController->registrar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IieeController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 22:04:46 --> Undefined index: nombre
+in APPPATH\Controllers\IieeController.php on line 15.
+ 1 APPPATH\Controllers\IieeController.php(15): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: nombre', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\IieeController.php', 15, [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\IieeController->registrar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IieeController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 22:04:56 --> Undefined index: nombre
+in APPPATH\Controllers\IieeController.php on line 15.
+ 1 APPPATH\Controllers\IieeController.php(15): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: nombre', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\IieeController.php', 15, [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\IieeController->registrar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IieeController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 22:04:58 --> Undefined index: nombre
+in APPPATH\Controllers\IieeController.php on line 15.
+ 1 APPPATH\Controllers\IieeController.php(15): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: nombre', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\IieeController.php', 15, [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\IieeController->registrar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IieeController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 22:07:52 --> Undefined index: nombre
+in APPPATH\Controllers\IieeController.php on line 18.
+ 1 APPPATH\Controllers\IieeController.php(18): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: nombre', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\IieeController.php', 18, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\IieeController->registrar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IieeController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 22:11:29 --> Undefined index: id_provincia
+in APPPATH\Controllers\IieeController.php on line 22.
+ 1 APPPATH\Controllers\IieeController.php(22): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: id_provincia', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\IieeController.php', 22, [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\IieeController->registrar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IieeController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 22:11:45 --> Undefined index: id_provincia
+in APPPATH\Controllers\IieeController.php on line 22.
+ 1 APPPATH\Controllers\IieeController.php(22): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: id_provincia', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\IieeController.php', 22, [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\IieeController->registrar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IieeController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 22:11:57 --> Undefined index: id_provincia
+in APPPATH\Controllers\IieeController.php on line 22.
+ 1 APPPATH\Controllers\IieeController.php(22): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: id_provincia', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\IieeController.php', 22, [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\IieeController->registrar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IieeController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 22:12:13 --> Undefined index: id_provincia
+in APPPATH\Controllers\IieeController.php on line 22.
+ 1 APPPATH\Controllers\IieeController.php(22): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: id_provincia', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\IieeController.php', 22, [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\IieeController->registrar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IieeController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 22:12:16 --> Undefined index: id_provincia
+in APPPATH\Controllers\IieeController.php on line 22.
+ 1 APPPATH\Controllers\IieeController.php(22): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: id_provincia', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\IieeController.php', 22, [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\IieeController->registrar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IieeController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 22:12:32 --> Undefined index: id_provincia
+in APPPATH\Controllers\IieeController.php on line 22.
+ 1 APPPATH\Controllers\IieeController.php(22): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: id_provincia', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\IieeController.php', 22, [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\IieeController->registrar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IieeController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 22:12:56 --> Undefined index: id_provincia
+in APPPATH\Controllers\IieeController.php on line 22.
+ 1 APPPATH\Controllers\IieeController.php(22): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: id_provincia', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\IieeController.php', 22, [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\IieeController->registrar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IieeController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 22:13:29 --> Undefined index: id_provincia
+in APPPATH\Controllers\IieeController.php on line 22.
+ 1 APPPATH\Controllers\IieeController.php(22): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: id_provincia', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\IieeController.php', 22, [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\IieeController->registrar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IieeController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 22:14:15 --> Undefined index: id_provincia
+in APPPATH\Controllers\IieeController.php on line 23.
+ 1 APPPATH\Controllers\IieeController.php(23): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: id_provincia', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\IieeController.php', 23, [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\IieeController->registrar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IieeController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 22:14:31 --> Undefined index: id_provincia
+in APPPATH\Controllers\IieeController.php on line 23.
+ 1 APPPATH\Controllers\IieeController.php(23): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: id_provincia', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\IieeController.php', 23, [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\IieeController->registrar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IieeController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 22:14:39 --> Undefined index: id_provincia
+in APPPATH\Controllers\IieeController.php on line 23.
+ 1 APPPATH\Controllers\IieeController.php(23): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: id_provincia', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\IieeController.php', 23, [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\IieeController->registrar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IieeController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 22:14:47 --> Undefined index: id_provincia
+in APPPATH\Controllers\IieeController.php on line 23.
+ 1 APPPATH\Controllers\IieeController.php(23): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: id_provincia', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\IieeController.php', 23, [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\IieeController->registrar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IieeController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 22:15:08 --> Undefined index: id_provincia
+in APPPATH\Controllers\IieeController.php on line 23.
+ 1 APPPATH\Controllers\IieeController.php(23): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: id_provincia', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\IieeController.php', 23, [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\IieeController->registrar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IieeController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 22:15:40 --> Undefined index: id_provincia
+in APPPATH\Controllers\IieeController.php on line 23.
+ 1 APPPATH\Controllers\IieeController.php(23): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: id_provincia', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\IieeController.php', 23, [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\IieeController->registrar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IieeController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 22:16:40 --> Array to string conversion
+in APPPATH\Controllers\IieeController.php on line 28.
+ 1 APPPATH\Controllers\IieeController.php(28): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Array to string conversion', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\IieeController.php', 28, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\IieeController->registrar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IieeController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 22:17:47 --> Undefined index: id_provincia
+in APPPATH\Controllers\IieeController.php on line 23.
+ 1 APPPATH\Controllers\IieeController.php(23): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: id_provincia', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\IieeController.php', 23, [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\IieeController->registrar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IieeController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 22:18:06 --> Undefined index: provincia
+in APPPATH\Controllers\IieeController.php on line 23.
+ 1 APPPATH\Controllers\IieeController.php(23): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: provincia', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\IieeController.php', 23, [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\IieeController->registrar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IieeController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 22:18:19 --> Undefined index: provincia
+in APPPATH\Controllers\IieeController.php on line 23.
+ 1 APPPATH\Controllers\IieeController.php(23): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: provincia', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\IieeController.php', 23, [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\IieeController->registrar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IieeController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 22:18:45 --> Undefined index: provincia
+in APPPATH\Controllers\IieeController.php on line 23.
+ 1 APPPATH\Controllers\IieeController.php(23): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: provincia', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\IieeController.php', 23, [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\IieeController->registrar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IieeController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 22:19:19 --> Call to a member function insert() on null
+in APPPATH\Controllers\IieeController.php on line 32.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\IieeController->registrar()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IieeController))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 22:20:36 --> Call to a member function insert() on null
+in APPPATH\Controllers\IieeController.php on line 32.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\IieeController->registrar()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IieeController))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-12 22:20:49 --> Undefined property: App\Controllers\IieeController::$cursoModel
+in APPPATH\Controllers\IieeController.php on line 34.
+ 1 APPPATH\Controllers\IieeController.php(34): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: App\\Controllers\\IieeController::$cursoModel', 'C:\\xampp\\htdocs\\siera\\app\\Controllers\\IieeController.php', 34, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\IieeController->registrar()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IieeController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
