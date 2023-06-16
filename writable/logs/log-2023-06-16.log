@@ -1019,3 +1019,45 @@ in SYSTEMPATH\Model.php on line 391.
  5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Iiee))
  6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-06-16 20:27:40 --> mysqli_sql_exception: Unknown column 'iiee.cod_modular' in 'where clause' in C:\xampp\htdocs\siera\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\siera\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(295): mysqli->query('UPDATE `iiee` S...', 0)
+#1 C:\xampp\htdocs\siera\vendor\codeigniter4\framework\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `iiee` S...')
+#2 C:\xampp\htdocs\siera\vendor\codeigniter4\framework\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `iiee` S...')
+#3 C:\xampp\htdocs\siera\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2476): CodeIgniter\Database\BaseConnection->query('UPDATE `iiee` S...', Array, false)
+#4 C:\xampp\htdocs\siera\vendor\codeigniter4\framework\system\Model.php(396): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\xampp\htdocs\siera\vendor\codeigniter4\framework\system\BaseModel.php(943): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\xampp\htdocs\siera\vendor\codeigniter4\framework\system\Model.php(756): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\xampp\htdocs\siera\app\Controllers\Iiee.php(107): CodeIgniter\Model->update('2312321', Array)
+#8 C:\xampp\htdocs\siera\vendor\codeigniter4\framework\system\CodeIgniter.php(934): App\Controllers\Iiee->actualizar()
+#9 C:\xampp\htdocs\siera\vendor\codeigniter4\framework\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Iiee))
+#10 C:\xampp\htdocs\siera\vendor\codeigniter4\framework\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\siera\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2023-06-16 20:27:40 --> Unknown column 'iiee.cod_modular' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('UPDATE `iiee` SET `cod_local` = \'23232\', `descripcion` = \'nbeuvooo\', `nivel` = \'1\', `gestion` = \'1\', `direccion` = \'\', `localidad` = \'\', `area_geografica` = \'rural\', `provincia_idprovincia` = \'1\', `distrito_iddistrito` = \'1\', `ejecutora_idejecutora` = \'1\'
+WHERE `iiee`.`cod_modular` IN (\'2312321\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `iiee` SET `cod_local` = \'23232\', `descripcion` = \'nbeuvooo\', `nivel` = \'1\', `gestion` = \'1\', `direccion` = \'\', `localidad` = \'\', `area_geografica` = \'rural\', `provincia_idprovincia` = \'1\', `distrito_iddistrito` = \'1\', `ejecutora_idejecutora` = \'1\'
+WHERE `iiee`.`cod_modular` IN (\'2312321\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `iiee` SET `cod_local` = \'23232\', `descripcion` = \'nbeuvooo\', `nivel` = \'1\', `gestion` = \'1\', `direccion` = \'\', `localidad` = \'\', `area_geografica` = \'rural\', `provincia_idprovincia` = \'1\', `distrito_iddistrito` = \'1\', `ejecutora_idejecutora` = \'1\'
+WHERE `iiee`.`cod_modular` IN (\'2312321\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2476): CodeIgniter\Database\BaseConnection->query('UPDATE `iiee` SET `cod_local` = :cod_local:, `descripcion` = :descripcion:, `nivel` = :nivel:, `gestion` = :gestion:, `direccion` = :direccion:, `localidad` = :localidad:, `area_geografica` = :area_geografica:, `provincia_idprovincia` = :provincia_idprovincia:, `distrito_iddistrito` = :distrito_iddistrito:, `ejecutora_idejecutora` = :ejecutora_idejecutora:
+WHERE `iiee`.`cod_modular` IN :iiee.cod_modular:', [...], false)
+ 5 SYSTEMPATH\Model.php(396): CodeIgniter\Database\BaseBuilder->update()
+ 6 SYSTEMPATH\BaseModel.php(943): CodeIgniter\Model->doUpdate([...], [...])
+ 7 SYSTEMPATH\Model.php(756): CodeIgniter\BaseModel->update([...], [...])
+ 8 APPPATH\Controllers\Iiee.php(107): CodeIgniter\Model->update('2312321', [...])
+ 9 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Iiee->actualizar()
+10 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Iiee))
+11 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-16 20:27:44 --> Updates are not allowed unless they contain a "where" or "like" clause.
+in SYSTEMPATH\Model.php on line 391.
+ 1 SYSTEMPATH\BaseModel.php(943): CodeIgniter\Model->doUpdate(null, [...])
+ 2 SYSTEMPATH\Model.php(756): CodeIgniter\BaseModel->update(null, [...])
+ 3 APPPATH\Controllers\Iiee.php(107): CodeIgniter\Model->update(null, [...])
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Iiee->actualizar()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Iiee))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

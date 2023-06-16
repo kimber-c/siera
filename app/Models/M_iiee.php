@@ -8,13 +8,13 @@ use CodeIgniter\Database\ConnectionInterface;
 class M_iiee extends Model
 {
     protected $table = 'iiee';
-    protected $primaryKey = 'cod_modular';
+    protected $primaryKey = 'codmodular';
     
     protected $returnType = 'array';
     protected $useSoftDeletes = false;
 
     protected $allowedFields = [
-        'cod_modular',
+        'codmodular',
         'cod_local',
         'descripcion',
         'nivel',
