@@ -5,7 +5,7 @@ use CodeIgniter\I18n\Time;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use App\Models\M_iiee;
 
-class IieeController extends BaseController
+class Iiee extends BaseController
 {
     public function __construct() 
     {
@@ -21,7 +21,7 @@ class IieeController extends BaseController
     {
         $validation = \Config\Services::validation();
         $rules = [
-            'cod_modular' => 'required|is_unique[iiee.cod_modular]|min_length[7]|max_length[7]',
+            'codmodular' => 'required|is_unique[iiee.codmodular]|min_length[7]|max_length[7]',
         ];
         $validation->setRules($rules);
         if ($validation->withRequest($this->request)->run()) 
@@ -29,7 +29,7 @@ class IieeController extends BaseController
             $fechaActual = new Time('now', 'UTC');
             $fechaFormateada = $fechaActual->format('Y-m-d H:i:s');
             $data = [
-                'cod_modular' => $this->request->getPost('cod_modular'),
+                'codmodular' => $this->request->getPost('codmodular'),
                 'cod_local' => $this->request->getPost('cod_local'),
                 'descripcion' => $this->request->getPost('descripcion'),
                 'nivel' => $this->request->getPost('nivel'),
@@ -78,7 +78,7 @@ class IieeController extends BaseController
     public function consultar()//con
     {
         // echo 'entro';
-        $ie = $this->m_iiee->where('cod_modular', $_POST["id"])->get()->getResult();
+        $ie = $this->m_iiee->where('codmodular', $_POST["id"])->get()->getResult();
         // var_dump($ie);
         echo json_encode($ie[0]);
     }

@@ -161,6 +161,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="<?php echo base_url('grado');?>" class="nav-link bg-secondary sba9">
+                            <i class="nav-icon fa-solid fa-building"></i>
+                            <p>Grado</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="<?php echo base_url('iiee');?>" class="nav-link bg-secondary sba9">
                             <i class="nav-icon fa-solid fa-building"></i>
                             <p>Institucion educativa</p>

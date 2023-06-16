@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Models\M_ejecutora;
 
-class EjecutoraController extends BaseController
+class Ejecutora extends BaseController
 {
     public function __construct() 
     {

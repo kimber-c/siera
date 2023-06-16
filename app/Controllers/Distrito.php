@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Models\M_distrito;
 
-class DistritoController extends BaseController
+class Distrito extends BaseController
 {
     public function __construct() 
     {

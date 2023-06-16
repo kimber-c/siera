@@ -31,9 +31,16 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 // $routes->get('/', 'Home::index');
 
+$routes->setAutoRoute(true);
+/*
 $routes->get('/', 'LoginController::login');
 $routes->post('login/ingresar', 'LoginController::ingresar');
 $routes->get('login/ingresar', 'LoginController::ingresar');
+
+$routes->get('grado', 'GradoController::index');
+$routes->post('grado/registrar', 'GradoController::registrar');
+$routes->get('grado/listar', 'GradoController::listar');
+$routes->post('grado/eliminar', 'GradoController::eliminar');
 
 $routes->get('iiee', 'IieeController::index');
 $routes->post('iiee/registrar', 'IieeController::registrar');
@@ -49,7 +56,7 @@ $routes->post('iiee/subirArchivo', 'IieeController::subirArchivo');
 
 $routes->get('provincia/listar', 'ProvinciaController::listar');
 $routes->get('distrito/listar', 'DistritoController::listar');
-$routes->get('ejecutora/listar', 'EjecutoraController::listar');
+$routes->get('ejecutora/listar', 'EjecutoraController::listar');*/
 
 
 

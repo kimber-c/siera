@@ -208,7 +208,7 @@ function data(tipo)
 {
 	return {
         // accion: accion,
-        cod_modular:$('#cod_modular').val(),
+        codmodular:$('#cod_modular').val(),
         cod_local:$('#cod_local').val(),
         descripcion:$('#descripcion').val(),
         nivel:$('#nivel').val(),

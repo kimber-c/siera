@@ -4,17 +4,13 @@
         <div class="col-lg-12">
             <div class="row">
                 <div class="col-lg-6 col-sm-6 col-12 m-auto">
-                    <h3><i class="fa fa-building"></i> Instituciones educativas</h3>
+                    <h3><i class="fa fa-building"></i> Grados</h3>
                 </div>
                 <div class="col-lg-6 col-sm-6 col-12 m-auto">
                     <button class="btn btn-sm btn-light float-right border shadow" onclick="accion(true);">
                         <i class="fa fa-plus"></i> 
                         Nuevo
                     </button>
-                    <a href="<?php echo base_url('iiee/cargaMasiva');?>" class="btn btn-sm btn-light float-right border shadow mr-4">
-                        <i class="fa fa-upload"></i> 
-                        Carga masiva
-                    </a>
                 </div>
             </div>
         </div>
@@ -23,9 +19,6 @@
                 <div class="overlay overReg">
                     <i class="fas fa-2x fa-sync-alt"></i>
                 </div>
-                <!-- <div class="card-header border-transparent py-2">
-                    <h3 class="card-title m-0 font-weight-bold"><i class="fa fa-users"></i> Listado de instituciones educativas</h3>
-                </div> -->
                 <div class="card-body">
                     <div class="alert alert-warning msjPms" style="display: none;">
                         <p class="m-0 font-weight-bold font-italic">El usuario no cuenta con el acceso a registros.</p>
@@ -35,12 +28,8 @@
                             <table id="registros" class="table table-hover dt-responsive nowrap">
                                 <thead class="thead-light">
                                     <tr>
-                                        <th class="text-center" data-priority="1">#</th>
-                                        <th class="text-center" data-priority="2">Cod.Modular</th>
-                                        <th class="text-center" data-priority="2">Cod.Local</th>
-                                        <th class="text-center" data-priority="3">Informacion</th>
-                                        <th class="text-center" data-priority="1">Direccion</th>
-                                        <th class="text-center" data-priority="1">Ubicacion</th>
+                                        <th class="text-center" data-priority="2">Identificador</th>
+                                        <th class="text-center" data-priority="2">Descripcion</th>
                                         <th class="text-center" data-priority="1"></th>
                                     </tr>
                                 </thead>
@@ -64,11 +53,10 @@ $(document).ready( function () {
 } );
 function fillRegistros()
 {
-    
     $('.contenedorRegistros').css('display','block');
     jQuery.ajax(
     { 
-        url: "<?php echo base_url('iiee/listar');?>",
+        url: "<?php echo base_url('grado/listar');?>",
         method: 'get',
         success: function(r){
             // console.log(JSON.parse(r)[0].cod_modular);
@@ -77,16 +65,12 @@ function fillRegistros()
             for (var i = 0; i < data.length; i++) 
             {
                 html += '<tr class="text-center">' +
-                    '<td>' + i + '</td>' +
-                    '<td>' + novDato(data[i].codmodular) + '</td>' +
-                    '<td>' + novDato(data[i].cod_local) + '</td>' +
+                    '<td>' + novDato(data[i].idgrados) + '</td>' +
                     '<td>' + novDato(data[i].descripcion) + '</td>' +
-                    '<td>' + novDato(data[i].direccion) + '</td>' +
-                    '<td>' + novDato(data[i].provincia_idprovincia) + '</td>' +
                     '<td>'+
                     '<div class="btn-group btn-group-sm" role="group">'+
-                        '<button type="button" class="btn text-secondary" title="Editar registro" onclick="consultar(this);" data-id="'+data[i].codmodular+'"><i class="fa fa-edit" ></i></button>'+
-                        '<button type="button" class="btn text-danger" title="Eliminar registro" onclick="eliminar(this);" data-id="'+data[i].codmodular+'"><i class="fa fa-trash"></i></button>'+
+                        '<button type="button" class="btn text-secondary" title="Editar registro" onclick="consultar(this);" data-id="'+data[i].idgrados+'"><i class="fa fa-edit" ></i></button>'+
+                        '<button type="button" class="btn text-danger" title="Eliminar registro" onclick="eliminar(this);" data-id="'+data[i].idgrados+'"><i class="fa fa-trash"></i></button>'+
                     '</div>'+
                     '</td></tr>';
             }
@@ -112,7 +96,7 @@ function eliminar(elem)
             $('.overReg').css('display','none');
             jQuery.ajax(
             { 
-                url: "<?php echo base_url('iiee/eliminar');?>",
+                url: "<?php echo base_url('grado/eliminar');?>",
                 data: {id:$(elem).attr('data-id')},
                 method: 'post',
                 success: function(result){
@@ -132,10 +116,6 @@ function construirTabla()
 }
 function limpiarForm()
 {
-    $(".select2").val("0").trigger("change.select2");
     $('.contForm :input').val('');
-    $('#nivel').val('1');
-    $('#gestion').val('1');
-    $('#area_geografica').val('rural');
 }
 </script>
