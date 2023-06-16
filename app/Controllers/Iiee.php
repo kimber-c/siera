@@ -86,13 +86,13 @@ class Iiee extends BaseController
     {
         // $validation = \Config\Services::validation();
         // $rules = [
-        //     'cod_modular' => 'required|is_unique[iiee.cod_modular]|min_length[7]|max_length[7]',
+        //     'codmodular' => 'required|is_unique[iiee.codmodular]|min_length[7]|max_length[7]',
         // ];
         // $validation->setRules($rules);
         // if ($validation->withRequest($this->request)->run()) 
         // {
             $data = [
-                'cod_modular' => $this->request->getPost('cod_modular'),
+                'codmodular' => $this->request->getPost('codmodular'),
                 'cod_local' => $this->request->getPost('cod_local'),
                 'descripcion' => $this->request->getPost('descripcion'),
                 'nivel' => $this->request->getPost('nivel'),
@@ -104,7 +104,7 @@ class Iiee extends BaseController
                 'distrito_iddistrito' => $this->request->getPost('distrito'),
                 'ejecutora_idejecutora' => $this->request->getPost('ugel'),
             ];
-            $estado = $this->m_iiee->update($this->request->getPost('cod_modular'),$data);
+            $estado = $this->m_iiee->update($this->request->getPost('codmodular'),$data);
             if($estado)
                 echo json_encode(["msg"=>"Se guardo los cambios.","estado"=>true]);
             else
@@ -173,7 +173,7 @@ class Iiee extends BaseController
             $gestion = $sheet->getCellByColumnAndRow(5, $row)->getValue()=='publico'?1:2;
             
             $data = [
-                'cod_modular' => $sheet->getCellByColumnAndRow(1, $row)->getValue(),
+                'codmodular' => $sheet->getCellByColumnAndRow(1, $row)->getValue(),
                 'cod_local' => $sheet->getCellByColumnAndRow(2, $row)->getValue(),
                 'descripcion' => $sheet->getCellByColumnAndRow(3, $row)->getValue(),
                 'nivel' => $nivel,
@@ -185,13 +185,13 @@ class Iiee extends BaseController
                 'distrito_iddistrito' => 1,
                 'ejecutora_idejecutora' => $provincias[strval($sheet->getCellByColumnAndRow(11, $row)->getValue())],
             ];
-            $existingData = $this->m_iiee->where('cod_modular', $data['cod_modular'])->first();
+            $existingData = $this->m_iiee->where('codmodular', $data['codmodular'])->first();
             // echo '<pre>';
             // print_r($existingData);
             // echo '</pre>';
             if ($existingData) 
             {
-                $this->m_iiee->update($existingData['cod_modular'], $data);
+                $this->m_iiee->update($existingData['codmodular'], $data);
                 if ($this->m_iiee->affectedRows() == 0) {
                     return $this->response->setJSON(['estado' => false, 'msg' => 'Error al actualizar el registro']);
                 }

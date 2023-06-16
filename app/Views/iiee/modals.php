@@ -11,12 +11,12 @@
                 <form id="formValidate">
                 <div class="row contForm">
                     <div class="col-lg-6 form-group">
-                        <label for="cod_modular" class="m-0">Codigo modular: <span class="text-danger">*</span></label>
+                        <label for="codmodular" class="m-0">Codigo modular: <span class="text-danger">*</span></label>
                         <div class="input-group input-group-sm">
                             <div class="input-group-prepend">
                                 <span class="input-group-text font-weight-bold"><i class="fa fa-building"></i></span>
                             </div>
-                            <input type="text" class="form-control input soloNumeros" id="cod_modular" name="cod_modular" maxlength="7">
+                            <input type="text" class="form-control input soloNumeros" id="codmodular" name="codmodular" maxlength="7">
                         </div>
                     </div>
                     <div class="col-lg-6 form-group">
@@ -208,7 +208,7 @@ function data(tipo)
 {
 	return {
         // accion: accion,
-        codmodular:$('#cod_modular').val(),
+        codmodular:$('#codmodular').val(),
         cod_local:$('#cod_local').val(),
         descripcion:$('#descripcion').val(),
         nivel:$('#nivel').val(),
@@ -304,7 +304,7 @@ function consultar(elem)
         success: function(r){
             console.log(r);
             let data = JSON.parse(r);
-            $('#cod_modular').val(data.cod_modular);
+            $('#codmodular').val(data.codmodular);
             $('#cod_local').val(data.cod_local);
             $('#descripcion').val(data.descripcion);
             $('#nivel').val(data.nivel);
@@ -349,7 +349,7 @@ $("#formValidate").validate({
     errorClass: "text-danger font-italic font-weight-normal",
     ignore: ".ignore",
     rules: {
-        cod_modular: "required",
+        codmodular: "required",
         cod_local: "required",
         descripcion: "required",
         nivel: "required",
