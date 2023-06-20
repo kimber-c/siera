@@ -239,3 +239,21 @@ in SYSTEMPATH\Model.php on line 391.
  5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Estudiante))
  6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-20 22:04:56 --> Invalid file: "ejecutora/ejecutora.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('ejecutora/ejecutora.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('ejecutora/ejecutora', [], true)
+ 3 APPPATH\Controllers\Ejecutora.php(16): view('ejecutora/ejecutora')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Ejecutora->index()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ejecutora))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-20 22:10:35 --> Invalid file: "seccion/seccion.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('seccion/seccion.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('seccion/seccion', [], true)
+ 3 APPPATH\Controllers\Seccion.php(15): view('seccion/seccion')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Seccion->index()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Seccion))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

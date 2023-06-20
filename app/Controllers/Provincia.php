@@ -13,7 +13,7 @@ class Provincia extends BaseController
 	}
     public function index()
     {
-        return view('template/secciones/header').view('provincia/provincia').view('template/secciones/footer');
+        return view('template/secciones/header').view('v_provincia').view('template/secciones/footer');
     }
     public function listar()
     {

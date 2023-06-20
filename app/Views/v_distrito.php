@@ -4,7 +4,7 @@
         <div class="col-lg-12">
             <div class="row">
                 <div class="col-lg-6 col-sm-6 col-12 m-auto">
-                    <h3><i class="fa fa-building"></i> Provincias</h3>
+                    <h3><i class="fa fa-building"></i> Distritos</h3>
                 </div>
                 <div class="col-lg-6 col-sm-6 col-12 m-auto">
                     <button class="btn btn-sm btn-light float-right border shadow" onclick="accion(true);">
@@ -28,7 +28,7 @@
                             <table id="registros" class="table table-hover dt-responsive nowrap">
                                 <thead class="thead-light">
                                     <tr>
-                                        <th class="text-center" data-priority="2">Identificador</th>
+                                        <th class="text-center" data-priority="2">Provincia</th>
                                         <th class="text-center" data-priority="2">Descripcion</th>
                                         <th class="text-center" data-priority="1"></th>
                                     </tr>
@@ -43,7 +43,7 @@
         </div>
     </div>
 </div>
-<?php include 'modals.php';?>
+<?php include 'modals/modal_distrito.php';?>
 <script>
 var tablaDeRegistros;
 $(document).ready( function () {
@@ -56,7 +56,7 @@ function fillRegistros()
     $('.contenedorRegistros').css('display','block');
     jQuery.ajax(
     { 
-        url: "<?php echo base_url('provincia/listar');?>",
+        url: "<?php echo base_url('distrito/listar');?>",
         method: 'get',
         success: function(r){
             // console.log(JSON.parse(r)[0].cod_modular);
@@ -65,12 +65,12 @@ function fillRegistros()
             for (var i = 0; i < data.length; i++) 
             {
                 html += '<tr class="text-center">' +
-                    '<td>' + novDato(data[i].idprovincia) + '</td>' +
+                    '<td>' + novDato(data[i].nombreProvincia) + '</td>' +
                     '<td>' + novDato(data[i].descripcion) + '</td>' +
                     '<td>'+
                     '<div class="btn-group btn-group-sm" role="group">'+
-                        '<button type="button" class="btn text-secondary" title="Editar registro" onclick="consultar(this);" data-id="'+data[i].idprovincia+'"><i class="fa fa-edit" ></i></button>'+
-                        '<button type="button" class="btn text-danger" title="Eliminar registro" onclick="eliminar(this);" data-id="'+data[i].idprovincia+'"><i class="fa fa-trash"></i></button>'+
+                        '<button type="button" class="btn text-secondary" title="Editar registro" onclick="consultar(this);" data-id="'+data[i].iddistrito+'"><i class="fa fa-edit" ></i></button>'+
+                        '<button type="button" class="btn text-danger" title="Eliminar registro" onclick="eliminar(this);" data-id="'+data[i].iddistrito+'"><i class="fa fa-trash"></i></button>'+
                     '</div>'+
                     '</td></tr>';
             }
@@ -96,7 +96,7 @@ function eliminar(elem)
             $('.overReg').css('display','none');
             jQuery.ajax(
             { 
-                url: "<?php echo base_url('provincia/eliminar');?>",
+                url: "<?php echo base_url('distrito/eliminar');?>",
                 data: {id:$(elem).attr('data-id')},
                 method: 'post',
                 success: function(result){
@@ -117,6 +117,6 @@ function construirTabla()
 function limpiarForm()
 {
     $('#descripcion').val('');
-    $("#identificador").prop("selectedIndex", 0);
+    $('#provincia').val('0').change();
 }
 </script>

@@ -13,7 +13,7 @@ class Distrito extends BaseController
 	}
     public function index()
     {
-        return view('template/secciones/header').view('distrito/distrito').view('template/secciones/footer');
+        return view('template/secciones/header').view('v_distrito').view('template/secciones/footer');
     }
     public function listar()
     {

@@ -13,7 +13,7 @@ class Ejecutora extends BaseController
 	}
     public function index()
     {
-        return view('template/secciones/header').view('ejecutora/ejecutora').view('template/secciones/footer');
+        return view('template/secciones/header').view('v_ejecutora').view('template/secciones/footer');
     }
     public function listar()
     {

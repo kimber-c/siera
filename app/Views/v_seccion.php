@@ -4,7 +4,7 @@
         <div class="col-lg-12">
             <div class="row">
                 <div class="col-lg-6 col-sm-6 col-12 m-auto">
-                    <h3><i class="fa fa-building"></i> Ugels</h3>
+                    <h3><i class="fa fa-building"></i> Secciones</h3>
                 </div>
                 <div class="col-lg-6 col-sm-6 col-12 m-auto">
                     <button class="btn btn-sm btn-light float-right border shadow" onclick="accion(true);">
@@ -21,7 +21,7 @@
                 </div>
                 <div class="card-body">
                     <div class="alert alert-warning msjPms" style="display: none;">
-                        <p class="m-0 font-weight-bold font-italic">El usuario no cuenta con el acceso a registros....</p>
+                        <p class="m-0 font-weight-bold font-italic">El usuario no cuenta con el acceso a registros.</p>
                     </div>
                     <div class="row">
                         <div class="col-md-12 table-responsive contenedorRegistros p-0" style="display: none;">
@@ -43,7 +43,7 @@
         </div>
     </div>
 </div>
-<?php include 'modals.php';?>
+<?php include 'modals/modal_seccion.php';?>
 <script>
 var tablaDeRegistros;
 $(document).ready( function () {
@@ -56,7 +56,7 @@ function fillRegistros()
     $('.contenedorRegistros').css('display','block');
     jQuery.ajax(
     { 
-        url: "<?php echo base_url('ejecutora/listar');?>",
+        url: "<?php echo base_url('seccion/listar');?>",
         method: 'get',
         success: function(r){
             // console.log(JSON.parse(r)[0].cod_modular);
@@ -65,12 +65,12 @@ function fillRegistros()
             for (var i = 0; i < data.length; i++) 
             {
                 html += '<tr class="text-center">' +
-                    '<td>' + novDato(data[i].idejecutora) + '</td>' +
+                    '<td>' + novDato(data[i].idseccion) + '</td>' +
                     '<td>' + novDato(data[i].descripcion) + '</td>' +
                     '<td>'+
                     '<div class="btn-group btn-group-sm" role="group">'+
-                        '<button type="button" class="btn text-secondary" title="Editar registro" onclick="consultar(this);" data-id="'+data[i].idejecutora+'"><i class="fa fa-edit" ></i></button>'+
-                        '<button type="button" class="btn text-danger" title="Eliminar registro" onclick="eliminar(this);" data-id="'+data[i].idejecutora+'"><i class="fa fa-trash"></i></button>'+
+                        '<button type="button" class="btn text-secondary" title="Editar registro" onclick="consultar(this);" data-id="'+data[i].idseccion+'"><i class="fa fa-edit" ></i></button>'+
+                        '<button type="button" class="btn text-danger" title="Eliminar registro" onclick="eliminar(this);" data-id="'+data[i].idseccion+'"><i class="fa fa-trash"></i></button>'+
                     '</div>'+
                     '</td></tr>';
             }
@@ -96,7 +96,7 @@ function eliminar(elem)
             $('.overReg').css('display','none');
             jQuery.ajax(
             { 
-                url: "<?php echo base_url('ejecutora/eliminar');?>",
+                url: "<?php echo base_url('seccion/eliminar');?>",
                 data: {id:$(elem).attr('data-id')},
                 method: 'post',
                 success: function(result){
