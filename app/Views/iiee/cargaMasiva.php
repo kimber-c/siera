@@ -4,12 +4,17 @@
         <div class="col-lg-12">
             <div class="row">
                 <div class="col-lg-6 col-sm-6 col-12 m-auto">
-                    <h3><i class="fa fa-building"></i> Instituciones educativas: Carga masiva</h3>
+                    <h4><i class="fa fa-building"></i> Instituciones educativas: Carga masiva</h4>
                 </div>
                 <div class="col-lg-6 col-sm-6 col-12 m-auto">
+                    
                     <a href="<?php echo base_url('iiee');?>" class="btn btn-sm btn-light float-right border shadow">
                         <i class="fa fa-list"></i> 
                         Mostrar instituciones educativas
+                    </a>
+                    <a href="<?php echo base_url('cargamasiva/iiee/cargamasiva.xlsx');?>" class="btn btn-sm btn-info float-right border shadow mr-4">
+                        <i class="fa fa-download"></i> 
+                        Descargar formato
                     </a>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 <div class="modal fade" id="modalGrado" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header py-1 border-transparent" style="background-color: rgba(0, 0, 0, 0.03);">
                 <h5 class="modal-title" id="exampleModalLongTitle"><i class="fa fa-building"></i> Nuevo grado</h5>
@@ -16,7 +16,16 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text font-weight-bold"><i class="fa fa-building"></i></span>
                             </div>
-                            <input type="text" class="form-control" id="identificador" name="identificador">
+                            <!-- <input type="text" class="form-control" id="identificador" name="identificador"> -->
+                            <select name="identificador" id="identificador" class="form-control">
+                                <option selected disabled value="0">Seleccione identificador</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                            </select>
                         </div>
                     </div>
                     <div class="col-lg-6 form-group">
@@ -40,6 +49,7 @@
 </div>
 <script>
 var nombreAccion;
+var idgradosOld='';
 $(document).ready( function () {
     
 } );
@@ -48,7 +58,6 @@ $('.segunAccion').on('click',function(){
 });
 function accion(ban)
 {
-    // alert('si llega hasta aki---:'+ban);
     if(ban)
     {
         limpiarForm();
@@ -74,6 +83,7 @@ function data(tipo)
 	return {
         idgrados:$('#identificador').val(),
         descripcion:$('#descripcion').val(),
+        idgradosOld:idgradosOld,
 	}
 }
 function segunAccion()
@@ -124,12 +134,13 @@ function consultar(elem)
 {
     jQuery.ajax(
     {
-        url: "<?php echo base_url('iiee/consultar');?>",
+        url: "<?php echo base_url('grado/consultar');?>",
         data: {id:$(elem).attr('data-id')},
         method: 'post',
         success: function(r){
             console.log(r);
             let data = JSON.parse(r);
+            idgradosOld=data.idgrados;
             $('#identificador').val(data.idgrados);
             $('#descripcion').val(data.descripcion);
             accion(false);

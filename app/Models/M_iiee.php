@@ -11,7 +11,7 @@ class M_iiee extends Model
     protected $primaryKey = 'codmodular';
     
     protected $returnType = 'array';
-    protected $useSoftDeletes = false;
+    // protected $useSoftDeletes = false;
 
     protected $allowedFields = [
         'codmodular',
@@ -28,12 +28,12 @@ class M_iiee extends Model
         'fecha_registro',
     ];
 
-    protected $useTimestamps = false;
-    protected $createdField = 'fr';
-    protected $updatedField = 'fa';
+    // protected $useTimestamps = false;
+    // protected $createdField = 'fr';
+    // protected $updatedField = 'fa';
 
-    protected $validationRules = [];
-    protected $validationMessages = [];
-    protected $skipValidation = false;
+    // protected $validationRules = [];
+    // protected $validationMessages = [];
+    // protected $skipValidation = false;
 
 }

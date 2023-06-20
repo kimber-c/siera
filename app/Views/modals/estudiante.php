@@ -16,7 +16,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text font-weight-bold"><i class="fa fa-building"></i></span>
                             </div>
-                            <input type="text" class="form-control input soloNumeros" id="dni" name="dni" maxlength="7">
+                            <input type="text" class="form-control input soloNumeros" id="dni" name="dni" maxlength="8">
                         </div>
                     </div>
                     <div class="col-lg-6 form-group">
@@ -25,7 +25,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text font-weight-bold"><i class="fa fa-city"></i></span>
                             </div>
-                            <input type="text" class="form-control input soloNumeros" id="nombres" name="nombres" maxlength="6">
+                            <input type="text" class="form-control input soloNumeros" id="nombres" name="nombres" maxlength="20">
                         </div>
                     </div>
                     <div class="col-lg-6 form-group">
@@ -51,12 +51,12 @@
                     </div>
 
 
-                    <div class="col-lg-4 form-group">
+                    <!-- <div class="col-lg-4 form-group">
                         <label for="detalleie" class="m-0">Provincia: <span class="text-danger">*</span></label>
                         <select name="detalleie" id="detalleie" class="form-control form-control-sm select2" style="width: 100% !important;">
                             <option selected disabled> Seleccione una detalle</option>
                         </select>
-                    </div>
+                    </div> -->
 
                 </div>
                 </form>
@@ -125,8 +125,8 @@ function data(tipo)
         dni:$('#dni').val(),
         nombres:$('#nombres').val(),
         apellidos:$('#apellidos').val(),
-        estado:$('#estado').val(),        
-        detalle:$('#detalle').val()
+        estado:$('#estado').val()        
+        // detalle:$('#detalle').val()
 	}
 }
 function segunAccion()
@@ -179,7 +179,7 @@ function consultar(elem)
     // $('#modalEditar').modal('show');
     jQuery.ajax(
     {
-        url: "<?php echo base_url('estduante/consultar');?>",
+        url: "<?php echo base_url('estudiante/consultar');?>",
         data: {id:$(elem).attr('data-id')},
         method: 'post',
         success: function(r){

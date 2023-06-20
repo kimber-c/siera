@@ -61,8 +61,10 @@ class Iiee extends BaseController
     }
     public function listar()
     {
-        // echo('llego hasta aki');
-        $this->m_iiee->orderBy('fecha_registro', 'desc');
+        $this->m_iiee->select('iiee.*, ejecutora.descripcion as nombreEjecutora, provincia.descripcion as nombreProvincia, distrito.descripcion as nombreDistrito');
+        $this->m_iiee->join('ejecutora', 'ejecutora.idejecutora = iiee.ejecutora_idejecutora');
+        $this->m_iiee->join('provincia', 'provincia.idprovincia = iiee.provincia_idprovincia');
+        $this->m_iiee->join('distrito', 'distrito.iddistrito = iiee.distrito_iddistrito');
         $datos = $this->m_iiee->get()->getResult();
         echo json_encode($datos);
     }
@@ -132,7 +134,7 @@ class Iiee extends BaseController
             "grau" => 4,
             "antabamba" => 5,
             "chincheros" => 6,
-            "cotabamba" => 7,
+            "cotabambas" => 7,
             "huancarama" => 8,
         );
         // echo ($provincias['antabamba']);

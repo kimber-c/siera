@@ -116,6 +116,7 @@ function construirTabla()
 }
 function limpiarForm()
 {
-    $('.contForm :input').val('');
+    $('#descripcion').val('');
+    $('#identificar').val('0');
 }
 </script>

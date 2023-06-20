@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+
 use CodeIgniter\I18n\Time;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use App\Models\M_estudiante;
@@ -31,12 +32,13 @@ class Estudiante extends BaseController
                 'nombres' => $this->request->getPost('nombres'),
                 'apellidos' => $this->request->getPost('apellidos'),
                 'estado' => $this->request->getPost('estado'),                
-                'detalleie_iddetalleie' => $this->request->getPost('iddetalleie'),
+                // 'detalleie_iddetalleie' => $this->request->getPost('iddetalleie'),
+                'detalleie_iddetalleie' => '1',
                 //'fecha_registro' => $fechaFormateada,
             ];
             $result = $this->m_estudiante->insert($data);
 
-            if($result==0) 
+            if($result) 
                 echo json_encode(["msg"=>"Se registro exitosamente.","estado"=>true]);
             else
                 echo json_encode(["msg"=>"Algo salio mal.","estado"=>false]);
@@ -82,7 +84,7 @@ class Estudiante extends BaseController
                 'nombres' => $this->request->getPost('nombres'),
                 'apellidos' => $this->request->getPost('apellidos'),
                 'estado' => $this->request->getPost('estado'),                
-                'detalleie_iddetalleie' => $this->request->getPost('iddetalleie')
+                'detalleie_iddetalleie' => '1'
             ];
             $estado = $this->m_estudiante->update($this->request->getPost('idestudiante'),$data);
             if($estado)
