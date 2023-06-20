@@ -161,6 +161,30 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="<?php echo base_url('ejecutora');?>" class="nav-link bg-secondary sba9">
+                            <i class="nav-icon fa-solid fa-building"></i>
+                            <p>Ejecutora</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?php echo base_url('provincia');?>" class="nav-link bg-secondary sba9">
+                            <i class="nav-icon fa-solid fa-building"></i>
+                            <p>Provincia</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?php echo base_url('distrito');?>" class="nav-link bg-secondary sba9">
+                            <i class="nav-icon fa-solid fa-building"></i>
+                            <p>Distrito</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?php echo base_url('seccion');?>" class="nav-link bg-secondary sba9">
+                            <i class="nav-icon fa-solid fa-building"></i>
+                            <p>Seccion</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="<?php echo base_url('grado');?>" class="nav-link bg-secondary sba9">
                             <i class="nav-icon fa-solid fa-building"></i>
                             <p>Grado</p>
