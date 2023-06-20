@@ -13,7 +13,7 @@ class M_distrito extends Model
     protected $returnType = 'array';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['iddistrito','descripcion',];
+    protected $allowedFields = ['iddistrito','descripcion','provincia_idprovincia'];
 
     protected $useTimestamps = false;
     // protected $createdField = 'fr';
