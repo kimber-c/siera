@@ -2,7 +2,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header py-1 border-transparent" style="background-color: rgba(0, 0, 0, 0.03);">
-                <h5 class="modal-title" id="exampleModalLongTitle"><i class="fa fa-building"></i> Asignar grado y seccion</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle"><i class="fa fa-gear"></i> Asignar grado y seccion</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -21,6 +21,9 @@
                         <select name="seccion[]" id="seccion" multiple="multiple" class="form-control form-control-sm select2" style="width: 100% !important;">
                             <option disabled> Seleccione una seccion</option>
                         </select>
+                    </div>
+                    <div class="col-lg-12 pb-3">
+                        <button type="button" class="btn btn-sm btn-success guardarAsignacion w-100"><i class="fa fa-save"></i> Guardar</button>
                     </div>
                 </div>
                 <div class="row">
@@ -71,8 +74,8 @@
                 </form>
             </div>
             <div class="modal-footer py-1 border-transparent">
-                <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-sm btn-success segunAccion guardar"><i class="fa fa-save"></i> Guardar</button>
+                <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">Cerrar</button>
+                
             </div>
         </div>
     </div>
@@ -124,9 +127,40 @@ function fillSeccion()
         }
     });
 }
+$('.guardarAsignacion').on('click',function(){
+    guardarAsignacion();
+})
+function data(tipo)
+{
+    return {
+        grado:$('#grado').val(),
+        secciones:$('#seccion').val(),
+    }
+}
 function asignar(elem)
 {
     $('#modalAsignacion').modal('show');
+}
+function guardarAsignacion()
+{
+    if($('#formValidate').valid()==false)
+    {return;}
+    jQuery.ajax(
+    {
+        url: "<?php echo base_url('asignacion/registrar');?>",
+        data: data(true),
+        method: 'post',
+        success: function(result){
+            console.log(result);
+            // let data = JSON.parse(result);
+            // $('.overReg').css('display','flex');
+            // construirTabla();
+            // fillRegistros();
+            // $('#modalIe').modal('hide');
+            // msjRee(data);
+            // limpiarForm();
+        }
+    });
 }
 $("#fvAsignacion").validate({
     errorClass: "text-danger font-italic font-weight-normal",

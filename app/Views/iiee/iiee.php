@@ -88,7 +88,7 @@ function fillRegistros()
                     '<td>' + novDato(data[i].nombreEjecutora) + '</td>' +
                     '<td>'+
                     '<div class="btn-group btn-group-sm" role="group">'+
-                        '<button type="button" class="btn text-secondary" title="Editar registro" onclick="asignar(this);" data-id="'+data[i].codmodular+'"><i class="fa fa-gear" ></i></button>'+
+                        '<button type="button" class="btn text-secondary" title="Editar registro" onclick="asignar(this);" data-id="'+data[i].codmodular+'"><i class="fa fa-gear"></i></button>'+
                         '<button type="button" class="btn text-secondary" title="Editar registro" onclick="consultar(this);" data-id="'+data[i].codmodular+'"><i class="fa fa-edit" ></i></button>'+
                         '<button type="button" class="btn text-danger" title="Eliminar registro" onclick="eliminar(this);" data-id="'+data[i].codmodular+'"><i class="fa fa-trash"></i></button>'+
                     '</div>'+
