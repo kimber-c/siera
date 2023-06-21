@@ -14,10 +14,12 @@ class M_estudiante extends Model
 
 
     protected $allowedFields = [
+        'idestudiante',
         'dni',
         'nombres',
         'apellidos',
         'estado',
+        'fecha_registro',
         'detalleie_iddetalleie'
     ];
 

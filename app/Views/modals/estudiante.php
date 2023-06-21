@@ -70,6 +70,7 @@
 </div>
 <script>
 var nombreAccion;
+var idestudiante;
 $(document).ready( function () {
     fillDistrito();
     fillProvincia();
@@ -122,6 +123,7 @@ function data(tipo)
 {
 	return {
         // accion: accion,
+        idestudiante: idestudiante,
         dni:$('#dni').val(),
         nombres:$('#nombres').val(),
         apellidos:$('#apellidos').val(),
@@ -185,6 +187,7 @@ function consultar(elem)
         success: function(r){
             console.log(r);
             let data = JSON.parse(r);
+            idestudiante = data.idestudiante;
             $('#dni').val(data.dni);
             $('#nombres').val(data.nombres);
             $('#apellidos').val(data.apellidos);

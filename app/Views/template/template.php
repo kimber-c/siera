@@ -154,7 +154,7 @@
                         <li class="nav-item">
                             <a href="{{url('venta/registrar')}}" class="nav-link bg-secondary sba14">
                                 <i class="nav-icon fa-solid fa-cart-plus"></i>
-                                <p>alumno</p>
+                                <p>Estudiante</p>
                             </a>
                         </li>
                         <li class="nav-item">

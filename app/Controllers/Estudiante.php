@@ -86,7 +86,9 @@ class Estudiante extends BaseController
                 'estado' => $this->request->getPost('estado'),                
                 'detalleie_iddetalleie' => '1'
             ];
+            
             $estado = $this->m_estudiante->update($this->request->getPost('idestudiante'),$data);
+
             if($estado)
                 echo json_encode(["msg"=>"Se guardo los cambios.","estado"=>true]);
             else
