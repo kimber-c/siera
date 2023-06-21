@@ -1,7 +1,7 @@
 <div class="modal fade" id="modalIe" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <div class="modal-header py-1 border-transparent" style="background-color: rgba(0, 0, 0, 0.03);">
+            <div class="modal-header py-1 border-transparent">
                 <h5 class="modal-title" id="exampleModalLongTitle"><i class="fa fa-building"></i> Nuevo estudiante</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -23,9 +23,9 @@
                         <label for="nombres" class="m-0">Nombres: <span class="text-danger">*</span></label>
                         <div class="input-group input-group-sm">
                             <div class="input-group-prepend">
-                                <span class="input-group-text font-weight-bold"><i class="fa fa-city"></i></span>
+                                <span class="input-group-text font-weight-bold"><i class="fa fa-circle-user"></i></span>
                             </div>
-                            <input type="text" class="form-control input soloNumeros" id="nombres" name="nombres" maxlength="20">
+                            <input type="text" class="form-control input" placeholder = "Nombres" id="nombres" name="nombres" maxlength="30">
                         </div>
                     </div>
                     <div class="col-lg-6 form-group">
@@ -43,20 +43,30 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text font-weight-bold"><i class="fa fa-building"></i></span>
                             </div>
-                            <select name="estado" id="estado" class="form-control sValidate input">
+                            <select name="estado" id="estado" class="form-control">
                                 <option value="1" selected>Activo</option>
-                                <option value="0">inactivo</option>
+                                <option value="0">Inactivo</option>
                             </select>
                         </div>
                     </div>
-
-
-                    <!-- <div class="col-lg-4 form-group">
-                        <label for="detalleie" class="m-0">Provincia: <span class="text-danger">*</span></label>
-                        <select name="detalleie" id="detalleie" class="form-control form-control-sm select2" style="width: 100% !important;">
-                            <option selected disabled> Seleccione una detalle</option>
+                    <div class="col-lg-6 form-group">
+                        <label for="codmodular" class="m-0">Provincia: <span class="text-danger">*</span></label>
+                        <select name="codmodular" id="codmodular" class="form-control form-control-sm select2" style="width: 100% !important;">
+                            <option selected disabled> Seleccione una IIEE</option>
                         </select>
-                    </div> -->
+                    </div>
+                    <div class="col-lg-6 form-group">
+                        <label for="grados" class="m-0">Grado: <span class="text-danger">*</span></label>
+                        <select name="grados" id="grados" class="form-control form-control-sm select2" style="width: 100% !important;">
+                            <option selected disabled> Seleccione un grado</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-6 form-group">
+                        <label for="secciones" class="m-0">Sección: <span class="text-danger">*</span></label>
+                        <select name="secciones" id="secciones" class="form-control form-control-sm select2" style="width: 100% !important;">
+                            <option selected disabled> Seleccione una sección</option>
+                        </select>
+                    </div>
 
                 </div>
                 </form>
@@ -72,9 +82,10 @@
 var nombreAccion;
 var idestudiante;
 $(document).ready( function () {
-    fillDistrito();
-    fillProvincia();
-    fillEjecutoras();
+    ListarIE();
+    ListarGrados();
+    ListarSecciones();
+
 } );
 $('.segunAccion').on('click',function(){
     segunAccion();
@@ -117,8 +128,49 @@ function fillEjecutoras()
         }
     });
 }
+function ListarIE()
+{
+    jQuery.ajax(
+    { 
+        url: "<?php echo base_url('iiee/listar');?>",
+        method: 'get',
+        success: function(result){
+            $.each(JSON.parse(result),function(indice,fila){
+                $('#codmodular').append("<option value='"+fila.codmodular+"'>"+fila.codmodular+": "+fila.descripcion+"</option>");
+            });
+            $('#codmodular').select2({placeholder:"Seleccione una provincia.",width:"resolve",});
+        }
+    });
+}
 
-
+function ListarGrados()
+{
+    jQuery.ajax(
+    { 
+        url: "<?php echo base_url('grado/listar');?>",
+        method: 'get',
+        success: function(result){
+            $.each(JSON.parse(result),function(indice,fila){
+                $('#grados').append("<option value='"+fila.idgrados+"'>"+fila.descripcion+"</option>");
+            });
+            $('#grados').select2({placeholder:"Seleccione un grado.",width:"resolve",});
+        }
+    });
+}
+function ListarSecciones()
+{
+    jQuery.ajax(
+    { 
+        url: "<?php echo base_url('seccion/listar');?>",
+        method: 'get',
+        success: function(result){
+            $.each(JSON.parse(result),function(indice,fila){
+                $('#secciones').append("<option value='"+fila.idseccion+"'>"+fila.descripcion+"</option>");
+            });
+            $('#secciones').select2({placeholder:"Seleccione una sección.",width:"resolve",});
+        }
+    });
+}
 function data(tipo)
 {
 	return {

@@ -40,7 +40,9 @@
                                         <th class="text-center" data-priority="2">Nombres</th>
                                         <th class="text-center" data-priority="3">Apellidos</th>
                                         <th class="text-center" data-priority="1">Estado</th>
-                                        <th class="text-center" data-priority="1">Grado y sección</th>
+                                        <th class="text-center" data-priority="1">IE</th>
+                                        <th class="text-center" data-priority="1">IE</th>
+                                        <th class="text-center" data-priority="1">IE</th>
                                         <th class="text-center" data-priority="1"></th>
                                     </tr>
                                 </thead>
@@ -82,7 +84,9 @@ function fillRegistros()
                     '<td>' + novDato(data[i].nombres) + '</td>' +
                     '<td>' + novDato(data[i].apellidos) + '</td>' +
                     '<td>' + novDato(data[i].estado) + '</td>' +
-                    '<td>' + novDato(data[i].detalleie_iddetalleie) + '</td>' +
+                    '<td>' + novDato(data[i].iiee_codmodular) + '</td>' +
+                    '<td>' + novDato(data[i].grados_idgrados) + '</td>' +
+                    '<td>' + novDato(data[i].seccion_idseccion) + '</td>' +
                     '<td>'+
                     '<div class="btn-group btn-group-sm" role="group">'+
                         '<button type="button" class="btn text-secondary" title="Editar registro" onclick="consultar(this);" data-id="'+data[i].idestudiante+'"><i class="fa fa-edit" ></i></button>'+
@@ -132,9 +136,6 @@ function construirTabla()
 }
 function limpiarForm()
 {
-    $(".select2").val("0").trigger("change.select2");
-    $('.contForm :input').val('');
-    $('#nivel').val('1');
 
 }
 </script>

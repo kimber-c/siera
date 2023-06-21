@@ -19,8 +19,10 @@ class M_estudiante extends Model
         'nombres',
         'apellidos',
         'estado',
-        'fecha_registro',
-        'detalleie_iddetalleie'
+        'sexo',
+        'iiee_codmodular',
+        'grados_idgrados',
+        'seccion_idseccion'
     ];
 
 }

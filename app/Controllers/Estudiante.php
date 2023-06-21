@@ -56,7 +56,7 @@ class Estudiante extends BaseController
     public function listar()
     {
         // echo('llego hasta aki');
-        $this->m_estudiante->orderBy('fecha_registro', 'desc');
+        $this->m_estudiante->orderBy('idestudiante', 'desc');
         $datos = $this->m_estudiante->get()->getResult();
         echo json_encode($datos);
     }
