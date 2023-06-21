@@ -161,6 +161,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="<?php echo base_url('director');?>" class="nav-link bg-secondary sba9">
+                            <i class="nav-icon fa-solid fa-building"></i>
+                            <p>Director</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="<?php echo base_url('ejecutora');?>" class="nav-link bg-secondary sba9">
                             <i class="nav-icon fa-solid fa-building"></i>
                             <p>Ejecutora</p>
