@@ -197,45 +197,9 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{url('cliente/cliente')}}" class="nav-link bg-secondary sba9">
-                            <i class="nav-icon fa-solid fa-user"></i>
-                            <p>Curso</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{url('proveedor/proveedor')}}" class="nav-link bg-secondary sba9">
-                            <i class="nav-icon fa-solid fa-user-tie"></i>
-                            <p>Ie</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{url('compra/registrar')}}" class="nav-link bg-secondary sba9">
-                            <i class="nav-icon fa-solid fa-cart-shopping"></i>
-                            <p>ugel</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{url('compra/compra')}}" class="nav-link bg-secondary sba9">
-                            <i class="nav-icon fa-solid fa-list"></i>
-                            <p>grado</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{url('producto/producto')}}" class="nav-link bg-secondary sba14">
-                            <i class="nav-icon fa-solid fa-th-large"></i>
-                            <p>seccion</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a href="<?php echo base_url('estudiante');?>" class="nav-link bg-secondary sba14">
                             <i class="nav-icon fa-solid fa-cart-plus"></i>
                             <p>Estudiante</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{url('venta/venta')}}" class="nav-link bg-secondary sba14">
-                            <i class="nav-icon fa-solid fa-list-alt"></i>
-                            <p>eva</p>
                         </a>
                     </li>
                     <li class="nav-item">
