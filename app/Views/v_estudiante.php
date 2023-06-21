@@ -54,7 +54,7 @@
         </div>
     </div>
 </div>
-<?php include 'modals/estudiante.php';?>
+<?php include 'modals/modal_estudiante.php';?>
 <script>
 var tablaDeRegistros;
 $(document).ready( function () {
