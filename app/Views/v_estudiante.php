@@ -1,3 +1,12 @@
+<style type="text/css">
+    
+ td{
+
+    margin: 0px !important;
+    padding: 0px !important;
+ }
+</style>
+
 <!-- <h1>aka estara el iiee</h1> -->
 <div class="container-fluid">
     <div class="row">
@@ -84,7 +93,7 @@ function fillRegistros()
                     '<td>' + novDato(data[i].dni) + '</td>' +
                     '<td>' + novDato(data[i].nombres) + '</td>' +
                     '<td>' + novDato(data[i].apellidos) + '</td>' +
-                    '<td>' + novDato(data[i].estado) + '</td>' +
+                    '<td>' + formatoEstadoEstudiante(data[i].estado) + '</td>' +
                     '<td>' + novDato(data[i].sexo) + '</td>' +
                     '<td>' + novDato(data[i].iiee_codmodular) + '</td>' +
                     '<td>' + novDato(data[i].grados_idgrados) + '</td>' +

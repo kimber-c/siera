@@ -120,6 +120,7 @@ function construirTabla()
     $('.contenedorRegistros>div').remove();
     $('.contenedorRegistros').html(tablaDeRegistros);
 }
+
 function limpiarForm()
 {
     $('.contForm :input').val('');

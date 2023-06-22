@@ -43,6 +43,11 @@ function formatoEstado(est)
     
     return est=='activo'?'<span class="badge badge-success shadow">Activo</span>':'<span class="badge badge-danger shadow">Inactivo</span>';
 }
+function formatoEstadoEstudiante(est)
+{
+    
+    return est=='1'?'<span class="badge badge-success shadow">Activo</span>':'<span class="badge badge-danger shadow">Inactivo</span>';
+}
 function msjSwal(estado,msj) 
 {
     if(estado)

@@ -49,18 +49,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-lg-6 form-group">
-                        <label for="estado" class="m-0">Estado: <span class="text-danger">*</span></label>
-                        <div class="input-group input-group-sm">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text font-weight-bold"><i class="fa fa-building"></i></span>
-                            </div>
-                            <select name="estado" id="estado" class="form-control">
-                                <option value="1" selected>Activo</option>
-                                <option value="0">Inactivo</option>
-                            </select>
-                        </div>
-                    </div>
+                   
 
                     <div class="col-lg-6 form-group">
                         <label for="sexo" class="m-0">Sexo: <span class="text-danger">*</span></label>
@@ -184,7 +173,7 @@ function ListarSecciones()
         }
     });
 }
-function data(tipo)
+function data()
 {
 	return {
         // accion: accion,
@@ -208,7 +197,7 @@ function segunAccion()
         jQuery.ajax(
         {
             url: "<?php echo base_url('estudiante/registrar');?>",
-            data: data(true),
+            data: data(),
             method: 'post',
             success: function(result){
                 console.log(result);
@@ -229,7 +218,7 @@ function segunAccion()
         jQuery.ajax(
         {
             url: "<?php echo base_url('estudiante/actualizar');?>",
-            data: data(true),
+            data: data(),
             method: 'post',
             success: function(result){
 
