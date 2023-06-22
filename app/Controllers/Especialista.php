@@ -2,26 +2,26 @@
 
 namespace App\Controllers;
 
-use App\Models\M_director;
+use App\Models\M_especialista;
 use App\Models\M_usuario;
 
-class Director extends BaseController
+class Especialista extends BaseController
 {
     public function __construct() 
     {
-        $this->m_director = new M_director();
+        $this->m_especialista = new M_especialista();
         $this->m_usuario = new M_usuario();
 	}
     public function index()
     {
-        return view('template/secciones/header').view('v_director').view('template/secciones/footer');
+        return view('template/secciones/header').view('v_especialista').view('template/secciones/footer');
     }
     public function listar()
     {
-        $this->m_director->select('director.*, iiee.*, usuario.*');
-        $this->m_director->join('iiee', 'iiee.codmodular = director.iiee_cod_modular');
-        $this->m_director->join('usuario', 'usuario.idusuario = director.usuario_idusuario');
-        $datos = $this->m_director->get()->getResult();
+        $this->m_especialista->select('especialista.*, ejecutora.*, usuario.*');
+        $this->m_especialista->join('ejecutora', 'ejecutora.idejecutora = especialista.ugel_idugel');
+        $this->m_especialista->join('usuario', 'usuario.idusuario = especialista.usuario_idusuario');
+        $datos = $this->m_especialista->get()->getResult();
         echo json_encode($datos);
     }
     public function registrar()
@@ -30,8 +30,8 @@ class Director extends BaseController
         // exit();
         $validation = \Config\Services::validation();
         $rules = [
-            'iiee' => 'required|is_unique[director.iiee_cod_modular]|min_length[7]|max_length[7]',
-            'dni' => 'required|is_unique[director.dni]',
+            'ejecutora' => 'required',
+            'dni' => 'required|is_unique[especialista.dni]',
             'usuario' => 'required|is_unique[usuario.usuario]',
 
         ];
@@ -40,23 +40,23 @@ class Director extends BaseController
         {
             $dataUsuario = [
                 'usuario' => $this->request->getPost('usuario'),
-                // 'contraseña' => $this->request->getPost('password'),
                 'contraseña' => password_hash($this->request->getPost('password'),PASSWORD_DEFAULT),
+                // $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
                 'estado' => $this->request->getPost('estado')=="true"?"activo":"inactivo",
             ];
             $resultUsuario = $this->m_usuario->insert($dataUsuario);
             if($resultUsuario) 
             {
                 // $idusuario = $this->m_usuario->insertID();
-                $dataDirector = [
+                $dataEspecialista = [
                     'dni' => $this->request->getPost('dni'),
                     'nombres' => $this->request->getPost('nombres'),
                     'apellidos' => $this->request->getPost('apellidos'),
-                    'iiee_cod_modular' => $this->request->getPost('iiee'),
+                    'ugel_idugel' => $this->request->getPost('ejecutora'),
                     'usuario_idusuario' => $this->m_usuario->insertID(),
                 ];
-                $resultDirector = $this->m_director->insert($dataDirector);
-                if($resultDirector)
+                $resultEspecialista = $this->m_especialista->insert($dataEspecialista);
+                if($resultEspecialista)
                     echo json_encode(["msg"=>"Se registro exitosamente.","estado"=>true]);
                 else
                     echo json_encode(["msg"=>"Algo salio mal.","estado"=>false]);
@@ -75,21 +75,21 @@ class Director extends BaseController
     }
     public function eliminar()
     {
-        $director = $this->m_director->where('iddirector', $_POST["id"])->get()->getResult();
-        $estadoDirector = $this->m_director->delete($_POST["id"]);
-        $estadoUsuario = $this->m_usuario->delete($director[0]->usuario_idusuario);
-        if($estadoDirector && $estadoUsuario)
+        $especialista = $this->m_especialista->where('idespecialista', $_POST["id"])->get()->getResult();
+        $estadoEspecialista = $this->m_especialista->delete($_POST["id"]);
+        $estadoUsuario = $this->m_usuario->delete($especialista[0]->usuario_idusuario);
+        if($estadoEspecialista && $estadoUsuario)
             echo json_encode(["msg"=>"Se realizo el proceso exitosamente.","estado"=>true]);
         else
             echo json_encode(["msg"=>"Algo salio mal.","estado"=>false]);
     }
     public function consultar()
     {
-        $this->m_director->select('director.*, usuario.*');
-        $this->m_director->join('usuario', 'usuario.idusuario = director.usuario_idusuario');
-        $this->m_director->where('director.iddirector', $_POST["id"]);
-        $director = $this->m_director->get()->getResult();
-        echo json_encode($director[0]);
+        $this->m_especialista->select('especialista.*, usuario.*');
+        $this->m_especialista->join('usuario', 'usuario.idusuario = especialista.usuario_idusuario');
+        $this->m_especialista->where('especialista.idespecialista', $_POST["id"]);
+        $especialista = $this->m_especialista->get()->getResult();
+        echo json_encode($especialista[0]);
     }
     public function actualizar()
     {
@@ -99,26 +99,27 @@ class Director extends BaseController
             'contraseña' => password_hash($this->request->getPost('password'),PASSWORD_DEFAULT),
             'estado' => $this->request->getPost('estado')=="true"?"activo":"inactivo",
         ];
-        $existingDirector = $this->m_director->where('iddirector', $this->request->getPost('iddirector'))->get()->getRow();
-        $id = $existingDirector->usuario_idusuario;
+        $existeEspecialista = $this->m_especialista->where('idespecialista', $this->request->getPost('idespecialista'))->get()->getRow();
+        $id = $existeEspecialista->usuario_idusuario;
         // $existingUsuario = $this->m_usuario->where('idusuario', $this->request->getPost('idejecutoraOld'))->first();
         
         $estadoUsuario = $this->m_usuario->update($id,$dataUsuario);
         if($estadoUsuario)
         {
+            // var_dump('estro hast aki');
+            // exit();
             // var_dump('llego hasta aki');
             // echo json_encode(["msg"=>"Se guardo los cambios.","estado"=>true]);
             // $idusuario = $this->m_usuario->insertID();
-            $dataDirector = [
+            $dataEspecialista = [
                 'dni' => $this->request->getPost('dni'),
                 'nombres' => $this->request->getPost('nombres'),
                 'apellidos' => $this->request->getPost('apellidos'),
-                'iiee_cod_modular' => $this->request->getPost('iiee'),
-
+                'ugel_idugel' => $this->request->getPost('ejecutora'),
             ];
-            // $resultDirector = $this->m_director->insert($dataDirector);
-            $estadoDirector = $this->m_director->update($this->request->getPost('iddirector'),$dataDirector);
-            if($estadoDirector)
+            // $resultDirector = $this->m_especialista->insert($dataEspecialista);
+            $estadoEspecialista = $this->m_especialista->update($this->request->getPost('idespecialista'),$dataEspecialista);
+            if($estadoEspecialista)
                 echo json_encode(["msg"=>"Se registro exitosamente.","estado"=>true]);
             else
                 echo json_encode(["msg"=>"Algo salio mal.","estado"=>false]);

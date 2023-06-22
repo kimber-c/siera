@@ -38,6 +38,10 @@ function novDato(dato)
 $('.soloNumeros').on('input', function () { 
     this.value = this.value.replace(/[^0-9]/g,'');
 });
+function formatoEstado(est)
+{
+    return est=='activo'?'<span class="badge badge-success shadow">Activo</span>':'<span class="badge badge-danger shadow">Inactivo</span>';
+}
 function msjSwal(estado,msj) 
 {
     if(estado)
