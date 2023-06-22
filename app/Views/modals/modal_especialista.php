@@ -1,8 +1,8 @@
-<div class="modal fade" id="modalDirector" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="modalEspecialista" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header py-1 border-transparent" style="background-color: rgba(0, 0, 0, 0.03);">
-                <h5 class="modal-title" id="exampleModalLongTitle"><i class="fa fa-building"></i> Nuevo director</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle"><i class="fa fa-building"></i> Nuevo especialista</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -12,14 +12,14 @@
                 <div class="row contForm">
                     <div class="card mx-2">
                         <div class="card-header py-0">
-                            <h6 class="card-title m-0">Datos de director</h6>
+                            <h6 class="card-title m-0">Datos de especialista</h6>
                         </div>
                         <div class="card-body p-2">
                             <div class="row">
                                 <div class="col-lg-6 form-group">
-                                    <label for="iiee" class="m-0">Institucion educativa: <span class="text-danger">*</span></label>
-                                    <select name="iiee" id="iiee" class="form-control form-control-sm select2" style="width: 100% !important;">
-                                        <option selected disabled> Seleccione una Institucion educativa</option>
+                                    <label for="ejecutora" class="m-0">Ugel: <span class="text-danger">*</span></label>
+                                    <select name="ejecutora" id="ejecutora" class="form-control form-control-sm select2" style="width: 100% !important;">
+                                        <option selected disabled> Seleccione una Ugel</option>
                                     </select>
                                 </div>
                                 <div class="col-lg-6 form-group">
@@ -97,9 +97,9 @@
 </div>
 <script>
 var nombreAccion;
-var iddirector='';
+var idespecialista='';
 $(document).ready( function () {
-    fillDirector();
+    fillEjecutoras();
 } );
 $('.segunAccion').on('click',function(){
     segunAccion();
@@ -108,17 +108,17 @@ $('.estado').on('click',function(){
     // alert($('#estado').prop("checked"));
     $('.desEstado').html($('#estado').prop("checked")?' Activo':' Inactivo');
 });
-function fillDirector()
+function fillEjecutoras()
 {
     jQuery.ajax(
     { 
-        url: "<?php echo base_url('iiee/listar');?>",
+        url: "<?php echo base_url('ejecutora/listar');?>",
         method: 'get',
         success: function(result){
             $.each(JSON.parse(result),function(indice,fila){
-                $('#iiee').append("<option value='"+fila.codmodular+"'>"+fila.descripcion+"</option>");
+                $('#ejecutora').append("<option value='"+fila.idejecutora+"'>"+fila.descripcion+"</option>");
             });
-            $('#iiee').select2({placeholder:"Seleccione una institucion educativa.",width:"resolve",});
+            $('#ejecutora').select2({placeholder:"Seleccione una institucion educativa.",width:"resolve",});
         }
     });
 }
@@ -139,20 +139,19 @@ function accion(ban)
         $('.actualizar').html('<i class="fa fa-save"></i> Guardar Cambios');
         nombreAccion = 'actualizar';
     }
-    $('#modalDirector').modal('show');
-    // 8.30 9 de julio 7.30 dni
+    $('#modalEspecialista').modal('show');
 }
 function data(tipo)
 {
     return {
-        iiee:$('#iiee').val(),
+        ejecutora:$('#ejecutora').val(),
         dni:$('#dni').val(),
         nombres:$('#nombres').val(),
         apellidos:$('#apellidos').val(),
         usuario:$('#usuario').val(),
         password:$('#password').val(),
         estado:$('#estado').prop("checked"),
-        iddirector:iddirector,
+        idespecialista:idespecialista,
     }
 }
 function segunAccion()
@@ -163,7 +162,7 @@ function segunAccion()
         {return;}
         jQuery.ajax(
         {
-            url: "<?php echo base_url('director/registrar');?>",
+            url: "<?php echo base_url('especialista/registrar');?>",
             data: data(true),
             method: 'post',
             success: function(result){
@@ -172,7 +171,7 @@ function segunAccion()
                 $('.overReg').css('display','flex');
                 construirTabla();
                 fillRegistros();
-                $('#modalDirector').modal('hide');
+                $('#modalEspecialista').modal('hide');
                 msjRee(data);
                 limpiarForm();
             }
@@ -184,16 +183,15 @@ function segunAccion()
         {return;}
         jQuery.ajax(
         {
-            url: "<?php echo base_url('director/actualizar');?>",
+            url: "<?php echo base_url('especialista/actualizar');?>",
             data: data(true),
             method: 'post',
             success: function(result){
-
                 let data = JSON.parse(result);
                 $('.overReg').css('display','flex');
                 construirTabla();
                 fillRegistros();
-                $('#modalDirector').modal('hide');
+                $('#modalEspecialista').modal('hide');
                 msjRee(data);
             }
         });
@@ -203,13 +201,13 @@ function consultar(elem)
 {
     jQuery.ajax(
     {
-        url: "<?php echo base_url('director/consultar');?>",
+        url: "<?php echo base_url('especialista/consultar');?>",
         data: {id:$(elem).attr('data-id')},
         method: 'post',
         success: function(r){
             let data = JSON.parse(r);
-            iddirector=data.iddirector;
-            $('#iiee').val(data.iiee_cod_modular).change();
+            idespecialista=data.idespecialista;
+            $('#ejecutora').val(data.ugel_idugel).change();
             $('#dni').val(data.dni);
             $('#nombres').val(data.nombres);
             $('#apellidos').val(data.apellidos);
