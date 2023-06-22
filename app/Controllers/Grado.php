@@ -16,7 +16,7 @@ class Grado extends BaseController
     }
     public function listar()
     {
-        $this->m_grado->orderBy('idgrados', 'desc');
+        $this->m_grado->orderBy('idgrados', 'asc');
         $datos = $this->m_grado->get()->getResult();
         echo json_encode($datos);
     }

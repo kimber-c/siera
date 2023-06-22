@@ -16,7 +16,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text font-weight-bold"><i class="fa fa-building"></i></span>
                             </div>
-                            <input type="text" class="form-control input soloNumeros" id="dni" name="dni" maxlength="8">
+                            <input type="text" class="form-control input soloNumeros" placeholder = "Escriba DNI de 8 digitos" id="dni" name="dni" maxlength="8">
                         </div>
                     </div>
                     <div class="col-lg-6 form-group">
@@ -34,7 +34,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text font-weight-bold"><i class="fa fa-building"></i></span>
                             </div>
-                            <input type="text" class="form-control input" id="apellidos" name="apellidos">
+                            <input type="text" class="form-control input" placeholder = "Apellidos" id="apellidos" name="apellidos">
                         </div>
                     </div>
                     <div class="col-lg-6 form-group">
@@ -50,7 +50,33 @@
                         </div>
                     </div>
                     <div class="col-lg-6 form-group">
-                        <label for="codmodular" class="m-0">Provincia: <span class="text-danger">*</span></label>
+                        <label for="estado" class="m-0">Estado: <span class="text-danger">*</span></label>
+                        <div class="input-group input-group-sm">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text font-weight-bold"><i class="fa fa-building"></i></span>
+                            </div>
+                            <select name="estado" id="estado" class="form-control">
+                                <option value="1" selected>Activo</option>
+                                <option value="0">Inactivo</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 form-group">
+                        <label for="sexo" class="m-0">Sexo: <span class="text-danger">*</span></label>
+                        <div class="input-group input-group-sm">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text font-weight-bold"><i class="fa fa-building"></i></span>
+                            </div>
+                            <select name="sexo" id="sexo" class="form-control">
+                                <option value="M" selected>Masculino</option>
+                                <option value="F">Femenino</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 form-group">
+                        <label for="codmodular" class="m-0">IE: <span class="text-danger">*</span></label>
                         <select name="codmodular" id="codmodular" class="form-control form-control-sm select2" style="width: 100% !important;">
                             <option selected disabled> Seleccione una IIEE</option>
                         </select>
@@ -114,20 +140,7 @@ function accion(ban)
     $('#modalIe').modal('show');
 
 }
-function fillEjecutoras()
-{
-    jQuery.ajax(
-    { 
-        url: "<?php echo base_url('ejecutora/listar');?>",
-        method: 'get',
-        success: function(result){
-            $.each(JSON.parse(result),function(indice,fila){
-                $('#ugel').append("<option value='"+fila.idejecutora+"'>"+fila.descripcion+"</option>");
-            });
-            $('#ugel').select2({placeholder:"Seleccione una ugel.",width:"resolve",});
-        }
-    });
-}
+
 function ListarIE()
 {
     jQuery.ajax(
@@ -138,7 +151,7 @@ function ListarIE()
             $.each(JSON.parse(result),function(indice,fila){
                 $('#codmodular').append("<option value='"+fila.codmodular+"'>"+fila.codmodular+": "+fila.descripcion+"</option>");
             });
-            $('#codmodular').select2({placeholder:"Seleccione una provincia.",width:"resolve",});
+            $('#codmodular').select2({placeholder:"Seleccione una IE.",width:"resolve",});
         }
     });
 }
@@ -179,8 +192,11 @@ function data(tipo)
         dni:$('#dni').val(),
         nombres:$('#nombres').val(),
         apellidos:$('#apellidos').val(),
-        estado:$('#estado').val()        
-        // detalle:$('#detalle').val()
+        estado:$('#estado').val(),
+        sexo:$('#sexo').val(),
+        codmodular:$('#codmodular').val(), 
+        grados:$('#grados').val(),
+        secciones:$('#secciones').val()
 	}
 }
 function segunAccion()
@@ -188,7 +204,7 @@ function segunAccion()
     if(nombreAccion == 'registrar')
     {
         if($('#formValidate').valid()==false)
-        {return;}
+        {return 0;}
         jQuery.ajax(
         {
             url: "<?php echo base_url('estudiante/registrar');?>",
@@ -244,13 +260,10 @@ function consultar(elem)
             $('#nombres').val(data.nombres);
             $('#apellidos').val(data.apellidos);
             $('#estado').val(data.estado);
-            
-            $('#detalleie').val(data.detalleie_iddetalleie).change();
-            // $('#modalIe').modal('show');
-
-            // $('.guardar').addClass('actualizar');
-            // $('.guardar').removeClass('guardar');
-            // $('.actualizar').html('Guardar Cambios');
+            $('#sexo').val(data.sexo).change();           
+            $('#codmodular').val(data.iiee_codmodular).change();
+            $('#grados').val(data.grados_idgrados).change();
+            $('#secciones').val(data.seccion_idseccion).change();
             accion(false);
             // accion=false;
         }
@@ -263,8 +276,7 @@ $("#formValidate").validate({
     rules: {
         dni: "required",
         nombres: "required",
-        apellidos: "required",       
-        detalleie: "required"
+        apellidos: "required"
     },
 });
 </script>

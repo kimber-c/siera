@@ -11,7 +11,7 @@ class M_estudiante extends Model
     protected $primaryKey = 'idestudiante';
     
     protected $returnType = 'array';
-
+    protected $useSoftDeletes = false;
 
     protected $allowedFields = [
         'idestudiante',
@@ -25,4 +25,7 @@ class M_estudiante extends Model
         'seccion_idseccion'
     ];
 
+    protected $validationRules = [];
+    protected $validationMessages = [];
+    protected $skipValidation = false;
 }

@@ -1,0 +1,134 @@
+[33mcommit ba77238d7ce55e9ecdf3df80bbfbbcfb347b95a3[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: unknown <kimber.apurimac@gmail.com>
+Date:   Wed Jun 21 17:18:12 2023 -0500
+
+    actualizando estudiante
+
+[33mcommit 4f00cb2ec016d2f3f2b1585e034312a7c728e756[m
+Author: kevins <kevins.choque@gmail.com>
+Date:   Wed Jun 21 12:50:07 2023 -0500
+
+    menu mas limpio
+
+[33mcommit 4f852819caef35e9042cb9e76be55731a0101adb[m
+Author: kevins <kevins.choque@gmail.com>
+Date:   Wed Jun 21 12:47:51 2023 -0500
+
+    ya no ira asignacion
+
+[33mcommit 63e6821446781c958c9be383c88203113b3ffcb7[m
+Author: unknown <kimber.apurimac@gmail.com>
+Date:   Wed Jun 21 12:47:13 2023 -0500
+
+    se modifico estudiante modal
+
+[33mcommit b538e9354550ed8a11f952a498fcf8c37d03c424[m
+Merge: dbfabf3 031148d
+Author: unknown <kimber.apurimac@gmail.com>
+Date:   Wed Jun 21 11:20:56 2023 -0500
+
+    Merge branch 'master' of https://github.com/kimber-c/siera
+
+[33mcommit dbfabf314bc4fde37e20caffb737579b3c27166f[m
+Author: unknown <kimber.apurimac@gmail.com>
+Date:   Wed Jun 21 11:20:00 2023 -0500
+
+    crud estudiante mejorado
+
+[33mcommit 031148d4488d427074fbf177d79f167b4473b3ad[m
+Author: kevins <kevins.choque@gmail.com>
+Date:   Wed Jun 21 11:17:23 2023 -0500
+
+    trabajando en asignacion
+
+[33mcommit 43820c30a5cd326a72bd3fa21d4738047d5cf302[m
+Author: kevins <kevins.choque@gmail.com>
+Date:   Tue Jun 20 17:11:37 2023 -0500
+
+    reestructuracion de carpetas en vista
+
+[33mcommit fd70f2769ea8124c0a31337c3fdaea9751ef3e1a[m
+Author: kevins <kevins.choque@gmail.com>
+Date:   Tue Jun 20 16:56:19 2023 -0500
+
+    cruds basicos
+
+[33mcommit 218892ace27910eee03d3345742bc61fe1dc690e[m
+Author: kevins <kevins.choque@gmail.com>
+Date:   Tue Jun 20 16:52:52 2023 -0500
+
+    delete logs
+
+[33mcommit 423032755c90e09b2301dc92d3224271e46ba1d0[m
+Merge: b6588a6 dc070a9
+Author: unknown <kimber.apurimac@gmail.com>
+Date:   Tue Jun 20 16:46:22 2023 -0500
+
+    Merge branch 'master' of https://github.com/kimber-c/siera
+
+[33mcommit b6588a6afca6e7ae2db2b171c27498e6929ac6b1[m
+Merge: 99807fb adbd69f
+Author: unknown <kimber.apurimac@gmail.com>
+Date:   Tue Jun 20 16:46:04 2023 -0500
+
+    trabajando crud estudiante
+
+[33mcommit dc070a904d1fe5f31d3968c28eac26640193e7ef[m
+Author: kevins <kevins.choque@gmail.com>
+Date:   Tue Jun 20 16:42:29 2023 -0500
+
+    crud de provincia distrito ejecutora
+
+[33mcommit 99807fb0d1dccfe21df5f13130d0b092a6d6f90a[m
+Author: unknown <kimber.apurimac@gmail.com>
+Date:   Fri Jun 16 17:04:53 2023 -0500
+
+    subiendo seccion
+
+[33mcommit adbd69f554bfca2b2139682ecef81443856880f2[m
+Author: kevins <kevins.choque@gmail.com>
+Date:   Fri Jun 16 17:01:33 2023 -0500
+
+    crud de grado y correcciones en iiee
+
+[33mcommit 50e448249633a1c882977996dff40086a9c5ccb0[m
+Author: unknown <kimber.apurimac@gmail.com>
+Date:   Fri Jun 16 15:36:42 2023 -0500
+
+    se edito el modelo de iiee
+
+[33mcommit bd6e8a3db4918f8cd4f8232da1e1599d86d5f125[m
+Author: unknown <kimber.apurimac@gmail.com>
+Date:   Fri Jun 16 13:08:55 2023 -0500
+
+    se comento el .avregabdo tood
+
+[33mcommit d84acdfa4748c2ab4c69760284b054fbf6a48828[m
+Author: kevins <kevins.choque@gmail.com>
+Date:   Fri Jun 16 13:07:20 2023 -0500
+
+    cambiando .gitignore
+
+[33mcommit bc4eedbf9bca30322dfc50951084e325f962d28b[m
+Author: unknown <kimber.apurimac@gmail.com>
+Date:   Fri Jun 16 13:02:53 2023 -0500
+
+    se comento el .env
+
+[33mcommit 5a98366b0d445910b6f641e3ad0f5aeedaff5075[m
+Author: unknown <kimber.apurimac@gmail.com>
+Date:   Fri Jun 16 12:28:38 2023 -0500
+
+    he modificado el archivo router, asigano route automatica, se cambio nombre de los controladores y renombre de la clase principal.v2
+
+[33mcommit f69c9e4c6567883b10340d123f18e116e8f1ddb3[m
+Author: kevins <kevins.choque@gmail.com>
+Date:   Thu Jun 15 17:18:04 2023 -0500
+
+    tets
+
+[33mcommit 0039dea2fa2063ce62fa1d28892bf54bdcbee3e5[m
+Author: kevins <kevins.choque@gmail.com>
+Date:   Thu Jun 15 16:15:10 2023 -0500
+
+    subiendo proyecto

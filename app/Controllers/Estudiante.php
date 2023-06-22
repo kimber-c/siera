@@ -19,22 +19,19 @@ class Estudiante extends BaseController
     public function registrar()
     {
         $validation = \Config\Services::validation();
-        $rules = [
-            'dni' => 'required|is_unique[estudiante.dni]|min_length[8]|max_length[8]',
-        ];
+        $rules = ['dni' => 'required|is_unique[estudiante.dni]|min_length[8]|max_length[8]'];
         $validation->setRules($rules);
         if ($validation->withRequest($this->request)->run()) 
         {
-            // $fechaActual = new Time('now', 'UTC');
-            // $fechaFormateada = $fechaActual->format('Y-m-d H:i:s');
             $data = [
                 'dni' => $this->request->getPost('dni'),
                 'nombres' => $this->request->getPost('nombres'),
                 'apellidos' => $this->request->getPost('apellidos'),
-                'estado' => $this->request->getPost('estado'),                
-                // 'detalleie_iddetalleie' => $this->request->getPost('iddetalleie'),
-                'detalleie_iddetalleie' => '1',
-                //'fecha_registro' => $fechaFormateada,
+                'estado' => $this->request->getPost('estado'),  
+                'iiee_codmodular' => $this->request->getPost('codmodular'), 
+                'grados_idgrados' => $this->request->getPost('grados'),
+                'seccion_idseccion' => $this->request->getPost('secciones'),
+                'sexo' => $this->request->getPost('sexo')
             ];
             $result = $this->m_estudiante->insert($data);
 
@@ -83,8 +80,11 @@ class Estudiante extends BaseController
                 'dni' => $this->request->getPost('dni'),
                 'nombres' => $this->request->getPost('nombres'),
                 'apellidos' => $this->request->getPost('apellidos'),
-                'estado' => $this->request->getPost('estado'),                
-                'detalleie_iddetalleie' => '1'
+                'estado' => $this->request->getPost('estado'),  
+                'iiee_codmodular' => $this->request->getPost('codmodular'), 
+                'grados_idgrados' => $this->request->getPost('grados'),
+                'seccion_idseccion' => $this->request->getPost('secciones'),
+                'sexo' => $this->request->getPost('sexo')
             ];
             
             $estado = $this->m_estudiante->update($this->request->getPost('idestudiante'),$data);

@@ -4,17 +4,13 @@
         <div class="col-lg-12">
             <div class="row">
                 <div class="col-lg-6 col-sm-6 col-12 m-auto">
-                    <h3><i class="fa fa-building"></i> Estudiantes</h3>
+                    <h3><i class="fa fa-building"></i> Directores</h3>
                 </div>
                 <div class="col-lg-6 col-sm-6 col-12 m-auto">
                     <button class="btn btn-sm btn-light float-right border shadow" onclick="accion(true);">
                         <i class="fa fa-plus"></i> 
                         Nuevo
                     </button>
-                    <a href="<?php echo base_url('iiee/cargaMasiva');?>" class="btn btn-sm btn-light float-right border shadow mr-4">
-                        <i class="fa fa-upload"></i> 
-                        Carga masiva
-                    </a>
                 </div>
             </div>
         </div>
@@ -23,9 +19,6 @@
                 <div class="overlay overReg">
                     <i class="fas fa-2x fa-sync-alt"></i>
                 </div>
-                <!-- <div class="card-header border-transparent py-2">
-                    <h3 class="card-title m-0 font-weight-bold"><i class="fa fa-users"></i> Listado de instituciones educativas</h3>
-                </div> -->
                 <div class="card-body">
                     <div class="alert alert-warning msjPms" style="display: none;">
                         <p class="m-0 font-weight-bold font-italic">El usuario no cuenta con el acceso a registros.</p>
@@ -35,15 +28,10 @@
                             <table id="registros" class="table table-hover dt-responsive nowrap">
                                 <thead class="thead-light">
                                     <tr>
-                                        <th class="text-center" data-priority="1">#</th>
+                                        <th class="text-center" data-priority="2">Institucion educativa</th>
                                         <th class="text-center" data-priority="2">DNI</th>
                                         <th class="text-center" data-priority="2">Nombres</th>
-                                        <th class="text-center" data-priority="3">Apellidos</th>
-                                        <th class="text-center" data-priority="1">Estado</th>
-                                        <th class="text-center" data-priority="1">Sexo</th>
-                                        <th class="text-center" data-priority="1">IE</th>
-                                        <th class="text-center" data-priority="1">Grado</th>
-                                        <th class="text-center" data-priority="1">Sección</th>
+                                        <th class="text-center" data-priority="2">Usuario</th>
                                         <th class="text-center" data-priority="1"></th>
                                     </tr>
                                 </thead>
@@ -57,7 +45,7 @@
         </div>
     </div>
 </div>
-<?php include 'modals/modal_estudiante.php';?>
+<?php include 'modals/modal_director.php';?>
 <script>
 var tablaDeRegistros;
 $(document).ready( function () {
@@ -67,11 +55,10 @@ $(document).ready( function () {
 } );
 function fillRegistros()
 {
-    
     $('.contenedorRegistros').css('display','block');
     jQuery.ajax(
     { 
-        url: "<?php echo base_url('estudiante/listar');?>",
+        url: "<?php echo base_url('director/listar');?>",
         method: 'get',
         success: function(r){
             // console.log(JSON.parse(r)[0].cod_modular);
@@ -80,19 +67,14 @@ function fillRegistros()
             for (var i = 0; i < data.length; i++) 
             {
                 html += '<tr class="text-center">' +
-                    '<td>' + novDato(data[i].idestudiante)  + '</td>' +
+                    '<td>' + novDato(data[i].descripcion) + '</td>' +
                     '<td>' + novDato(data[i].dni) + '</td>' +
-                    '<td>' + novDato(data[i].nombres) + '</td>' +
-                    '<td>' + novDato(data[i].apellidos) + '</td>' +
-                    '<td>' + novDato(data[i].estado) + '</td>' +
-                    '<td>' + novDato(data[i].sexo) + '</td>' +
-                    '<td>' + novDato(data[i].iiee_codmodular) + '</td>' +
-                    '<td>' + novDato(data[i].grados_idgrados) + '</td>' +
-                    '<td>' + novDato(data[i].seccion_idseccion) + '</td>' +
+                    '<td>' + novDato(data[i].nombres) +' '+ novDato(data[i].apellidos) + '</td>' +
+                    '<td>' + novDato(data[i].usuario) + '</td>' +
                     '<td>'+
                     '<div class="btn-group btn-group-sm" role="group">'+
-                        '<button type="button" class="btn text-secondary" title="Editar registro" onclick="consultar(this);" data-id="'+data[i].idestudiante+'"><i class="fa fa-edit" ></i></button>'+
-                        '<button type="button" class="btn text-danger" title="Eliminar registro" onclick="eliminar(this);" data-id="'+data[i].idestudiante+'"><i class="fa fa-trash"></i></button>'+
+                        '<button type="button" class="btn text-secondary" title="Editar registro" onclick="consultar(this);" data-id="'+data[i].iddirector+'"><i class="fa fa-edit" ></i></button>'+
+                        '<button type="button" class="btn text-danger" title="Eliminar registro" onclick="eliminar(this);" data-id="'+data[i].iddirector+'"><i class="fa fa-trash"></i></button>'+
                     '</div>'+
                     '</td></tr>';
             }
@@ -118,7 +100,7 @@ function eliminar(elem)
             $('.overReg').css('display','none');
             jQuery.ajax(
             { 
-                url: "<?php echo base_url('estudiante/eliminar');?>",
+                url: "<?php echo base_url('director/eliminar');?>",
                 data: {id:$(elem).attr('data-id')},
                 method: 'post',
                 success: function(result){
@@ -138,9 +120,7 @@ function construirTabla()
 }
 function limpiarForm()
 {
-
-    $("#formValidate")[0].reset();
-    $(".select2").val("0").trigger("change.select2");
-
+    $('#descripcion').val('');
+    $('#provincia').val('0').change();
 }
 </script>
