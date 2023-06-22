@@ -40,6 +40,7 @@ $('.soloNumeros').on('input', function () {
 });
 function formatoEstado(est)
 {
+    
     return est=='activo'?'<span class="badge badge-success shadow">Activo</span>':'<span class="badge badge-danger shadow">Inactivo</span>';
 }
 function msjSwal(estado,msj) 
