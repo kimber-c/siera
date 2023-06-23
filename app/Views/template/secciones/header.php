@@ -76,7 +76,7 @@
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;min-width: 20rem; display: none;">
                     <a href="#" class="dropdown-item">
                         <div class="media mb-2">
-                            <img src="https://yt3.ggpht.com/ytc/AMLnZu-CkHfe_d5oAVhWMfn4e8Ul-COm3yptlLyR1sFCNQ=s900-c-k-c0x00ffffff-no-rj" alt="User Avatar" class="img-size-50 img-circle m-auto">
+                            <!-- <img src="https://yt3.ggpht.com/ytc/AMLnZu-CkHfe_d5oAVhWMfn4e8Ul-COm3yptlLyR1sFCNQ=s900-c-k-c0x00ffffff-no-rj" alt="User Avatar" class="img-size-50 img-circle m-auto"> -->
                         </div>
                         <div class="media-body">
                             <p class="text-center nameLastNavbar">nombre apellido</p>
@@ -161,6 +161,18 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="<?php echo base_url('evaluacion');?>" class="nav-link bg-secondary sba9">
+                            <i class="nav-icon fa-solid fa-building"></i>
+                            <p>Evaluacion</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?php echo base_url('confalternativas');?>" class="nav-link bg-secondary sba9">
+                            <i class="nav-icon fa-solid fa-building"></i>
+                            <p>Conf. Alternativas</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="<?php echo base_url('especialista');?>" class="nav-link bg-secondary sba9">
                             <i class="nav-icon fa-solid fa-building"></i>
                             <p>Especialista</p>
@@ -200,6 +212,12 @@
                         <a href="<?php echo base_url('grado');?>" class="nav-link bg-secondary sba9">
                             <i class="nav-icon fa-solid fa-building"></i>
                             <p>Grado</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?php echo base_url('area');?>" class="nav-link bg-secondary sba9">
+                            <i class="nav-icon fa-solid fa-building"></i>
+                            <p>Area</p>
                         </a>
                     </li>
                     <li class="nav-item">
