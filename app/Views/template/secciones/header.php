@@ -199,6 +199,40 @@
     </ul>
   </nav>
   <!-- /.navbar -->
+
+  <!--       <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+                <a class="nav-link nameNavbar" data-toggle="dropdown" href="#" aria-expanded="false" title="">
+                    <i class="fa fa-circle-user fa-lg"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;min-width: 20rem; display: none;">
+                    <a href="#" class="dropdown-item">
+                        <div class="media mb-2">
+
+                        </div>
+                        <div class="media-body">
+                            <p class="text-center nameLastNavbar">nombre apellido</p>
+                            <p class="text-center">
+                                <span class="text-sm text-muted">Usuario registrado el <span class="dateRegNavbar"></span></span>
+                            </p>
+                        </div>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-item">
+                        <div class="media">
+                            <div class="media-body">
+                                <a href="#" class="btn btn-info btn-sm float-left"><i class="fa fa-house-user fa-sm"></i> Perfil</a>
+                                <button class="btn btn-info btn-sm float-right"><i class="fa fa-arrow-right-from-bracket fa-sm"></i> Cerrar Sesion</button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </li>
+        </ul> -->
+    </nav>
+
     <!-- style="background: linear-gradient(-45deg,#212c50 50%,#20273e);" -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4" >
         <a href="#" class="brand-link text-center">
@@ -260,6 +294,18 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="<?php echo base_url('evaluacion');?>" class="nav-link bg-secondary sba9">
+                            <i class="nav-icon fa-solid fa-building"></i>
+                            <p>Evaluacion</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?php echo base_url('confalternativas');?>" class="nav-link bg-secondary sba9">
+                            <i class="nav-icon fa-solid fa-building"></i>
+                            <p>Conf. Alternativas</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="<?php echo base_url('especialista');?>" class="nav-link bg-secondary sba9">
                             <i class="nav-icon fa-solid fa-building"></i>
                             <p>Especialista</p>
@@ -299,6 +345,12 @@
                         <a href="<?php echo base_url('grado');?>" class="nav-link bg-secondary sba9">
                             <i class="nav-icon fa-solid fa-building"></i>
                             <p>Grado</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?php echo base_url('area');?>" class="nav-link bg-secondary sba9">
+                            <i class="nav-icon fa-solid fa-building"></i>
+                            <p>Area</p>
                         </a>
                     </li>
                     <li class="nav-item">
