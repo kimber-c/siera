@@ -37,6 +37,7 @@
 <script src="<?php echo base_url('plugins/select2/select2.min.js');?>"></script>
 <!-- ------------------------------------ -->
 <!-- ------------------------------------ -->
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="<?php echo base_url('js/helper.js');?>"></script>
 </body>
 </html>
