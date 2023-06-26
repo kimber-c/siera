@@ -36,6 +36,7 @@
             <div class="card card-primary">
                 <div class="card-header">
                     <h3 class="card-title m-0 evaluacion font-weight-bold text-dark">--</h3>
+                    <span class="catidadPreguntas badge badge-warning float-right">Preguntas 5</span>
                 </div>
                 <div class="card-body">
                     <div class="panel panel-primary">
@@ -205,6 +206,8 @@ function eliminarCard(elem)
 {
     $(elem).parent().parent().parent().remove();
     contadorPregunta--;
+    alert(contadorPregunta);
+    $('.catidadPreguntas').html('Preguntas '+(contadorPregunta-1));
     // let html = '<p class="text-danger text-center eliminarCard" onclick="eliminarCard(this);"><i class="fa fa-trash"></i></p>';
 }
 function addPreguntas()
@@ -280,6 +283,7 @@ function addPreguntas()
                 '</div>'+
             '</div>'+
         '</div>';
+    $('.catidadPreguntas').html('Preguntas '+contadorPregunta);
     contadorPregunta++;
     $('.contenedorCard').append(html);
 }
