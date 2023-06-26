@@ -14,6 +14,12 @@ class Preguntas extends BaseController
     {
         return view('template/secciones/header').view('v_preguntas').view('template/secciones/footer');
     }
+    public function cantidadPreguntas()
+    {
+        $area = $this->request->getPost('area'); 
+        $datos = count($this->m_preguntas->get()->getResult());
+        echo json_encode($datos);
+    }
     public function registrar()
     {
         $validation = \Config\Services::validation();

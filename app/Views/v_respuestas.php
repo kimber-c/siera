@@ -1,88 +1,42 @@
-<!-- <h1>aka estara el iiee</h1> -->
+
+<!-- <h1>Contenedor en card, para hacer filtros y mostrar lista de estudiantes</h1> -->
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-12">
-            <div class="row">
-                <div class="col-lg-6 col-sm-6 col-12 m-auto">
-                    <h3><i class="fa fa-building"></i> Configuracion de las alternativas</h3>
-                </div>
-                <div class="col-lg-6 col-sm-6 col-12 m-auto">
-                    <button class="btn btn-sm btn-light float-right border shadow" onclick="accion(true);">
-                        <i class="fa fa-plus"></i> 
-                        Nuevo
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-12 contenedorFormulario">
-            <div class="card card-default">
-                <!-- <div class="overlay overReg">
-                    <i class="fas fa-2x fa-sync-alt"></i>
-                </div> -->
-                <div class="card-body">
-                	<form id="formValidate">
-                	<div class="row">
-                		<div class="col-lg-3 form-group">
-                        	<label for="evaluacion" class="m-0">Evaluacion: <span class="text-danger">*</span></label>
-	                        <div class="input-group input-group-sm">
-	                            <div class="input-group-prepend">
-	                                <span class="input-group-text font-weight-bold"><i class="fa fa-city"></i></span>
-	                            </div>
-	                            <input type="text" class="form-control" id="evaluacion" name="evaluacion" disabled>
-	                        </div>
-                    	</div>
-                    	<div class="col-lg-3 form-group">
-	                        <label for="grado" class="m-0">Grado: <span class="text-danger">*</span></label>
-	                        <select name="grado" id="grado" class="form-control form-control-sm select2" style="width: 100% !important;">
-	                            <option selected disabled> Seleccione una grado</option>
-	                        </select>
-	                    </div>
-	                    <div class="col-lg-3 form-group">
-	                        <label for="area" class="m-0">Area: <span class="text-danger">*</span></label>
-	                        <select name="area" id="area" class="form-control form-control-sm select2" style="width: 100% !important;">
-	                            <option selected disabled> Seleccione una area</option>
-	                        </select>
-	                    </div>
-	                    <div class="col-lg-3 form-group">
-	                    	<label class="m-0" style="visibility: hidden;"></label>
-	                        <div class="form-control form-control-sm p-0">
-	                        	<button type="button" class="btn btn-sm btn-primary w-100 m-0 configurar"><i class="fa fa-gear"></i> Configurar</button>
-	                        </div>
-	                    </div>
-                	</div>
-	                </form>
-	                <hr class="my-1">
-	                <div class="row contenedorAlternativas" style="display: none;">
-                    	<!-- <div class="col-lg-1 form-group elem">
-                    		<label class="m-0">Alt.</label>
-                    		<input type="text" class="form-control form-control-sm">
-                    		<p class="text-danger text-center eliminarElem" onclick="eliminarElem(this);"><i class="fa fa-trash"></i></p>
-                    	</div> -->
-                    	<!-- <div class="col-lg-1 form-group elem">
-                    		<label class="m-0">Alt.</label>
-                    		<input type="text" class="form-control form-control-sm">
-                    	</div>
-                    	<div class="col-lg-1 form-group elem">
-                    		<label class="m-0">Alt.</label>
-                    		<input type="text" class="form-control form-control-sm">
-                    	</div> -->
-                    	<div class="col-lg-1 form-group elem">
-	                    	<label class="m-0" style="visibility: hidden;"></label>
-	                        <div class="form-control form-control-sm p-0">
-	                        	<button type="button" class="btn btn-sm btn-primary w-100 m-0 agregarOpcion"><i class="fa fa-plus"></i></button>
-	                        </div>
-	                    </div>
+        
+        <div class="col-md-12 col-s-6">
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Configuración de preguntas <b id="evaluacion"></b></h3>
+              </div>
+              <div class="card-body">
+                
+                <form id="formValidate">
+                <div class="row">              
+                    <div class="col-lg-3 form-group">
+                            <label for="grado" class="m-0">Grado <span class="text-danger">*</span></label>
+                            <select name="grado" id="grado" class="form-control form-control-sm select2" style="width: 100% !important;">
+                                <option selected disabled> Seleccione una grado</option>
+                            </select>
+                    </div>
+                    <div class="col-lg-3 form-group">
+                            <label for="area" class="m-0">Área: <span class="text-danger">*</span></label>
+                            <select name="area" id="area" class="form-control form-control-sm select2" style="width: 100% !important;">
+                                <option selected disabled> Seleccione una area</option>
+                            </select>
+                    </div>
+                    <div class="col-lg-4">
+                    <label for="area" class="m-0"><span class="text-danger"></span></label>
+                    <button type="button" class="btn btn-outline-info btn-block btn-sm configurar"><i class="fa fa-search"></i> Seleccionar</button>
+                    </div>
+                    </div>
+                 </form>
+                <hr class="my-1">
 
-	                </div>
-                    <div class="row">
-                        <div class="col-md-12 table-responsive contenedorRegistros p-0" style="display: none;">
+                <div class="row">
+                        <div class="col-md-12 table-responsive contenedorRegistros p-0" style="display: ;">
                             <table id="registros" class="table table-hover dt-responsive nowrap">
                                 <thead class="thead-light">
-                                    <tr>
-                                        <th class="text-center" data-priority="2">Identificador</th>
-                                        <th class="text-center" data-priority="2">Descripcion</th>
-                                        <th class="text-center" data-priority="1"></th>
-                                    </tr>
+                                    
                                 </thead>
                                 <tbody id="data">
                                 </tbody>
@@ -90,11 +44,65 @@
                         </div>
                     </div>
                 </div>
+              <!-- /.card-body -->
             </div>
+            <!-- /.card -->
         </div>
     </div>
 </div>
+
+
+
 <script>
+
+function fillRegistros()
+{
+    
+    var html = ''; // Variable para almacenar las filas de la tabla
+    // Crear la cabecera de la tabla
+    var header = `<tr><th class="text-center" data-priority="1">#</th>
+                    <th class="text-center" data-priority="2">DNI</th>
+                    <th class="text-center" data-priority="2">Apellidos y nombres</th>                                        
+                    <th class="text-center" data-priority="1">Estado</th>`;
+    
+    for (var i = 0; i < 20; i++) {
+      var pregunta = 'P' + (i + 1);
+      header += '<th>' + pregunta + '</th>';
+    }
+    header += '</tr>';
+    html += header;
+
+    $('.contenedorRegistros').css('display','block');
+    jQuery.ajax(
+    { 
+        url: "<?php echo base_url('estudiante/listar');?>",
+        method: 'get',
+        success: function(r){
+           
+            let data = JSON.parse(r);
+            for (var i = 0; i < data.length; i++) 
+            {
+                html += `
+                <tr class="text-center">
+                  <td>${i + 1}</td>
+                  <td>${novDato(data[i].dni)}</td>
+                  <td>${novDato(data[i].apellidos)}, ${novDato(data[i].nombres)}</td>
+                  <td>${formatoEstadoEstudiante(data[i].estado)}</td>`;
+
+                for (var j = 0; j < 20; j++) {
+                var input = '<td><input type="text" class="alternativa" data-estudiante="1" data-pregunta="1"></td>';
+                html += input;
+              }
+
+                html +='</tr>';
+            }
+            $('#data').html(html);
+            initDatatable('registros');
+            $('.overReg').css('display','none');
+        }
+    });
+}
+
 var letras = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var contadorLetra = 0;
 $(document).ready( function () {
@@ -102,6 +110,7 @@ $(document).ready( function () {
     fillGrado();
 	fillArea();
 	fillLastEvaluacion();
+    
 } );
 $('.configurar').on('click',function(){
     configurar();
@@ -114,11 +123,11 @@ function fillLastEvaluacion()
 {
     jQuery.ajax(
     { 
-        url: "<?php echo base_url('evaluacion/ultimaEvaluacion');?>",
+        url: "<?=base_url('evaluacion/ultimaEvaluacion');?>",
         method: 'get',
         success: function(r){
         	let data = JSON.parse(r);
-            $('#evaluacion').val("año: "+data.anio+" | etapa: "+data.etapa);
+            $('#evaluacion').text(" "+data.anio+" | Etapa: "+data.etapa);
         }
     });
 }
@@ -175,7 +184,7 @@ function configurar()
 	if($('#formValidate').valid()==false)
     {return;}
 	// alert('listo para configurar');
-	$('.contenedorAlternativas').css('display','flex');
+	fillRegistros();
 }
 $("#formValidate").validate({
     errorClass: "text-danger font-italic font-weight-normal",
