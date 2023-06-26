@@ -22,20 +22,28 @@ class Confalternativas extends BaseController
     }
     public function registrar()
     {
+        // var_dump($this->request->getPost('letra'));
+        // exit();
         $validation = \Config\Services::validation();
         $rules = [
-            'evaluacion_idevaluacion' => 'required',
+            'idevaluacion' => 'required',
         ];
         $validation->setRules($rules);
         if ($validation->withRequest($this->request)->run()) 
         {
             $data = [
-                'idejecutora' => $this->request->getPost('idejecutora'),
-                'descripcion' => $this->request->getPost('descripcion'),
+                'evaluacion_idevaluacion' => $this->request->getPost('idevaluacion'),
+                'grados_idgrados' => $this->request->getPost('grado'),
+                'area_idarea' => $this->request->getPost('area'),
+                'alternativa' => $this->request->getPost('letra'),
             ];
             $result = $this->m_confalternativas->insert($data);
             if($result) 
-                echo json_encode(["msg"=>"Se registro exitosamente.","estado"=>true]);
+            {
+                $ca = $this->m_confalternativas->orderBy('idealt', 'desc')->get()->getResult();
+                echo json_encode($ca[0]);
+                // echo json_encode(["msg"=>"Se registro exitosamente.","estado"=>true]);
+            }
             else
                 echo json_encode(["msg"=>"Algo salio mal.","estado"=>false]);
         }
@@ -56,24 +64,37 @@ class Confalternativas extends BaseController
         else
             echo json_encode(["msg"=>"Algo salio mal.","estado"=>false]);
     }
-    public function consultar()//con
+    public function consultar()
     {
-        $ejecutora = $this->m_confalternativas->where('idejecutora', $_POST["id"])->get()->getResult();
-        echo json_encode($ejecutora[0]);
+        $ca = $this->m_confalternativas->where('idealt', $_POST["id"])->get()->getResult();
+        echo json_encode($ca[0]);
     }
     public function actualizar()
     {
         $data = [
-            'idejecutora' => $this->request->getPost('idejecutora'),
-            'descripcion' => $this->request->getPost('descripcion'),
+            'evaluacion_idevaluacion' => $this->request->getPost('idevaluacion'),
+            'grados_idgrados' => $this->request->getPost('grado'),
+            'area_idarea' => $this->request->getPost('area'),
+            'alternativa' => $this->request->getPost('letra'),
         ];
         // var_dump($this->request->getPost('idejecutoraOld'));
-        $existingData = $this->m_confalternativas->where('idejecutora', $this->request->getPost('idejecutoraOld'))->first();
+        $existingData = $this->m_confalternativas->where('idealt', $this->request->getPost('idealt'))->first();
         
-        $estado = $this->m_confalternativas->update($this->request->getPost('idejecutoraOld'),$data);
+        $estado = $this->m_confalternativas->update($this->request->getPost('idealt'),$data);
         if($estado)
             echo json_encode(["msg"=>"Se guardo los cambios.","estado"=>true]);
         else
             echo json_encode(["msg"=>"Algo salio mal.","estado"=>false]);
+    }
+    public function mostrar()
+    {
+        $lista = $this->m_confalternativas
+            ->where('evaluacion_idevaluacion', $this->request->getPost('idevaluacion'))
+            ->where('grados_idgrados ', $this->request->getPost('grado'))
+            ->where('area_idarea', $this->request->getPost('area'))
+            ->get()->getResult();
+        // var_dump($lista);
+        // exit();
+        echo json_encode($lista);
     }
 }

@@ -19,7 +19,7 @@
                 <!-- <div class="overlay overReg">
                     <i class="fas fa-2x fa-sync-alt"></i>
                 </div> -->
-                <div class="card-body">
+                <div class="card-body pb-0">
                 	<form id="formValidate">
                 	<div class="row">
                 		<div class="col-lg-3 form-group">
@@ -90,6 +90,9 @@
                         </div>
                     </div>
                 </div>
+                <!-- <div class="card-footer py-1 border-transparent">
+                    <button type="button" class="btn btn-sm btn-success guardar float-right"><i class="fa fa-save"></i> Guardar configuraion</button>
+                </div> -->
             </div>
         </div>
     </div>
@@ -97,6 +100,7 @@
 <script>
 var letras = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var contadorLetra = 0;
+var idevaluacion = '';
 $(document).ready( function () {
     $('.overlayPagina').css("display","none");
     fillGrado();
@@ -109,7 +113,6 @@ $('.configurar').on('click',function(){
 $('.agregarOpcion').on('click',function(){
     agregarOpcion();
 });
-
 function fillLastEvaluacion()
 {
     jQuery.ajax(
@@ -118,6 +121,7 @@ function fillLastEvaluacion()
         method: 'get',
         success: function(r){
         	let data = JSON.parse(r);
+            idevaluacion = data.idevaluacion;
             $('#evaluacion').val("año: "+data.anio+" | etapa: "+data.etapa);
         }
     });
@@ -130,7 +134,7 @@ function fillGrado()
         method: 'get',
         success: function(result){
             $.each(JSON.parse(result),function(indice,fila){
-                $('#grado').append("<option value='"+fila.idgrado+"'>"+fila.descripcion+"</option>");
+                $('#grado').append("<option value='"+fila.idgrados+"'>"+fila.descripcion+"</option>");
             });
             $('#grado').select2({placeholder:"Seleccione una grado.",width:"resolve",});
         }
@@ -152,30 +156,126 @@ function fillArea()
 }
 function eliminarElem(elem)
 {
-	// alert('eliminancdo des func');
-	$(elem).parent().remove();
-	let html = '<p class="text-danger text-center eliminarElem" onclick="eliminarElem(this);"><i class="fa fa-trash"></i></p>';
-	$('.contenedorAlternativas').children().eq($('.contenedorAlternativas').children().length - 2).append(html);
+	var id = $(elem).parent().find('input').attr('data-id');
+    jQuery.ajax(
+    {
+        url: "<?php echo base_url('confalternativas/eliminar');?>",
+        data: {id:id},
+        method: 'post',
+        success: function(r){
+            console.log(r);
+            $(elem).parent().remove();
+            contadorLetra--;
+            let html = '<p class="text-danger text-center eliminarElem" onclick="eliminarElem(this);"><i class="fa fa-trash"></i></p>';
+            $('.contenedorAlternativas').children().eq($('.contenedorAlternativas').children().length - 2).append(html);
+        }
+    });
+}
+function data(letra)
+{
+    return {
+        idevaluacion:idevaluacion,
+        grado:$('#grado').val(),
+        area:$('#area').val(),
+        letra:letra,
+    }
 }
 function agregarOpcion()
 {
-	$('.eliminarElem').remove();
-	let html = '<div class="col-lg-1 form-group elem">'+
-            		'<label class="m-0">Alt.</label>'+
-            		'<input type="text" class="form-control form-control-sm" value="' + letras[contadorLetra] + '">'+
-            		'<p class="text-danger text-center eliminarElem" onclick="eliminarElem(this);"><i class="fa fa-trash"></i></p>'+
-            	'</div>';
-	contadorLetra++;
-	if (contadorLetra >= letras.length) {contadorLetra = 0;}
-    var ultimoElem = $(".contenedorAlternativas div.elem:last");
-    $(html).insertBefore(ultimoElem);
+    jQuery.ajax(
+    {
+        url: "<?php echo base_url('confalternativas/registrar');?>",
+        data: data(letras[contadorLetra]),
+        method: 'post',
+        success: function(r){
+            console.log(r);
+            let data = JSON.parse(r);
+            // let data = JSON.parse(r);
+            // $('.overReg').css('display','flex');
+            // construirTabla();
+            // fillRegistros();
+            // $('#modalSeccion').modal('hide');
+            // msjRee(data);
+            // limpiarForm();
+            $('.eliminarElem').remove();
+            let html = '<div class="col-lg-1 form-group elem cajas">'+
+                            '<label class="m-0">Alt.</label>'+
+                            '<input type="text" class="form-control form-control-sm" data-id="' + data. idealt + '" value="' + letras[contadorLetra] + '" onkeyup="actualizarAlt(this);">'+
+                            '<p class="text-danger text-center eliminarElem" onclick="eliminarElem(this);"><i class="fa fa-trash"></i></p>'+
+                        '</div>';
+            contadorLetra++;
+            if (contadorLetra >= letras.length) {contadorLetra = 0;}
+            var ultimoElem = $(".contenedorAlternativas div.elem:last");
+            $(html).insertBefore(ultimoElem);
+        }
+    });
+	
 }
+function actualizarAlt(elem)
+{
+    // alert('cambiando');
+    if($(elem).val()!='')
+    {
+        var data = {
+            idealt:$(elem).attr('data-id'),
+            idevaluacion:idevaluacion,
+            grado:$('#grado').val(),
+            area:$('#area').val(),
+            letra:$(elem).val(),
+        };
+        jQuery.ajax(
+        {
+            url: "<?php echo base_url('confalternativas/actualizar');?>",
+            data: data,
+            method: 'post',
+            success: function(r){
+                console.log(r);
+            }
+        });
+    }
+}
+var ppp
 function configurar()
 {
 	if($('#formValidate').valid()==false)
     {return;}
-	// alert('listo para configurar');
-	$('.contenedorAlternativas').css('display','flex');
+    $('.cajas').remove()
+    var data = {
+        idevaluacion:idevaluacion,
+        grado:$('#grado').val(),
+        area:$('#area').val(),
+    };
+    jQuery.ajax(
+    {
+        url: "<?php echo base_url('confalternativas/mostrar');?>",
+        data: data,
+        method: 'post',
+        success: function(r){
+            let data = JSON.parse(r);
+            console.log(data);
+            ppp=data;
+
+            if(data.length!=0)
+            {
+                contadorLetra=0;
+                for(i=0;i<data.length;i++)
+                {
+                    // alert(data[i].alternativa);
+                    let html = '<div class="col-lg-1 form-group elem cajas">'+
+                            '<label class="m-0">Alt.</label>'+
+                            '<input type="text" class="form-control form-control-sm" data-id="' + data[i].idealt + '" value="' + data[i].alternativa + '" onkeyup="actualizarAlt(this);">'+
+                        '</div>';
+                    contadorLetra++;
+                    if (contadorLetra >= letras.length) {contadorLetra = 0;}
+                    var ultimoElem = $(".contenedorAlternativas div.elem:last");
+                    $(html).insertBefore(ultimoElem);
+                }
+                let btnEliminar = '<p class="text-danger text-center eliminarElem" onclick="eliminarElem(this);"><i class="fa fa-trash"></i></p>';
+                $('.contenedorAlternativas').children().eq($('.contenedorAlternativas').children().length - 2).append(btnEliminar);
+            }
+            $('.contenedorAlternativas').css('display','flex');
+        }
+    });
 }
 $("#formValidate").validate({
     errorClass: "text-danger font-italic font-weight-normal",
