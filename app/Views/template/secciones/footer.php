@@ -1,5 +1,5 @@
 </div>
-        <footer class="main-footer py-1">
+        <footer class="main-footer py-1" id="contenedorFooter">
             <div class="float-right d-none d-sm-block">
                 <b>Version</b> 1.0.0
             </div>

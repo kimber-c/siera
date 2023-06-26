@@ -190,13 +190,6 @@ function agregarOpcion()
         success: function(r){
             console.log(r);
             let data = JSON.parse(r);
-            // let data = JSON.parse(r);
-            // $('.overReg').css('display','flex');
-            // construirTabla();
-            // fillRegistros();
-            // $('#modalSeccion').modal('hide');
-            // msjRee(data);
-            // limpiarForm();
             $('.eliminarElem').remove();
             let html = '<div class="col-lg-1 form-group elem cajas">'+
                             '<label class="m-0">Alt.</label>'+
@@ -209,7 +202,6 @@ function agregarOpcion()
             $(html).insertBefore(ultimoElem);
         }
     });
-	
 }
 function actualizarAlt(elem)
 {
