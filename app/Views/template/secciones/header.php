@@ -238,13 +238,13 @@
         <a href="#" class="brand-link text-center">
             <!-- <img src="{{asset('img/logo.png')}}" alt="logo" class="brand-image img-circle elevation-3" style="opacity: .8"> -->
             <!-- <br> -->
-            <span class="brand-text font-weight-light ">app</span>
+            <span class="brand-text font-weight-light ">SIERA</span>
         </a>
         <div class="sidebar">
             <div class="user-panel mb-3 d-flex">
                 <div class="info">
                     <a href="#" class="d-block text-center ocultarTextIzqNameUser nameSidebar" title="nombre apellido">
-                        --
+                        USUARIO EN LÍNEA
                     </a>
                 </div>
             </div>
@@ -293,83 +293,52 @@
                             <p data-npms="dashboard">Dashboard</p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="<?php echo base_url('evaluacion');?>" class="nav-link bg-secondary sba9">
-                            <i class="nav-icon fa-solid fa-building"></i>
-                            <p>Evaluacion</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="<?php echo base_url('confalternativas');?>" class="nav-link bg-secondary sba9">
-                            <i class="nav-icon fa-solid fa-building"></i>
-                            <p>Conf. Alternativas</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="<?php echo base_url('especialista');?>" class="nav-link bg-secondary sba9">
-                            <i class="nav-icon fa-solid fa-building"></i>
-                            <p>Especialista</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="<?php echo base_url('director');?>" class="nav-link bg-secondary sba9">
-                            <i class="nav-icon fa-solid fa-building"></i>
-                            <p>Director</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="<?php echo base_url('ejecutora');?>" class="nav-link bg-secondary sba9">
-                            <i class="nav-icon fa-solid fa-building"></i>
-                            <p>Ejecutora</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="<?php echo base_url('provincia');?>" class="nav-link bg-secondary sba9">
-                            <i class="nav-icon fa-solid fa-building"></i>
-                            <p>Provincia</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="<?php echo base_url('distrito');?>" class="nav-link bg-secondary sba9">
-                            <i class="nav-icon fa-solid fa-building"></i>
-                            <p>Distrito</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="<?php echo base_url('seccion');?>" class="nav-link bg-secondary sba9">
-                            <i class="nav-icon fa-solid fa-building"></i>
-                            <p>Seccion</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="<?php echo base_url('grado');?>" class="nav-link bg-secondary sba9">
-                            <i class="nav-icon fa-solid fa-building"></i>
-                            <p>Grado</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="<?php echo base_url('area');?>" class="nav-link bg-secondary sba9">
-                            <i class="nav-icon fa-solid fa-building"></i>
-                            <p>Area</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="<?php echo base_url('iiee');?>" class="nav-link bg-secondary sba9">
-                            <i class="nav-icon fa-solid fa-building"></i>
-                            <p>Institucion educativa</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="<?php echo base_url('estudiante');?>" class="nav-link bg-secondary sba14">
-                            <i class="nav-icon fa-solid fa-cart-plus"></i>
-                            <p>Estudiante</p>
-                        </a>
-                    </li>
+                   
+                   
+                    
                     <!-- esto es una lista desplegable con submenu8s
-
-                    -->
+                    Coniguracion de IIEE CRUDS -->
                     <li class="nav-item">
                         <a href="#" class="nav-link">
+                          <i class="nav-icon fa fa-cog"></i>
+                          <p>
+                            Conf. IIEE
+                            <i class="fas fa-angle-left right"></i>
+                            <span class="badge badge-primary right"><i class="fa fa-plus"></i></span>
+                          </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                                                  
+                           <li class="nav-item">
+                                <a href="<?php echo base_url('seccion');?>" class="nav-link bg-secondary sba9">
+                                    <i class="nav-icon fa-solid fa-building"></i>
+                                    <p>Seccion</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?php echo base_url('grado');?>" class="nav-link bg-secondary sba9">
+                                    <i class="nav-icon fa-solid fa-building"></i>
+                                    <p>Grado</p>
+                                </a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a href="<?php echo base_url('iiee');?>" class="nav-link bg-secondary sba9">
+                                    <i class="nav-icon fa-solid fa-building"></i>
+                                    <p>Institucion educativa</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?php echo base_url('estudiante');?>" class="nav-link bg-secondary sba14">
+                                    <i class="nav-icon fa-solid fa-cart-plus"></i>
+                                    <p>Estudiante</p>
+                                </a>
+                            </li>
+                        </ul>
+                      </li>
+             
+                    <li class="nav-item">
+                        <a href="#" class="nav-link badge-primary">
                           <i class="nav-icon fas fa-copy"></i>
                           <p>
                             Configuracion
@@ -380,19 +349,20 @@
                         <ul class="nav nav-treeview">
                                                   
                           <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="<?=base_url('evaluacion');?>" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
                               <p>Generar evaluación</p>
                             </a>
                           </li>
+                          
                           <li class="nav-item">
-                            <a href="#" class="nav-link">
-                              <i class="far fa-circle nav-icon"></i>
-                              <p>Áreas</p>
+                            <a href="<?=base_url('area');?>" class="nav-link">
+                                <i class="nav-icon fa-solid fa-building"></i>
+                                <p>Áreas</p>
                             </a>
                           </li>
                           <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="<?=base_url('confalternativas');?>" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
                               <p>Alternativas</p>
                             </a>
@@ -406,10 +376,80 @@
                         </ul>
                       </li>
                     <!-- y termina aqui -->
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                          <i class="nav-icon fa fa-circle-user"></i>
+                          <p>
+                            Director de IE
+                            <i class="fas fa-angle-left right"></i>
+                            <span class="badge badge-primary right"><i class="fa fa-plus"></i></span>
+                          </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                                                  
+                          <li class="nav-item">
+                            <a href="<?=base_url('respuestas');?>" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Registro de respuestas</p>
+                            </a>
+                          </li>
+                          
+                          <li class="nav-item">
+                            <a href="<?=base_url('preguntas');?>" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Reportes</p>
+                            </a>
+                          </li>
+                        </ul>
+                      </li>
 
+                    <!-- Mantenimiento de CRUDS -->
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                          <i class="nav-icon fa fa-cog"></i>
+                          <p>
+                            Mantenimiento
+                            <i class="fas fa-angle-left right"></i>
+                            <span class="badge badge-primary right"><i class="fa fa-plus"></i></span>
+                          </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                                                  
+                           <li class="nav-item">
+                                <a href="<?php echo base_url('especialista');?>" class="nav-link">
+                                    <i class="nav-icon fa-solid fa-building"></i>
+                                    <p>Especialista</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?php echo base_url('director');?>" class="nav-link">
+                                    <i class="nav-icon fa-solid fa-building"></i>
+                                    <p>Director</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?php echo base_url('ejecutora');?>" class="nav-link">
+                                    <i class="nav-icon fa-solid fa-building"></i>
+                                    <p>Ejecutora</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?php echo base_url('provincia');?>" class="nav-link">
+                                    <i class="nav-icon fa-solid fa-building"></i>
+                                    <p>Provincia</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?php echo base_url('distrito');?>" class="nav-link">
+                                    <i class="nav-icon fa-solid fa-building"></i>
+                                    <p>Distrito</p>
+                                </a>
+                            </li>
+                        </ul>
+                      </li>
 
                     <li class="nav-item">
-                        <a href="#" class="nav-link bg-secondary sba15 cerrarSesion">
+                        <a href="#" class="nav-link sba15 cerrarSesion">
                             <i class="nav-icon fas fa-arrow-right"></i>
                             <p>Cerrar sesion</p>
                         </a>
