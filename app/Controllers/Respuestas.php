@@ -8,18 +8,31 @@ class Respuestas extends BaseController
 {
     public function __construct() 
     {
-		$db = db_connect();
-        $this->M_respuestas = new M_respuestas($db);
+
+        $this->M_respuestas = new M_respuestas();
 	}
     public function index()
     {
         return view('template/secciones/header').view('v_respuestas').view('template/secciones/footer');
     }
     public function listar()
-    {
-        $data = $this->m_confalternativas->select('*')->get()->getResult();
-        echo json_encode($data);
+    {   
+        $grado = $this->request->getPost('grado');
+        $lista = $this->M_respuestas->AlumnosxGradoSeccion($grado);
+
+        echo json_encode($lista);
     }
+
+    public function cantPreguntas()
+    {   
+        $grado = $this->request->getPost('grado');
+        $area = $this->request->getPost('area');
+        $lista = $this->M_respuestas->cantPreguntas($grado, $area);
+
+        echo json_encode($lista);
+    }
+    
+
     public function registrar()
     {
         $validation = \Config\Services::validation();
@@ -48,19 +61,8 @@ class Respuestas extends BaseController
             echo json_encode(["msg"=>$msg,"estado"=>false]);
         }
     }
-    public function eliminar()
-    {
-        $estado = $this->m_confalternativas->delete($_POST["id"]);
-        if($estado)
-            echo json_encode(["msg"=>"Se realizo el proceso exitosamente.","estado"=>true]);
-        else
-            echo json_encode(["msg"=>"Algo salio mal.","estado"=>false]);
-    }
-    public function consultar()//con
-    {
-        $ejecutora = $this->m_confalternativas->where('idejecutora', $_POST["id"])->get()->getResult();
-        echo json_encode($ejecutora[0]);
-    }
+    
+    
     public function actualizar()
     {
         $data = [

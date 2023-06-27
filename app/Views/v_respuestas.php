@@ -15,7 +15,7 @@
                     <div class="col-lg-3 form-group">
                             <label for="grado" class="m-0">Grado <span class="text-danger">*</span></label>
                             <select name="grado" id="grado" class="form-control form-control-sm select2" style="width: 100% !important;">
-                                <option selected disabled> Seleccione una grado</option>
+                                <option selected disabled> Seleccione un grado</option>                        
                             </select>
                     </div>
                     <div class="col-lg-3 form-group">
@@ -55,56 +55,6 @@
 
 <script>
 
-function fillRegistros()
-{
-    
-    var html = ''; // Variable para almacenar las filas de la tabla
-    // Crear la cabecera de la tabla
-    var header = `<tr><th class="text-center" data-priority="1">#</th>
-                    <th class="text-center" data-priority="2">DNI</th>
-                    <th class="text-center" data-priority="2">Apellidos y nombres</th>                                        
-                    <th class="text-center" data-priority="1">Estado</th>`;
-    
-    for (var i = 0; i < 20; i++) {
-      var pregunta = 'P' + (i + 1);
-      header += '<th>' + pregunta + '</th>';
-    }
-    header += '</tr>';
-    html += header;
-
-    $('.contenedorRegistros').css('display','block');
-    jQuery.ajax(
-    { 
-        url: "<?php echo base_url('estudiante/listar');?>",
-        method: 'get',
-        success: function(r){
-           
-            let data = JSON.parse(r);
-            for (var i = 0; i < data.length; i++) 
-            {
-                html += `
-                <tr class="text-center">
-                  <td>${i + 1}</td>
-                  <td>${novDato(data[i].dni)}</td>
-                  <td>${novDato(data[i].apellidos)}, ${novDato(data[i].nombres)}</td>
-                  <td>${formatoEstadoEstudiante(data[i].estado)}</td>`;
-
-                for (var j = 0; j < 20; j++) {
-                var input = '<td><input type="text" class="alternativa" data-estudiante="1" data-pregunta="1"></td>';
-                html += input;
-              }
-
-                html +='</tr>';
-            }
-            $('#data').html(html);
-            initDatatable('registros');
-            $('.overReg').css('display','none');
-        }
-    });
-}
-
-var letras = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-var contadorLetra = 0;
 $(document).ready( function () {
     $('.overlayPagina').css("display","none");
     fillGrado();
@@ -119,6 +69,91 @@ $('.agregarOpcion').on('click',function(){
     agregarOpcion();
 });
 
+function fillGrado()
+{
+    jQuery.ajax(
+    { 
+        url: "<?php echo base_url('grado/listar');?>",
+        method: 'get',
+        success: function(result){
+            $.each(JSON.parse(result),function(indice,fila){
+                $('#grado').append("<option value='"+fila.idgrados+"'>"+fila.descripcion+"</option>");
+            });
+            $('#grado').select2({placeholder:"Seleccione una grado.",width:"resolve",});
+        }
+    });
+}
+
+function fillRegistros()
+{
+
+    var html = ''; // Variable para almacenar las filas de la tabla
+    // Crear la cabecera de la tabla
+    var header = `<tr><th class="text-center" data-priority="1">#</th>
+                    <th class="text-center" data-priority="2">DNI</th>
+                    <th class="text-center" data-priority="2">Apellidos y nombres</th>                                        
+                    <th class="text-center" data-priority="1">Estado</th>`;
+    
+    jQuery.ajax({
+        let gradosP = $('#grado').val();
+        let areasP =$('#area').val();
+  
+        url: "<?=base_url('respuestas/cantPreguntas');?>",
+        method: 'post',
+        data: {grados: gradosP, areas: areasP},
+        success: function(r){
+           
+            alert(JSON.parse(r));
+        }
+    });
+
+
+    for (var i = 0; i < 4; i++) {
+      var pregunta = 'P' + (i + 1);
+      header += '<th>' + pregunta + '</th>';
+    }
+    header += '</tr>';
+    html += header;
+    
+    var data = {
+        grado:$('#grado').val(),
+        area:$('#area').val()
+    };
+    jQuery.ajax( 
+    { 
+        url: "<?php echo base_url('respuestas/listar');?>",
+        method: 'post',
+        data: data,
+
+        success: function(r){
+           
+            let data = JSON.parse(r);
+            for (var i = 0; i < data.length; i++) 
+            {
+                html += `
+                <tr class="text-center">
+                  <td>${i + 1}</td>
+                  <td>${novDato(data[i].dni)}</td>
+                  <td>${novDato(data[i].nombres)}</td>
+                  <td>${formatoEstadoEstudiante(data[i].estado)}</td>`;
+
+                for (var j = 0; j < 4; j++) {
+                var input = '<td style="width: 200px;"><input type="text" class="alternativa" data-estudiante="1" data-pregunta="1"></td>';
+                html += input;
+              }
+
+                html +='</tr>';
+            }
+            $('#data').html(html);
+
+        },
+        error: function ( xhr, textStatus, errorThrown )
+    {
+        alert( 'AJAX call failed', xhr, textStatus, errorThrown );
+    } 
+    });
+}
+
 function fillLastEvaluacion()
 {
     jQuery.ajax(
@@ -131,20 +166,7 @@ function fillLastEvaluacion()
         }
     });
 }
-function fillGrado()
-{
-    jQuery.ajax(
-    { 
-        url: "<?php echo base_url('grado/listar');?>",
-        method: 'get',
-        success: function(result){
-            $.each(JSON.parse(result),function(indice,fila){
-                $('#grado').append("<option value='"+fila.idgrado+"'>"+fila.descripcion+"</option>");
-            });
-            $('#grado').select2({placeholder:"Seleccione una grado.",width:"resolve",});
-        }
-    });
-}
+
 function fillArea()
 {
     jQuery.ajax(
@@ -159,31 +181,13 @@ function fillArea()
         }
     });
 }
-function eliminarElem(elem)
-{
-	// alert('eliminancdo des func');
-	$(elem).parent().remove();
-	let html = '<p class="text-danger text-center eliminarElem" onclick="eliminarElem(this);"><i class="fa fa-trash"></i></p>';
-	$('.contenedorAlternativas').children().eq($('.contenedorAlternativas').children().length - 2).append(html);
-}
-function agregarOpcion()
-{
-	$('.eliminarElem').remove();
-	let html = '<div class="col-lg-1 form-group elem">'+
-            		'<label class="m-0">Alt.</label>'+
-            		'<input type="text" class="form-control form-control-sm" value="' + letras[contadorLetra] + '">'+
-            		'<p class="text-danger text-center eliminarElem" onclick="eliminarElem(this);"><i class="fa fa-trash"></i></p>'+
-            	'</div>';
-	contadorLetra++;
-	if (contadorLetra >= letras.length) {contadorLetra = 0;}
-    var ultimoElem = $(".contenedorAlternativas div.elem:last");
-    $(html).insertBefore(ultimoElem);
-}
+
 function configurar()
 {
 	if($('#formValidate').valid()==false)
-    {return;}
-	// alert('listo para configurar');
+    {return 0;}
+
+
 	fillRegistros();
 }
 $("#formValidate").validate({
