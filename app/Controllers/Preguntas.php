@@ -23,24 +23,30 @@ class Preguntas extends BaseController
     public function registrar()
     {
         $validation = \Config\Services::validation();
-        $rules = ['dni' => 'required|is_unique[estudiante.dni]|min_length[8]|max_length[8]'];
+
+        $rules = [
+            'idevaluacion' => 'required',
+            'grado' => 'required',
+            'area' => 'required',
+        ];
         $validation->setRules($rules);
         if ($validation->withRequest($this->request)->run()) 
         {
             $data = [
-                'dni' => $this->request->getPost('dni'),
-                'nombres' => $this->request->getPost('nombres'),
-                'apellidos' => $this->request->getPost('apellidos'),
-                'estado' => $this->request->getPost('estado'),  
-                'iiee_codmodular' => $this->request->getPost('codmodular'), 
-                'grados_idgrados' => $this->request->getPost('grados'),
-                'seccion_idseccion' => $this->request->getPost('secciones'),
-                'sexo' => $this->request->getPost('sexo')
+                'evaluacion_idevaluacion' => $this->request->getPost('idevaluacion'),
+                'grados_idgrados' => $this->request->getPost('grado'),
+                'area_idarea' => $this->request->getPost('area'),
+                'descripcion' => '--',  
             ];
-            $result = $this->m_estudiante->insert($data);
+            // var_dump($data);
+            // exit();
+            $result = $this->m_preguntas->insert($data);
 
             if($result) 
-                echo json_encode(["msg"=>"Se registro exitosamente.","estado"=>true]);
+            {
+                $p = $this->m_preguntas->orderBy('idpreguntas ', 'desc')->get()->getResult();
+                echo json_encode($p[0]);
+            }
             else
                 echo json_encode(["msg"=>"Algo salio mal.","estado"=>false]);
         }
@@ -63,7 +69,7 @@ class Preguntas extends BaseController
     }
     public function eliminar()
     {
-        $estado = $this->m_estudiante->delete($_POST["id"]);
+        $estado = $this->m_preguntas->delete($_POST["id"]);
 
         if($estado)
             echo json_encode(["msg"=>"Se realizo el proceso exitosamente.","estado"=>true]);
@@ -79,31 +85,15 @@ class Preguntas extends BaseController
     }
     public function actualizar()
     {
+        if($this->request->getPost('tipo')=='pregunta')
+            $data = ['descripcion' => $this->request->getPost('descripcion'), ];
+        else
+            $data = ['criterio' => $this->request->getPost('criterio'), ];
 
-            $data = [
-                'dni' => $this->request->getPost('dni'),
-                'nombres' => $this->request->getPost('nombres'),
-                'apellidos' => $this->request->getPost('apellidos'),
-                'estado' => $this->request->getPost('estado'),  
-                'iiee_codmodular' => $this->request->getPost('codmodular'), 
-                'grados_idgrados' => $this->request->getPost('grados'),
-                'seccion_idseccion' => $this->request->getPost('secciones'),
-                'sexo' => $this->request->getPost('sexo')
-            ];
-            
-            $estado = $this->m_estudiante->update($this->request->getPost('idestudiante'),$data);
-
-            if($estado)
-                echo json_encode(["msg"=>"Se guardo los cambios.","estado"=>true]);
-            else
-                echo json_encode(["msg"=>"Algo salio mal.","estado"=>false]);
-     
-       
+        $estado = $this->m_preguntas->update($this->request->getPost('idpreguntas'),$data);
+        if($estado)
+            echo json_encode(["msg"=>"Se guardo los cambios.","estado"=>true]);
+        else
+            echo json_encode(["msg"=>"Algo salio mal.","estado"=>false]);
     }
-    public function cargaMasiva()
-    {
-        return view('template/secciones/header').view('iiee/cargaMasiva').view('template/secciones/footer');
-    }
-
-    
 }
