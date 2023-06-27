@@ -141,6 +141,8 @@
 </div>
 <script>
 var contadorPregunta=1;
+var idevaluacion = '';
+var configAlternativas = '';
 $(document).ready( function () {
     $('.overlayPagina').css("display","none");
     fillGrado();
@@ -199,16 +201,60 @@ function configurar()
 {
     if($('#formValidate').valid()==false)
     {return;}
-    $('.contenedorCard').css('display','flex');
-    $('.addPreguntas').css('display','flex');
+    var data = {
+        idevaluacion:idevaluacion,
+        grado:$('#grado').val(),
+        area:$('#area').val(),
+    };
+    jQuery.ajax(
+    { 
+        url: "<?php echo base_url('confalternativas/mostrar');?>",
+        data: data,
+        method: 'post',
+        success: function(r){
+            let data = JSON.parse(r);
+            console.log(data);
+            configAlternativas = data;
+            $('.contenedorCard').css('display','flex');
+            $('.addPreguntas').css('display','flex');
+        }
+    });
+    // $('.contenedorCard').css('display','flex');
+    // $('.addPreguntas').css('display','flex');
 }
 function eliminarCard(elem)
 {
     $(elem).parent().parent().parent().remove();
     contadorPregunta--;
-    alert(contadorPregunta);
+    // alert(contadorPregunta);
     $('.catidadPreguntas').html('Preguntas '+(contadorPregunta-1));
+    $.each($('.preguntaTitulo'), function( index, value ) {
+        $(this).html('Pregunta '+(index+1));
+    });
     // let html = '<p class="text-danger text-center eliminarCard" onclick="eliminarCard(this);"><i class="fa fa-trash"></i></p>';
+}
+function buildAlternativas()
+{
+    // return 'añadi esto mas';
+    let html='';
+    for(i=0;i<configAlternativas.length;i++)
+    {
+        html +='<div class="col-lg-11 form-group">'+
+                    '<div class="input-group input-group-sm">'+
+                        '<div class="input-group-prepend">'+
+                            '<span class="input-group-text font-weight-bold">'+configAlternativas[i].alternativa+'</span>'+
+                        '</div>'+
+                        '<input type="text" class="form-control" placeholder="Alternativa '+configAlternativas[i].alternativa+'">'+
+                    '</div>'+
+                '</div>'+
+                '<div class="col-lg-1 mt-1">'+
+                    '<div class="custom-control custom-radio">'+
+                        '<input class="custom-control-input" type="radio" id="r3" name="p1">'+
+                        '<label for="r3" class="custom-control-label"></label>'+
+                    '</div>'+
+                '</div>';
+    }
+    return html;
 }
 function addPreguntas()
 {
@@ -216,13 +262,13 @@ function addPreguntas()
             '<div class="card" style="border-left: 5px solid #007bff;">'+
                 '<div class="card-body">'+
                     '<div class="row">'+
-                        '<div class="col-lg-12 alert alert-info font-weight-bold">Pregunta '+contadorPregunta+'</div>'+
+                        '<div class="col-lg-12 alert alert-info font-weight-bold preguntaTitulo">Pregunta '+contadorPregunta+'</div>'+
                         '<div class="col-lg-6 form-group">'+
                             '<div class="input-group input-group-sm">'+
                                 '<div class="input-group-prepend">'+
                                     '<span class="input-group-text font-weight-bold"><i class="fa fa-city"></i></span>'+
                                 '</div>'+
-                                '<textarea cols="30" rows="5" class="form-control" placeholder="Pregunta"></textarea>'+
+                                '<textarea cols="30" rows="5" class="form-control" placeholder="Pregunta '+contadorPregunta+'"></textarea>'+
                             '</div>'+
                         '</div>'+
                         '<div class="col-lg-6 form-group">'+
@@ -233,52 +279,52 @@ function addPreguntas()
                                 '<textarea cols="30" rows="5" class="form-control" placeholder="Criterio"></textarea>'+
                             '</div>'+
                         '</div>'+
-                        '<div class="col-lg-11 form-group">'+
-                            '<div class="input-group input-group-sm">'+
-                                '<div class="input-group-prepend">'+
-                                    '<span class="input-group-text font-weight-bold"><i class="fa fa-city"></i></span>'+
-                                '</div>'+
-                                '<input type="text" class="form-control" placeholder="Alternativa">'+
-                            '</div>'+
-                        '</div>'+
-                        '<div class="col-lg-1 mt-1">'+
-                            '<div class="custom-control custom-radio">'+
-                                '<input class="custom-control-input" type="radio" id="r1" name="p1">'+
-                                '<label for="r1" class="custom-control-label"></label>'+
-                            '</div>'+
-                        '</div>'+
-                        '<div class="col-lg-11 form-group">'+
-                            '<div class="input-group input-group-sm">'+
-                                '<div class="input-group-prepend">'+
-                                    '<span class="input-group-text font-weight-bold"><i class="fa fa-city"></i></span>'+
-                                '</div>'+
-                                '<input type="text" class="form-control" placeholder="Alternativa">'+
-                            '</div>'+
-                        '</div>'+
-                        '<div class="col-lg-1 mt-1">'+
-                            '<div class="custom-control custom-radio">'+
-                                '<input class="custom-control-input" type="radio" id="r2" name="p1">'+
-                                '<label for="r2" class="custom-control-label"></label>'+
-                            '</div>'+
-                        '</div>'+
-                        '<div class="col-lg-11 form-group">'+
-                            '<div class="input-group input-group-sm">'+
-                                '<div class="input-group-prepend">'+
-                                    '<span class="input-group-text font-weight-bold"><i class="fa fa-city"></i></span>'+
-                                '</div>'+
-                                '<input type="text" class="form-control" placeholder="Alternativa">'+
-                            '</div>'+
-                        '</div>'+
-                        '<div class="col-lg-1 mt-1">'+
-                            '<div class="custom-control custom-radio">'+
-                                '<input class="custom-control-input" type="radio" id="r3" name="p1">'+
-                                '<label for="r3" class="custom-control-label"></label>'+
-                            '</div>'+
-                        '</div>'+
+                        // '<div class="col-lg-11 form-group">'+
+                        //     '<div class="input-group input-group-sm">'+
+                        //         '<div class="input-group-prepend">'+
+                        //             '<span class="input-group-text font-weight-bold"><i class="fa fa-city"></i></span>'+
+                        //         '</div>'+
+                        //         '<input type="text" class="form-control" placeholder="Alternativa">'+
+                        //     '</div>'+
+                        // '</div>'+
+                        // '<div class="col-lg-1 mt-1">'+
+                        //     '<div class="custom-control custom-radio">'+
+                        //         '<input class="custom-control-input" type="radio" id="r1" name="p1">'+
+                        //         '<label for="r1" class="custom-control-label"></label>'+
+                        //     '</div>'+
+                        // '</div>'+
+                        // '<div class="col-lg-11 form-group">'+
+                        //     '<div class="input-group input-group-sm">'+
+                        //         '<div class="input-group-prepend">'+
+                        //             '<span class="input-group-text font-weight-bold"><i class="fa fa-city"></i></span>'+
+                        //         '</div>'+
+                        //         '<input type="text" class="form-control" placeholder="Alternativa">'+
+                        //     '</div>'+
+                        // '</div>'+
+                        // '<div class="col-lg-1 mt-1">'+
+                        //     '<div class="custom-control custom-radio">'+
+                        //         '<input class="custom-control-input" type="radio" id="r2" name="p1">'+
+                        //         '<label for="r2" class="custom-control-label"></label>'+
+                        //     '</div>'+
+                        // '</div>'+
+                        // '<div class="col-lg-11 form-group">'+
+                        //     '<div class="input-group input-group-sm">'+
+                        //         '<div class="input-group-prepend">'+
+                        //             '<span class="input-group-text font-weight-bold"><i class="fa fa-city"></i></span>'+
+                        //         '</div>'+
+                        //         '<input type="text" class="form-control" placeholder="Alternativa">'+
+                        //     '</div>'+
+                        // '</div>'+
+                        // '<div class="col-lg-1 mt-1">'+
+                        //     '<div class="custom-control custom-radio">'+
+                        //         '<input class="custom-control-input" type="radio" id="r3" name="p1">'+
+                        //         '<label for="r3" class="custom-control-label"></label>'+
+                        //     '</div>'+
+                        // '</div>'+
+                        buildAlternativas()+
                     '</div>'+
                 '</div>'+
                 '<div class="modal-footer py-1 border-transparent">'+
-                    '<a href="" class="text-dark" onclick="eliminarCard(this);"><i class="fa fa-trash fa-lg"></i></a>'+
                     '<p class="text-danger text-center eliminarCard" onclick="eliminarCard(this);"><i class="fa fa-trash fa-lg"></i></p>'+
                 '</div>'+
             '</div>'+
