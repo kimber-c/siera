@@ -224,114 +224,208 @@ function configurar()
 }
 function eliminarCard(elem)
 {
-    $(elem).parent().parent().parent().remove();
-    contadorPregunta--;
-    // alert(contadorPregunta);
-    $('.catidadPreguntas').html('Preguntas '+(contadorPregunta-1));
-    $.each($('.preguntaTitulo'), function( index, value ) {
-        $(this).html('Pregunta '+(index+1));
+    jQuery.ajax(
+    { 
+        url: "<?php echo base_url('preguntas/eliminar');?>",
+        data: {id:$(elem).attr('data-id')},
+        method: 'post',
+        success: function(r){
+            // let data = JSON.parse(r);
+            // console.log(data);
+            $(elem).parent().parent().parent().remove();
+            contadorPregunta--;
+            $('.catidadPreguntas').html('Preguntas '+(contadorPregunta-1));
+            $.each($('.preguntaTitulo'), function( index, value ) {
+                $(this).html('Pregunta '+(index+1));
+            });
+        }
     });
-    // let html = '<p class="text-danger text-center eliminarCard" onclick="eliminarCard(this);"><i class="fa fa-trash"></i></p>';
+    
 }
-function buildAlternativas()
+function buildAlternativas(id)
 {
     // return 'añadi esto mas';
     let html='';
-    for(i=0;i<configAlternativas.length;i++)
+
+    // for(i=0;i<configAlternativas.length;i++)
+    // {
+    //     let alternativa = configAlternativas[i].alternativa;
+        jQuery.ajax(
+        {
+            url: "<?php echo base_url('alternativas/registrarVarios');?>",
+            data: {idpreguntas:id,cantAlternativas:configAlternativas.length},
+            method: 'post',
+            success: function(r){
+                // console.log(r);
+                let data = JSON.parse(r);
+                console.log(data);
+                for(i=0;i<configAlternativas.length;i++)
+                {
+                    let alternativa = configAlternativas[i].alternativa;
+                    html +='<div class="col-lg-11 form-group">'+
+                                '<div class="input-group input-group-sm">'+
+                                    '<div class="input-group-prepend">'+
+                                        '<span class="input-group-text font-weight-bold">'+alternativa+'</span>'+
+                                    '</div>'+
+                                    '<input type="text" class="form-control" placeholder="Alternativa '+alternativa+'" onkeyup="actualizarAlternativa(this);" data-id="'+data[i].idalternativas+'">'+
+                                '</div>'+
+                            '</div>'+
+                            '<div class="col-lg-1 mt-1">'+
+                                '<div class="custom-control custom-radio">'+
+                                    '<input class="custom-control-input" type="radio" id="alternativa'+data[i].idalternativas+'" name="radioPregunta'+id+'" onclick="actualizarPreguntaCorrecta(this);">'+
+                                    '<label for="alternativa'+data[i].idalternativas+'" class="custom-control-label"></label>'+
+                                '</div>'+
+                            '</div>';
+                    // console.log(html);
+                }
+                // setTimeout(function(){
+                //     console.log("Hola Mundo");
+                // }, 2000);
+                // return html;
+                $(".contenedorAlternativasCadaPregunta"+id).append(html);
+            }
+        });
+        // html +='<div class="col-lg-11 form-group">'+
+        //             '<div class="input-group input-group-sm">'+
+        //                 '<div class="input-group-prepend">'+
+        //                     '<span class="input-group-text font-weight-bold">'+configAlternativas[i].alternativa+'</span>'+
+        //                 '</div>'+
+        //                 '<input type="text" class="form-control" placeholder="Alternativa '+configAlternativas[i].alternativa+'">'+
+        //             '</div>'+
+        //         '</div>'+
+        //         '<div class="col-lg-1 mt-1">'+
+        //             '<div class="custom-control custom-radio">'+
+        //                 '<input class="custom-control-input" type="radio" id="r3" name="radioPregunta'+id+'">'+
+        //                 '<label for="r3" class="custom-control-label"></label>'+
+        //             '</div>'+
+        //         '</div>';
+    // }
+    // return html;
+}
+function actualizarPreguntaCorrecta(elem)
+{
+    // alert($(elem).attr('id'));
+    // alert($(elem).attr('id').split('alternativa')[1]);
+    
+    // let name = $(elem).attr('name');
+    // alert($('input:radio[name='+name+']:checked').attr("id");
+
+    jQuery.ajax(
     {
-        html +='<div class="col-lg-11 form-group">'+
-                    '<div class="input-group input-group-sm">'+
-                        '<div class="input-group-prepend">'+
-                            '<span class="input-group-text font-weight-bold">'+configAlternativas[i].alternativa+'</span>'+
-                        '</div>'+
-                        '<input type="text" class="form-control" placeholder="Alternativa '+configAlternativas[i].alternativa+'">'+
-                    '</div>'+
-                '</div>'+
-                '<div class="col-lg-1 mt-1">'+
-                    '<div class="custom-control custom-radio">'+
-                        '<input class="custom-control-input" type="radio" id="r3" name="p1">'+
-                        '<label for="r3" class="custom-control-label"></label>'+
-                    '</div>'+
-                '</div>';
-    }
-    return html;
+        url: "<?php echo base_url('alternativas/actualizarValidez');?>",
+        data: {idalternativas:$(elem).attr('id').split('alternativa')[1]},
+        method: 'post',
+        success: function(r){
+            console.log(r);
+        }
+    });
 }
 function addPreguntas()
 {
-    let html = '<div class="col-lg-8">'+
-            '<div class="card" style="border-left: 5px solid #007bff;">'+
-                '<div class="card-body">'+
-                    '<div class="row">'+
-                        '<div class="col-lg-12 alert alert-info font-weight-bold preguntaTitulo">Pregunta '+contadorPregunta+'</div>'+
-                        '<div class="col-lg-6 form-group">'+
-                            '<div class="input-group input-group-sm">'+
-                                '<div class="input-group-prepend">'+
-                                    '<span class="input-group-text font-weight-bold"><i class="fa fa-city"></i></span>'+
+    let data = {
+        idevaluacion:idevaluacion,
+        grado:$('#grado').val(),
+        area:$('#area').val(),
+    };
+    console.log(data);
+
+    jQuery.ajax(
+    { 
+        url: "<?php echo base_url('preguntas/registrar');?>",
+        data: data,
+        method: 'post',
+        success: function(r){
+            let data = JSON.parse(r);
+            console.log(data);
+            var returnAlternativas = buildAlternativas(data.idpreguntas);
+
+            let html = '<div class="col-lg-8">'+
+                            '<div class="card" style="border-left: 5px solid #007bff;">'+
+                                '<div class="card-body">'+
+                                    '<div class="row contenedorAlternativasCadaPregunta'+data.idpreguntas+'">'+
+                                        '<div class="col-lg-12 alert alert-info font-weight-bold preguntaTitulo">Pregunta '+contadorPregunta+'</div>'+
+                                        '<div class="col-lg-6 form-group">'+
+                                            '<div class="input-group input-group-sm">'+
+                                                '<div class="input-group-prepend">'+
+                                                    '<span class="input-group-text font-weight-bold"><i class="fa fa-city"></i></span>'+
+                                                '</div>'+
+                                                '<textarea cols="30" rows="5" class="form-control textareaPregunta" data-id="'+data.idpreguntas+'" placeholder="Pregunta" onkeyup="actualizarPregunta(this);"></textarea>'+
+                                            '</div>'+
+                                        '</div>'+
+                                        '<div class="col-lg-6 form-group">'+
+                                            '<div class="input-group input-group-sm">'+
+                                                '<div class="input-group-prepend">'+
+                                                    '<span class="input-group-text font-weight-bold"><i class="fa fa-city"></i></span>'+
+                                                '</div>'+
+                                                '<textarea cols="30" rows="5" class="form-control" data-id="'+data.idpreguntas+'" placeholder="Criterio" onkeyup="actualizarPregunta(this);"></textarea>'+
+                                            '</div>'+
+                                        '</div>'+
+                                        // returnAlternativas+
+                                    '</div>'+
                                 '</div>'+
-                                '<textarea cols="30" rows="5" class="form-control" placeholder="Pregunta '+contadorPregunta+'"></textarea>'+
-                            '</div>'+
-                        '</div>'+
-                        '<div class="col-lg-6 form-group">'+
-                            '<div class="input-group input-group-sm">'+
-                                '<div class="input-group-prepend">'+
-                                    '<span class="input-group-text font-weight-bold"><i class="fa fa-city"></i></span>'+
+                                '<div class="modal-footer py-1 border-transparent">'+
+                                    '<p class="text-danger text-center eliminarCard" onclick="eliminarCard(this);" data-id="'+data.idpreguntas+'"><i class="fa fa-trash fa-lg"></i></p>'+
                                 '</div>'+
-                                '<textarea cols="30" rows="5" class="form-control" placeholder="Criterio"></textarea>'+
                             '</div>'+
-                        '</div>'+
-                        // '<div class="col-lg-11 form-group">'+
-                        //     '<div class="input-group input-group-sm">'+
-                        //         '<div class="input-group-prepend">'+
-                        //             '<span class="input-group-text font-weight-bold"><i class="fa fa-city"></i></span>'+
-                        //         '</div>'+
-                        //         '<input type="text" class="form-control" placeholder="Alternativa">'+
-                        //     '</div>'+
-                        // '</div>'+
-                        // '<div class="col-lg-1 mt-1">'+
-                        //     '<div class="custom-control custom-radio">'+
-                        //         '<input class="custom-control-input" type="radio" id="r1" name="p1">'+
-                        //         '<label for="r1" class="custom-control-label"></label>'+
-                        //     '</div>'+
-                        // '</div>'+
-                        // '<div class="col-lg-11 form-group">'+
-                        //     '<div class="input-group input-group-sm">'+
-                        //         '<div class="input-group-prepend">'+
-                        //             '<span class="input-group-text font-weight-bold"><i class="fa fa-city"></i></span>'+
-                        //         '</div>'+
-                        //         '<input type="text" class="form-control" placeholder="Alternativa">'+
-                        //     '</div>'+
-                        // '</div>'+
-                        // '<div class="col-lg-1 mt-1">'+
-                        //     '<div class="custom-control custom-radio">'+
-                        //         '<input class="custom-control-input" type="radio" id="r2" name="p1">'+
-                        //         '<label for="r2" class="custom-control-label"></label>'+
-                        //     '</div>'+
-                        // '</div>'+
-                        // '<div class="col-lg-11 form-group">'+
-                        //     '<div class="input-group input-group-sm">'+
-                        //         '<div class="input-group-prepend">'+
-                        //             '<span class="input-group-text font-weight-bold"><i class="fa fa-city"></i></span>'+
-                        //         '</div>'+
-                        //         '<input type="text" class="form-control" placeholder="Alternativa">'+
-                        //     '</div>'+
-                        // '</div>'+
-                        // '<div class="col-lg-1 mt-1">'+
-                        //     '<div class="custom-control custom-radio">'+
-                        //         '<input class="custom-control-input" type="radio" id="r3" name="p1">'+
-                        //         '<label for="r3" class="custom-control-label"></label>'+
-                        //     '</div>'+
-                        // '</div>'+
-                        buildAlternativas()+
-                    '</div>'+
-                '</div>'+
-                '<div class="modal-footer py-1 border-transparent">'+
-                    '<p class="text-danger text-center eliminarCard" onclick="eliminarCard(this);"><i class="fa fa-trash fa-lg"></i></p>'+
-                '</div>'+
-            '</div>'+
-        '</div>';
-    $('.catidadPreguntas').html('Preguntas '+contadorPregunta);
-    contadorPregunta++;
-    $('.contenedorCard').append(html);
+                        '</div>';
+            // $("#contenedorAlternativasCadaPregunta"+data.idpreguntas).append(returnAlternativas);
+            $('.catidadPreguntas').html('Preguntas '+contadorPregunta);
+            contadorPregunta++;
+            $('.contenedorCard').append(html);
+        }
+    });
+    
+}
+function actualizarAlternativa(elem)
+{
+    if($(elem).val()!='')
+    {
+        data = {
+            idalternativas:$(elem).attr('data-id'),
+            descripcion:$(elem).val(),
+        };
+        jQuery.ajax(
+        {
+            url: "<?php echo base_url('alternativas/actualizar');?>",
+            data: data,
+            method: 'post',
+            success: function(r){
+                console.log(r);
+            }
+        });
+    }
+}
+function actualizarPregunta(elem)
+{
+    let data = '';
+    if($(elem).val()!='')
+    {
+        if($(elem).hasClass('textareaPregunta'))
+        {
+            data = {
+                idpreguntas:$(elem).attr('data-id'),
+                descripcion:$(elem).val(),
+                tipo:'pregunta',
+            };
+        }
+        else
+        {
+            data = {
+                idpreguntas:$(elem).attr('data-id'),
+                criterio:$(elem).val(),
+                tipo:'criterio',
+            };
+        }
+        jQuery.ajax(
+        {
+            url: "<?php echo base_url('preguntas/actualizar');?>",
+            data: data,
+            method: 'post',
+            success: function(r){
+                console.log(r);
+            }
+        });
+    }
 }
 $("#formValidate").validate({
     errorClass: "text-danger font-italic font-weight-normal",
