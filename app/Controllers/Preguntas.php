@@ -62,7 +62,6 @@ class Preguntas extends BaseController
     }
     public function listar()
     {
-        // echo('llego hasta aki');
         $this->m_estudiante->orderBy('idestudiante', 'desc');
         $datos = $this->m_estudiante->get()->getResult();
         echo json_encode($datos);
@@ -76,9 +75,8 @@ class Preguntas extends BaseController
         else
             echo json_encode(["msg"=>"Algo salio mal.","estado"=>false]);
     }
-    public function consultar()//con
+    public function consultar()
     {
-        // echo 'entro';
         $est = $this->m_estudiante->where('idestudiante', $_POST["id"])->get()->getResult();
 
         echo json_encode($est[0]);
@@ -98,16 +96,28 @@ class Preguntas extends BaseController
     }
     public function listarCard()
     {
-        // $lista = $this->m_preguntas
-        //     ->where('evaluacion_idevaluacion', $this->request->getPost('idevaluacion'))
-        //     ->where('grados_idgrados ', $this->request->getPost('grado'))
-        //     ->where('area_idarea', $this->request->getPost('area'))
-        //     ->get()->getResult();
-        $pregunta = new M_preguntas();
-        $lista = $pregunta->with('alternativas')->findAll();
-        var_dump($lista);
-        exit();
+        $listarAlternativas = $this->m_preguntas->listarAlternativas(
+            $this->request->getPost('idevaluacion'),
+            $this->request->getPost('grado'),
+            $this->request->getPost('area'),
+        );
+        $listarPreguntas = $this->m_preguntas->listarPreguntas(
+            $this->request->getPost('idevaluacion'),
+            $this->request->getPost('grado'),
+            $this->request->getPost('area'),
+        );
+        // echo json_encode($listarAlternativas);
+        $data = [
+            'alternativas' => $listarAlternativas,
+            'preguntas' => $listarPreguntas
+        ];
+        $jsonData = json_encode($data);
 
-        // echo json_encode($lista);
+        return $this->response->setJSON($jsonData);
+
+        // var_dump($data);
+        // exit();
+
+        // $jsonData = json_encode($data);
     }
 }

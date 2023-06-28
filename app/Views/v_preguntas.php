@@ -197,10 +197,15 @@ function fillArea()
         }
     });
 }
+var ppp;
 function configurar()
 {
+
     if($('#formValidate').valid()==false)
     {return;}
+    $('.contenedorCard>div').remove();
+    contadorPregunta=1;
+    $('.catidadPreguntas').html('Preguntas 0');
     var data = {
         idevaluacion:idevaluacion,
         grado:$('#grado').val(),
@@ -225,8 +230,90 @@ function configurar()
         data: data,
         method: 'post',
         success: function(r){
-            let data = JSON.parse(r);
-            console.log(data);
+            console.log(r.alternativas);
+            ppp=r.alternativas;
+            let idpreguntas;
+            let html='';
+            if(r.preguntas.length!=0)
+            {
+                for(i=0;i<r.preguntas.length;i++)
+                {
+                    idpreguntas = r.preguntas[i].idpreguntas;
+                    html = '<div class="col-lg-8">'+
+                                    '<div class="card" style="border-left: 5px solid #007bff;">'+
+                                        '<div class="card-body">'+
+                                            '<div class="row contenedorAlternativasCadaPregunta'+idpreguntas+'">'+
+                                                '<div class="col-lg-12 alert alert-info font-weight-bold preguntaTitulo">Pregunta '+contadorPregunta+'</div>'+
+                                                '<div class="col-lg-6 form-group">'+
+                                                    '<div class="input-group input-group-sm">'+
+                                                        '<div class="input-group-prepend">'+
+                                                            '<span class="input-group-text font-weight-bold"><i class="fa fa-city"></i></span>'+
+                                                        '</div>'+
+                                                        '<textarea cols="30" rows="5" class="form-control textareaPregunta" data-id="'+idpreguntas+'" placeholder="Pregunta" onkeyup="actualizarPregunta(this);">'+r.preguntas[i].descripcion+'</textarea>'+
+                                                    '</div>'+
+                                                '</div>'+
+                                                '<div class="col-lg-6 form-group">'+
+                                                    '<div class="input-group input-group-sm">'+
+                                                        '<div class="input-group-prepend">'+
+                                                            '<span class="input-group-text font-weight-bold"><i class="fa fa-city"></i></span>'+
+                                                        '</div>'+
+                                                        '<textarea cols="30" rows="5" class="form-control" data-id="'+idpreguntas+'" placeholder="Criterio" onkeyup="actualizarPregunta(this);">'+novDato(r.preguntas[i].criterio)+'</textarea>'+
+                                                    '</div>'+
+                                                '</div>'+
+                                            '</div>'+
+                                        '</div>'+
+                                        '<div class="modal-footer py-1 border-transparent">'+
+                                            '<p class="text-danger text-center eliminarCard" onclick="eliminarCard(this);" data-id="'+idpreguntas+'"><i class="fa fa-trash fa-lg"></i></p>'+
+                                        '</div>'+
+                                    '</div>'+
+                                '</div>';
+                    $('.catidadPreguntas').html('Preguntas '+contadorPregunta);
+                    contadorPregunta++;
+                    $('.contenedorCard').append(html);
+                }
+            }
+            let idalternativas;
+            html='';
+            let id;
+            let j=0;
+            let validez = '';
+            setTimeout(function()
+            {
+                if(r.alternativas.length!=0)
+                {
+                    for(i=0;i<r.alternativas.length;i++)
+                    {
+                        
+                        let alternativa = configAlternativas[j].alternativa;
+                        // console.log('valor de j :'+j);
+                        j++;
+                        if (j >= configAlternativas.length) 
+                        {j = 0;}
+                        idalternativas = r.alternativas[i].idalternativas;
+                        id = r.alternativas[i].preguntas_idpreguntas;
+                        validez = r.alternativas[i].validez=='1'?'checked':'';
+                        console.log(idalternativas);
+                        html ='<div class="col-lg-11 form-group kevins">'+
+                                    '<div class="input-group input-group-sm">'+
+                                        '<div class="input-group-prepend">'+
+                                            '<span class="input-group-text font-weight-bold">'+alternativa+'</span>'+
+                                        '</div>'+
+                                        '<input type="text" class="form-control" placeholder="Alternativa '+alternativa+'" onkeyup="actualizarAlternativa(this);" data-id="'+idalternativas+'" value="'+novDato(r.alternativas[i].descripcion)+'">'+
+                                    '</div>'+
+                                '</div>'+
+                                '<div class="col-lg-1 mt-1">'+
+                                    '<div class="custom-control custom-radio">'+
+                                        '<input class="custom-control-input" type="radio" id="alternativa'+idalternativas+'" name="radioPregunta'+id+'" onclick="actualizarPreguntaCorrecta(this);" '+validez+'>'+
+                                        '<label for="alternativa'+idalternativas+'" class="custom-control-label"></label>'+
+                                    '</div>'+
+                                '</div>';
+                        console.log('este es el id donde pondra--: '+id);
+                        $(".contenedorAlternativasCadaPregunta"+id).append(html);
+                    }
+                }
+
+            }, 2000);
+            
         }
     });
 

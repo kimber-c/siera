@@ -19,8 +19,25 @@ class M_preguntas extends Model
         'grados_idgrados',
         'area_idarea',
     ];
-    public function alternativas()
+    public function listarAlternativas($idevaluacion, $grado, $area)
     {
-        return $this->hasMany(M_alternativas::class, 'preguntas_idpreguntas', 'idpreguntas');
+        $query = $this->select('preguntas.criterio, preguntas.descripcion as pregunta, alternativas.*')
+            ->join('alternativas', 'alternativas.preguntas_idpreguntas = preguntas.idpreguntas', 'left')
+            ->where('evaluacion_idevaluacion', $idevaluacion)
+            ->where('grados_idgrados', $grado)
+            ->where('area_idarea', $area)
+            ->get();
+
+        return $query->getResult();
+    }
+    public function listarPreguntas($idevaluacion, $grado, $area)
+    {
+        $query = $this->select('preguntas.*')
+            ->where('evaluacion_idevaluacion', $idevaluacion)
+            ->where('grados_idgrados', $grado)
+            ->where('area_idarea', $area)
+            ->get();
+
+        return $query->getResult();
     }
 }
