@@ -96,4 +96,18 @@ class Preguntas extends BaseController
         else
             echo json_encode(["msg"=>"Algo salio mal.","estado"=>false]);
     }
+    public function listarCard()
+    {
+        // $lista = $this->m_preguntas
+        //     ->where('evaluacion_idevaluacion', $this->request->getPost('idevaluacion'))
+        //     ->where('grados_idgrados ', $this->request->getPost('grado'))
+        //     ->where('area_idarea', $this->request->getPost('area'))
+        //     ->get()->getResult();
+        $pregunta = new M_preguntas();
+        $lista = $pregunta->with('alternativas')->findAll();
+        var_dump($lista);
+        exit();
+
+        // echo json_encode($lista);
+    }
 }

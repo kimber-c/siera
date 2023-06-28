@@ -60,15 +60,6 @@ class Alternativas extends BaseController
         $evaluacion = $this->m_alternativas->where('preguntas_idpreguntas', $this->request->getPost('idpreguntas'))->get()->getResult();
         echo json_encode($evaluacion);
     }
-    // public function eliminar()
-    // {
-    //     $estado = $this->m_preguntas->delete($_POST["id"]);
-
-    //     if($estado)
-    //         echo json_encode(["msg"=>"Se realizo el proceso exitosamente.","estado"=>true]);
-    //     else
-    //         echo json_encode(["msg"=>"Algo salio mal.","estado"=>false]);
-    // }
     public function actualizar()
     {
         $data = ['descripcion' => $this->request->getPost('descripcion'), ];
@@ -80,19 +71,29 @@ class Alternativas extends BaseController
     }
     public function actualizarValidez()
     {
-        $dataOld = ['validez' => 0];
-        $alternativa = $this->m_alternativas->where('validez', 1)->get()->getResult();
-        // var_dump($alternativa[0]->idevaluacion===undefined);
-        var_dump(count($alternativa));
-        exit();
-        // echo json_encode($alternativa[0].);
-        // // $estado = $this->m_evaluacion->update($this->request->getPost('idevaluacion'),$dataOld);
-        // // -----------
-        // $data = ['validez' => 1];
-        // $estado = $this->m_alternativas->update($this->request->getPost('idalternativas'),$data);
-        // if($estado)
-        //     echo json_encode(["msg"=>"Se guardo los cambios.","estado"=>true]);
-        // else
-        //     echo json_encode(["msg"=>"Algo salio mal.","estado"=>false]);
+        $alternativa = $this->m_alternativas
+            ->where('validez', 1)
+            ->where('preguntas_idpreguntas', $this->request->getPost('idpreguntas'))
+            ->get()->getResult();
+        if(count($alternativa)!=0)
+        {
+            $estadoOld = $this->m_alternativas->update($alternativa[0]->idalternativas,['validez' => 0]);
+            if($estadoOld)
+            {
+                $estado = $this->m_alternativas->update($this->request->getPost('idalternativas'),['validez' => 1]);
+                if($estado)
+                    echo json_encode(["msg"=>"Se guardo los cambios.","estado"=>true]);
+                else
+                    echo json_encode(["msg"=>"Algo salio mal.","estado"=>false]);
+            }
+        }
+        else
+        {
+            $estado = $this->m_alternativas->update($this->request->getPost('idalternativas'),['validez' => 1]);
+            if($estado)
+                echo json_encode(["msg"=>"Se guardo los cambios.","estado"=>true]);
+            else
+                echo json_encode(["msg"=>"Algo salio mal.","estado"=>false]);
+        }
     }
 }

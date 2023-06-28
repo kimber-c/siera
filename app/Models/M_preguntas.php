@@ -19,4 +19,8 @@ class M_preguntas extends Model
         'grados_idgrados',
         'area_idarea',
     ];
+    public function alternativas()
+    {
+        return $this->hasMany(M_alternativas::class, 'preguntas_idpreguntas', 'idpreguntas');
+    }
 }

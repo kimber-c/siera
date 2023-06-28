@@ -219,6 +219,17 @@ function configurar()
             $('.addPreguntas').css('display','flex');
         }
     });
+    jQuery.ajax(
+    { 
+        url: "<?php echo base_url('preguntas/listarCard');?>",
+        data: data,
+        method: 'post',
+        success: function(r){
+            let data = JSON.parse(r);
+            console.log(data);
+        }
+    });
+
     // $('.contenedorCard').css('display','flex');
     // $('.addPreguntas').css('display','flex');
 }
@@ -309,11 +320,14 @@ function actualizarPreguntaCorrecta(elem)
     
     // let name = $(elem).attr('name');
     // alert($('input:radio[name='+name+']:checked').attr("id");
-
+    let data = {
+        idalternativas:$(elem).attr('id').split('alternativa')[1],
+        idpreguntas:$(elem).attr('name').split('radioPregunta')[1]
+    };
     jQuery.ajax(
     {
         url: "<?php echo base_url('alternativas/actualizarValidez');?>",
-        data: {idalternativas:$(elem).attr('id').split('alternativa')[1]},
+        data: data,
         method: 'post',
         success: function(r){
             console.log(r);
