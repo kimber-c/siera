@@ -246,6 +246,7 @@ function configurar()
             let data = JSON.parse(r);
             console.log(data);
             ppp=data;
+            contadorLetra = 0;
 
             if(data.length!=0)
             {

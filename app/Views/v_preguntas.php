@@ -52,7 +52,7 @@
     }
 } 
 </style>
-<div class="div-flotante font-weight-bold text-dark">
+<div class="div-flotante font-weight-bold text-dark" style="display: none;">
     <h6 class="m-0">ERA 2023 - 2</h6>
     <span class="catidadPreguntas badge badge-warning">Preguntas 5</span>
 </div>
@@ -258,10 +258,11 @@ function configurar()
         method: 'post',
         success: function(r){
             let data = JSON.parse(r);
-            console.log(data);
+            // console.log(data);
             configAlternativas = data;
             $('.contenedorCard').css('display','flex');
             $('.addPreguntas').css('display','flex');
+            $('.div-flotante').css('display','block');
         }
     });
     jQuery.ajax(
@@ -289,7 +290,7 @@ function configurar()
                                                         '<div class="input-group-prepend">'+
                                                             '<span class="input-group-text font-weight-bold"><i class="fa fa-city"></i></span>'+
                                                         '</div>'+
-                                                        '<textarea cols="30" rows="3" class="form-control textareaPregunta" data-id="'+idpreguntas+'" placeholder="Pregunta" onkeyup="actualizarPregunta(this);">'+r.preguntas[i].descripcion+'</textarea>'+
+                                                        '<textarea cols="30" rows="3" class="form-control textareaPregunta" data-id="'+idpreguntas+'" placeholder="Pregunta" onblur="actualizarPregunta(this);">'+r.preguntas[i].descripcion+'</textarea>'+
                                                     '</div>'+
                                                 '</div>'+
                                                 '<div class="col-lg-6 form-group">'+
@@ -297,7 +298,7 @@ function configurar()
                                                         '<div class="input-group-prepend">'+
                                                             '<span class="input-group-text font-weight-bold"><i class="fa fa-city"></i></span>'+
                                                         '</div>'+
-                                                        '<textarea cols="30" rows="3" class="form-control" data-id="'+idpreguntas+'" placeholder="Criterio" onkeyup="actualizarPregunta(this);">'+novDato(r.preguntas[i].criterio)+'</textarea>'+
+                                                        '<textarea cols="30" rows="3" class="form-control" data-id="'+idpreguntas+'" placeholder="Criterio" onblur="actualizarPregunta(this);">'+novDato(r.preguntas[i].criterio)+'</textarea>'+
                                                     '</div>'+
                                                 '</div>'+
                                             '</div>'+
@@ -332,13 +333,12 @@ function configurar()
                         idalternativas = r.alternativas[i].idalternativas;
                         id = r.alternativas[i].preguntas_idpreguntas;
                         validez = r.alternativas[i].validez=='1'?'checked':'';
-                        console.log(idalternativas);
                         html ='<div class="col-lg-11 form-group kevins">'+
                                     '<div class="input-group input-group-sm">'+
                                         '<div class="input-group-prepend">'+
                                             '<span class="input-group-text font-weight-bold">'+alternativa+'</span>'+
                                         '</div>'+
-                                        '<input type="text" class="form-control" placeholder="Alternativa '+alternativa+'" onkeyup="actualizarAlternativa(this);" data-id="'+idalternativas+'" value="'+novDato(r.alternativas[i].descripcion)+'">'+
+                                        '<input type="text" class="form-control" placeholder="Alternativa '+alternativa+'" onblur="actualizarAlternativa(this);" data-id="'+idalternativas+'" value="'+novDato(r.alternativas[i].descripcion)+'">'+
                                     '</div>'+
                                 '</div>'+
                                 '<div class="col-lg-1 mt-1">'+
@@ -347,7 +347,6 @@ function configurar()
                                         '<label for="alternativa'+idalternativas+'" class="custom-control-label"></label>'+
                                     '</div>'+
                                 '</div>';
-                        console.log('este es el id donde pondra--: '+id);
                         $(".contenedorAlternativasCadaPregunta"+id).append(html);
                     }
                 }
@@ -394,7 +393,6 @@ function buildAlternativas(id)
             success: function(r){
                 // console.log(r);
                 let data = JSON.parse(r);
-                console.log(data);
                 for(i=0;i<configAlternativas.length;i++)
                 {
                     let alternativa = configAlternativas[i].alternativa;
@@ -403,7 +401,7 @@ function buildAlternativas(id)
                                     '<div class="input-group-prepend">'+
                                         '<span class="input-group-text font-weight-bold">'+alternativa+'</span>'+
                                     '</div>'+
-                                    '<input type="text" class="form-control" placeholder="Alternativa '+alternativa+'" onkeyup="actualizarAlternativa(this);" data-id="'+data[i].idalternativas+'">'+
+                                    '<input type="text" class="form-control" placeholder="Alternativa '+alternativa+'" onblur="actualizarAlternativa(this);" data-id="'+data[i].idalternativas+'">'+
                                 '</div>'+
                             '</div>'+
                             '<div class="col-lg-1 mt-1">'+
@@ -412,12 +410,7 @@ function buildAlternativas(id)
                                     '<label for="alternativa'+data[i].idalternativas+'" class="custom-control-label"></label>'+
                                 '</div>'+
                             '</div>';
-                    // console.log(html);
                 }
-                // setTimeout(function(){
-                //     console.log("Hola Mundo");
-                // }, 2000);
-                // return html;
                 $(".contenedorAlternativasCadaPregunta"+id).append(html);
                 window.scrollTo(0, document.body.scrollHeight);
             }
@@ -483,7 +476,7 @@ function addPreguntas()
                                                 '<div class="input-group-prepend">'+
                                                     '<span class="input-group-text font-weight-bold"><i class="fa fa-city"></i></span>'+
                                                 '</div>'+
-                                                '<textarea cols="30" rows="3" class="form-control textareaPregunta" data-id="'+data.idpreguntas+'" placeholder="Pregunta" onkeyup="actualizarPregunta(this);"></textarea>'+
+                                                '<textarea cols="30" rows="3" class="form-control textareaPregunta" data-id="'+data.idpreguntas+'" placeholder="Pregunta" onblur="actualizarPregunta(this);"></textarea>'+
                                             '</div>'+
                                         '</div>'+
                                         '<div class="col-lg-6 form-group">'+
@@ -491,7 +484,7 @@ function addPreguntas()
                                                 '<div class="input-group-prepend">'+
                                                     '<span class="input-group-text font-weight-bold"><i class="fa fa-city"></i></span>'+
                                                 '</div>'+
-                                                '<textarea cols="30" rows="3" class="form-control" data-id="'+data.idpreguntas+'" placeholder="Criterio" onkeyup="actualizarPregunta(this);"></textarea>'+
+                                                '<textarea cols="30" rows="3" class="form-control" data-id="'+data.idpreguntas+'" placeholder="Criterio" onblur="actualizarPregunta(this);"></textarea>'+
                                             '</div>'+
                                         '</div>'+
                                         // returnAlternativas+
