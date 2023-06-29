@@ -15,8 +15,24 @@
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
     z-index: 99;
 }
+.div-flotante {
+    /*font-size: 16px; */
+    text-transform: uppercase; /* Texto en mayusculas */
+    /*font-weight: bold; */
+    /*color: #ffffff;*/
+    /*border-radius: 5px; */
+    /*letter-spacing: 2px;*/
+    /*background-color: #28a745;*/
+    /*padding: 18px 30px; */
+    position: fixed;
+    bottom: 140px;
+    right: 40px;
+    /*transition: all 300ms ease 0ms;*/
+    /*box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);*/
+    z-index: 99;
+}
 .btn-flotante:hover {
-    background-color: #41d497; /* Color de fondo al pasar el cursor */
+    background-color: #41d497;
     box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
     transform: translateY(-7px);
 }
@@ -27,17 +43,41 @@
         bottom: 20px;
         right: 20px;
     }
+    .div-flotante {
+        font-size: 8px;
+        padding: 12px 20px;
+        bottom: 65px;
+        right: 5px;
+        text-align: right;
+    }
 } 
 </style>
+<div class="div-flotante font-weight-bold text-dark">
+    <h6 class="m-0">ERA 2023 - 2</h6>
+    <span class="catidadPreguntas badge badge-warning">Preguntas 5</span>
+</div>
 <a href="#contenedorFooter" class="btn-flotante rounded-circle btn-success addPreguntas" title="Agregar pregunta" style="display: none;"><i class="fa fa-plus fa-2x"></i></a>
 <div class="container-fluid">
     <div class="row justify-content-center">
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-lg-12 col-sm-12 col-12 m-auto">
+                    <h3 class="evaluacion"><i class="fa fa-building"></i> Configuracion de las alternativas</h3>
+                </div>
+                <!-- <div class="col-lg-6 col-sm-6 col-12 m-auto">
+                    <button class="btn btn-sm btn-light float-right border shadow" onclick="accion(true);">
+                        <i class="fa fa-plus"></i> 
+                        Nuevo
+                    </button>
+                </div> -->
+            </div>
+        </div>
         <div class="col-md-12 col-s-6">
             <div class="card card-primary">
-                <div class="card-header">
+                <!-- <div class="card-header">
                     <h3 class="card-title m-0 evaluacion font-weight-bold text-dark">--</h3>
                     <span class="catidadPreguntas badge badge-warning float-right">Preguntas 5</span>
-                </div>
+                </div> -->
                 <div class="card-body">
                     <div class="panel panel-primary">
                         <form id="formValidate">
@@ -164,7 +204,7 @@ function fillLastEvaluacion()
         success: function(r){
             let data = JSON.parse(r);
             idevaluacion = data.idevaluacion;
-            $('.evaluacion').html("Configuración de preguntas ERA "+data.anio+" - "+data.etapa);
+            $('.evaluacion').html('<i class="fa fa-building"></i>'+" Configuración de preguntas ERA "+data.anio+" - "+data.etapa);
             // Configuración de preguntas ERA 2023 - I
         }
     });
@@ -239,7 +279,7 @@ function configurar()
                 for(i=0;i<r.preguntas.length;i++)
                 {
                     idpreguntas = r.preguntas[i].idpreguntas;
-                    html = '<div class="col-lg-8">'+
+                    html = '<div class="col-lg-9">'+
                                     '<div class="card" style="border-left: 5px solid #007bff;">'+
                                         '<div class="card-body">'+
                                             '<div class="row contenedorAlternativasCadaPregunta'+idpreguntas+'">'+
@@ -249,7 +289,7 @@ function configurar()
                                                         '<div class="input-group-prepend">'+
                                                             '<span class="input-group-text font-weight-bold"><i class="fa fa-city"></i></span>'+
                                                         '</div>'+
-                                                        '<textarea cols="30" rows="5" class="form-control textareaPregunta" data-id="'+idpreguntas+'" placeholder="Pregunta" onkeyup="actualizarPregunta(this);">'+r.preguntas[i].descripcion+'</textarea>'+
+                                                        '<textarea cols="30" rows="3" class="form-control textareaPregunta" data-id="'+idpreguntas+'" placeholder="Pregunta" onkeyup="actualizarPregunta(this);">'+r.preguntas[i].descripcion+'</textarea>'+
                                                     '</div>'+
                                                 '</div>'+
                                                 '<div class="col-lg-6 form-group">'+
@@ -257,7 +297,7 @@ function configurar()
                                                         '<div class="input-group-prepend">'+
                                                             '<span class="input-group-text font-weight-bold"><i class="fa fa-city"></i></span>'+
                                                         '</div>'+
-                                                        '<textarea cols="30" rows="5" class="form-control" data-id="'+idpreguntas+'" placeholder="Criterio" onkeyup="actualizarPregunta(this);">'+novDato(r.preguntas[i].criterio)+'</textarea>'+
+                                                        '<textarea cols="30" rows="3" class="form-control" data-id="'+idpreguntas+'" placeholder="Criterio" onkeyup="actualizarPregunta(this);">'+novDato(r.preguntas[i].criterio)+'</textarea>'+
                                                     '</div>'+
                                                 '</div>'+
                                             '</div>'+
@@ -342,9 +382,7 @@ function eliminarCard(elem)
 }
 function buildAlternativas(id)
 {
-    // return 'añadi esto mas';
     let html='';
-
     // for(i=0;i<configAlternativas.length;i++)
     // {
     //     let alternativa = configAlternativas[i].alternativa;
@@ -381,6 +419,7 @@ function buildAlternativas(id)
                 // }, 2000);
                 // return html;
                 $(".contenedorAlternativasCadaPregunta"+id).append(html);
+                window.scrollTo(0, document.body.scrollHeight);
             }
         });
         // html +='<div class="col-lg-11 form-group">'+
@@ -404,8 +443,6 @@ function actualizarPreguntaCorrecta(elem)
 {
     // alert($(elem).attr('id'));
     // alert($(elem).attr('id').split('alternativa')[1]);
-    
-    // let name = $(elem).attr('name');
     // alert($('input:radio[name='+name+']:checked').attr("id");
     let data = {
         idalternativas:$(elem).attr('id').split('alternativa')[1],
@@ -428,8 +465,6 @@ function addPreguntas()
         grado:$('#grado').val(),
         area:$('#area').val(),
     };
-    console.log(data);
-
     jQuery.ajax(
     { 
         url: "<?php echo base_url('preguntas/registrar');?>",
@@ -437,10 +472,8 @@ function addPreguntas()
         method: 'post',
         success: function(r){
             let data = JSON.parse(r);
-            console.log(data);
             var returnAlternativas = buildAlternativas(data.idpreguntas);
-
-            let html = '<div class="col-lg-8">'+
+            let html = '<div class="col-lg-9">'+
                             '<div class="card" style="border-left: 5px solid #007bff;">'+
                                 '<div class="card-body">'+
                                     '<div class="row contenedorAlternativasCadaPregunta'+data.idpreguntas+'">'+
@@ -450,7 +483,7 @@ function addPreguntas()
                                                 '<div class="input-group-prepend">'+
                                                     '<span class="input-group-text font-weight-bold"><i class="fa fa-city"></i></span>'+
                                                 '</div>'+
-                                                '<textarea cols="30" rows="5" class="form-control textareaPregunta" data-id="'+data.idpreguntas+'" placeholder="Pregunta" onkeyup="actualizarPregunta(this);"></textarea>'+
+                                                '<textarea cols="30" rows="3" class="form-control textareaPregunta" data-id="'+data.idpreguntas+'" placeholder="Pregunta" onkeyup="actualizarPregunta(this);"></textarea>'+
                                             '</div>'+
                                         '</div>'+
                                         '<div class="col-lg-6 form-group">'+
@@ -458,7 +491,7 @@ function addPreguntas()
                                                 '<div class="input-group-prepend">'+
                                                     '<span class="input-group-text font-weight-bold"><i class="fa fa-city"></i></span>'+
                                                 '</div>'+
-                                                '<textarea cols="30" rows="5" class="form-control" data-id="'+data.idpreguntas+'" placeholder="Criterio" onkeyup="actualizarPregunta(this);"></textarea>'+
+                                                '<textarea cols="30" rows="3" class="form-control" data-id="'+data.idpreguntas+'" placeholder="Criterio" onkeyup="actualizarPregunta(this);"></textarea>'+
                                             '</div>'+
                                         '</div>'+
                                         // returnAlternativas+
@@ -469,7 +502,6 @@ function addPreguntas()
                                 '</div>'+
                             '</div>'+
                         '</div>';
-            // $("#contenedorAlternativasCadaPregunta"+data.idpreguntas).append(returnAlternativas);
             $('.catidadPreguntas').html('Preguntas '+contadorPregunta);
             contadorPregunta++;
             $('.contenedorCard').append(html);
