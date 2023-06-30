@@ -14,6 +14,7 @@ class M_alternativas extends Model
     protected $allowedFields = [
         'idalternativas',
         'descripcion',
+        'alternativa',
         'validez',
         'preguntas_idpreguntas',
     ];

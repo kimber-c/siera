@@ -47,9 +47,12 @@ class Alternativas extends BaseController
     }
     public function registrarVarios()
     {
+        // var_dump($this->request->getPost('alternativas')[0]['alternativa']);
+        // exit();
         for ($i=0; $i < $this->request->getPost('cantAlternativas'); $i++) 
         { 
             $data = [
+                'alternativa' => $this->request->getPost('alternativas')[$i]['alternativa'],
                 'validez' => 0,
                 'preguntas_idpreguntas' => $this->request->getPost('idpreguntas'),  
             ];
