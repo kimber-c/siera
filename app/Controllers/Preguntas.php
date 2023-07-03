@@ -37,6 +37,7 @@ class Preguntas extends BaseController
                 'grados_idgrados' => $this->request->getPost('grado'),
                 'area_idarea' => $this->request->getPost('area'),
                 'descripcion' => '--',  
+                'orden' => $this->request->getPost('orden'),
             ];
             // var_dump($data);
             // exit();
@@ -68,10 +69,33 @@ class Preguntas extends BaseController
     }
     public function eliminar()
     {
+        // ------------------------------------------------------------------
+        
+        // var_dump(count($preguntas));
+        // exit();
         $estado = $this->m_preguntas->delete($_POST["id"]);
 
         if($estado)
+        {
+            $preguntas = $this->m_preguntas->select('preguntas.*')
+            ->where('evaluacion_idevaluacion', $_POST["idevaluacion"])
+            ->where('grados_idgrados', $_POST["grado"])
+            ->where('area_idarea', $_POST["area"])
+            ->orderBy('orden', 'asc')
+            ->get()->getResult();
+
+            $j=1;
+            for ($i=0; $i < count($preguntas); $i++) 
+            { 
+                $data = ['orden' => $j];
+                $estado = $this->m_preguntas->update($preguntas[$i]->idpreguntas,$data);
+                if(!$estado) 
+                    echo json_encode(["msg"=>"Algo salio mal.","estado"=>false]);
+                $j=$j+1;
+            }
+
             echo json_encode(["msg"=>"Se realizo el proceso exitosamente.","estado"=>true]);
+        }
         else
             echo json_encode(["msg"=>"Algo salio mal.","estado"=>false]);
     }
@@ -106,7 +130,6 @@ class Preguntas extends BaseController
             $this->request->getPost('grado'),
             $this->request->getPost('area'),
         );
-        // echo json_encode($listarAlternativas);
         $data = [
             'alternativas' => $listarAlternativas,
             'preguntas' => $listarPreguntas
@@ -115,9 +138,12 @@ class Preguntas extends BaseController
 
         return $this->response->setJSON($jsonData);
 
-        // var_dump($data);
-        // exit();
-
         // $jsonData = json_encode($data);
+    }
+    public function cambiarOrden()
+    {
+        var_dump($this->request->getPost('idpreguntas'));
+        var_dump($this->request->getPost('newOrden'));
+        exit();
     }
 }

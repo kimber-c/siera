@@ -1,4 +1,3 @@
-
 <!-- <h1>Contenedor en card, para hacer filtros y mostrar lista de estudiantes</h1> -->
 <div class="container-fluid">
     <div class="row">
