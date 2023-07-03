@@ -1,13 +1,14 @@
+<script src="<?php echo base_url('plugins/sortable/Sortable.min.js');?>"></script>
 <style>
     .btn-flotante {
-    font-size: 16px; /* Cambiar el tamaño de la tipografia */
-    text-transform: uppercase; /* Texto en mayusculas */
-    font-weight: bold; /* Fuente en negrita o bold */
-    color: #ffffff; /* Color del texto */
-    border-radius: 5px; /* Borde del boton */
-    letter-spacing: 2px; /* Espacio entre letras */
-    background-color: #28a745; /* Color de fondo */
-    padding: 18px 30px; /* Relleno del boton */
+    font-size: 16px; 
+    text-transform: uppercase; 
+    font-weight: bold;
+    color: #ffffff;
+    border-radius: 5px;
+    letter-spacing: 2px;
+    background-color: #28a745;
+    padding: 18px 30px;
     position: fixed;
     bottom: 40px;
     right: 40px;
@@ -16,19 +17,10 @@
     z-index: 99;
 }
 .div-flotante {
-    /*font-size: 16px; */
-    text-transform: uppercase; /* Texto en mayusculas */
-    /*font-weight: bold; */
-    /*color: #ffffff;*/
-    /*border-radius: 5px; */
-    /*letter-spacing: 2px;*/
-    /*background-color: #28a745;*/
-    /*padding: 18px 30px; */
+    text-transform: uppercase;
     position: fixed;
     bottom: 140px;
     right: 40px;
-    /*transition: all 300ms ease 0ms;*/
-    /*box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);*/
     z-index: 99;
 }
 .btn-flotante:hover {
@@ -107,7 +99,7 @@
     </div>
 </div>
 <div class="container-fluid">
-    <div class="row justify-content-center contenedorCard" style="display: none;">
+    <div class="row justify-content-center contenedorCard" id="example2" style="display: none;">
         <!-- <div class="col-lg-8">
             <div class="card" style="border-left: 5px solid #007bff;">
                 <div class="card-body">
@@ -179,6 +171,7 @@
         </div> -->
     </div>
 </div>
+
 <script>
 var contadorPregunta=1;
 var idevaluacion = '';
@@ -188,6 +181,7 @@ $(document).ready( function () {
     fillGrado();
     fillArea();
     fillLastEvaluacion();
+    
 } );
 $('.configurar').on('click',function(){
     configurar();
@@ -238,6 +232,8 @@ function fillArea()
     });
 }
 var ppp;
+var ttt;
+var sortable;
 function configurar()
 {
 
@@ -281,38 +277,66 @@ function configurar()
                 {
                     idpreguntas = r.preguntas[i].idpreguntas;
                     html = '<div class="col-lg-9">'+
-                                    '<div class="card" style="border-left: 5px solid #007bff;">'+
-                                        '<div class="card-body">'+
-                                            '<div class="row contenedorAlternativasCadaPregunta'+idpreguntas+'">'+
-                                                '<div class="col-lg-12 alert alert-info font-weight-bold preguntaTitulo">Pregunta '+contadorPregunta+'</div>'+
-                                                '<div class="col-lg-6 form-group">'+
-                                                    '<div class="input-group input-group-sm">'+
-                                                        '<div class="input-group-prepend">'+
-                                                            '<span class="input-group-text font-weight-bold"><i class="fa fa-city"></i></span>'+
-                                                        '</div>'+
-                                                        '<textarea cols="30" rows="3" class="form-control textareaPregunta" data-id="'+idpreguntas+'" placeholder="Pregunta" onblur="actualizarPregunta(this);">'+r.preguntas[i].descripcion+'</textarea>'+
+                                '<div class="card" style="border-left: 5px solid #007bff;">'+
+                                    '<div class="card-body">'+
+                                        '<div class="row contenedorAlternativasCadaPregunta'+idpreguntas+'">'+
+
+                                            '<div class="col-lg-12 font-weight-bold text-center">'+
+                                                '<span class="handle ui-sortable-handle">'+
+                                                    '<i class="fas fa-ellipsis-v"></i> '+
+                                                    '<i class="fas fa-ellipsis-v"></i>'+
+                                                '</span>'+
+                                            '</div>'+
+                                            
+                                            '<div class="col-lg-12 alert alert-info font-weight-bold preguntaTitulo">Pregunta '+contadorPregunta+'</div>'+
+                                            '<div style="display:none;">id'+idpreguntas+'id</div>'+
+                                            '<div class="col-lg-6 form-group">'+
+                                                '<div class="input-group input-group-sm">'+
+                                                    '<div class="input-group-prepend">'+
+                                                        '<span class="input-group-text font-weight-bold"><i class="fa fa-city"></i></span>'+
                                                     '</div>'+
+                                                    '<textarea cols="30" rows="3" class="form-control textareaPregunta" data-id="'+idpreguntas+'" placeholder="Pregunta" onblur="actualizarPregunta(this);">'+r.preguntas[i].descripcion+'</textarea>'+
                                                 '</div>'+
-                                                '<div class="col-lg-6 form-group">'+
-                                                    '<div class="input-group input-group-sm">'+
-                                                        '<div class="input-group-prepend">'+
-                                                            '<span class="input-group-text font-weight-bold"><i class="fa fa-city"></i></span>'+
-                                                        '</div>'+
-                                                        '<textarea cols="30" rows="3" class="form-control" data-id="'+idpreguntas+'" placeholder="Criterio" onblur="actualizarPregunta(this);">'+novDato(r.preguntas[i].criterio)+'</textarea>'+
+                                            '</div>'+
+                                            '<div class="col-lg-6 form-group">'+
+                                                '<div class="input-group input-group-sm">'+
+                                                    '<div class="input-group-prepend">'+
+                                                        '<span class="input-group-text font-weight-bold"><i class="fa fa-city"></i></span>'+
                                                     '</div>'+
+                                                    '<textarea cols="30" rows="3" class="form-control" data-id="'+idpreguntas+'" placeholder="Criterio" onblur="actualizarPregunta(this);">'+novDato(r.preguntas[i].criterio)+'</textarea>'+
                                                 '</div>'+
                                             '</div>'+
                                         '</div>'+
-                                        '<div class="modal-footer py-1 border-transparent">'+
-                                            '<p class="text-danger text-center eliminarCard" onclick="eliminarCard(this);" data-id="'+idpreguntas+'"><i class="fa fa-trash fa-lg"></i></p>'+
-                                        '</div>'+
                                     '</div>'+
-                                '</div>';
+                                    '<div class="modal-footer py-1 border-transparent">'+
+                                        '<p class="text-danger text-center eliminarCard" onclick="eliminarCard(this);" data-id="'+idpreguntas+'"><i class="fa fa-trash fa-lg"></i></p>'+
+                                    '</div>'+
+                                '</div>'+
+                            '</div>';
                     $('.catidadPreguntas').html('Preguntas '+contadorPregunta);
                     contadorPregunta++;
                     $('.contenedorCard').append(html);
                 }
             }
+            // new Sortable(example2, {
+            //     handle: '.handle', 
+            //     animation: 150
+            // });
+            // -------------------------------------------------------------------------------------------------
+      //       sortable = new Sortable(example2, 
+      //       {
+		    //   	onEnd: function (event) {
+			   //      var item = event.item;
+			   //      var newIndex = event.newIndex;
+			   //      ttt = event.target;
+			   //      // console.log(ttt);
+
+			   //      console.log("onSortEnd-Elemento arrastrado:", item.textContent);
+			   //      console.log("onSortEnd-Nueva posición:", newIndex);
+			   //      cambiarOrden(event);
+			   //    }
+		    // });
+
             let idalternativas;
             html='';
             let id;
@@ -359,16 +383,65 @@ function configurar()
     // $('.contenedorCard').css('display','flex');
     // $('.addPreguntas').css('display','flex');
 }
+sortable = new Sortable(example2, 
+{
+  	onEnd: function (event) {
+        // var item = event.item;
+        // var newIndex = event.newIndex;
+        // ttt = event.target;
+        console.log("onSortEnd-Elemento arrastrado:", event.item.textContent);
+        console.log("onSortEnd-Nueva posición:", event.newIndex);
+        // cambiarOrden(event);
+        const cadena = event.item.textContent;
+		const array = cadena.split("id");
+        jQuery.ajax(
+	    { 
+	        url: "<?php echo base_url('preguntas/cambiarOrden');?>",
+	        data: {
+		        newOrden:event.newIndex,
+		        idpreguntas:array[1],
+		    },
+	        method: 'post',
+	        success: function(r){
+	            console.log(r);
+	        }
+	    });
+      }
+});
+function cambiarOrden(event)
+{
+	var id = event.item;
+	var newOrden = event.newIndex;
+	var data = {
+        newOrden:newOrden,
+        idpreguntas:id,
+    };
+	// alert('cambiaremos el orden de las tarjetas');
+	jQuery.ajax(
+    { 
+        url: "<?php echo base_url('preguntas/cambiarOrden');?>",
+        data: data,
+        method: 'post',
+        success: function(r){
+            console.log(r);
+        }
+    });
+}
 function eliminarCard(elem)
 {
+	var data = {
+        idevaluacion:idevaluacion,
+        grado:$('#grado').val(),
+        area:$('#area').val(),
+        id:$(elem).attr('data-id')
+    };
     jQuery.ajax(
     { 
         url: "<?php echo base_url('preguntas/eliminar');?>",
-        data: {id:$(elem).attr('data-id')},
+        data: data,
         method: 'post',
         success: function(r){
             // let data = JSON.parse(r);
-            // console.log(data);
             $(elem).parent().parent().parent().remove();
             contadorPregunta--;
             $('.catidadPreguntas').html('Preguntas '+(contadorPregunta-1));
@@ -388,7 +461,11 @@ function buildAlternativas(id)
         jQuery.ajax(
         {
             url: "<?php echo base_url('alternativas/registrarVarios');?>",
-            data: {idpreguntas:id,cantAlternativas:configAlternativas.length},
+            data: {
+            	idpreguntas:id,
+            	cantAlternativas:configAlternativas.length,
+            	alternativas:configAlternativas
+            },
             method: 'post',
             success: function(r){
                 // console.log(r);
@@ -457,6 +534,7 @@ function addPreguntas()
         idevaluacion:idevaluacion,
         grado:$('#grado').val(),
         area:$('#area').val(),
+        orden:contadorPregunta,
     };
     jQuery.ajax(
     { 
@@ -470,7 +548,16 @@ function addPreguntas()
                             '<div class="card" style="border-left: 5px solid #007bff;">'+
                                 '<div class="card-body">'+
                                     '<div class="row contenedorAlternativasCadaPregunta'+data.idpreguntas+'">'+
+
+                                        '<div class="col-lg-12 font-weight-bold text-center">'+
+                                            '<span class="handle ui-sortable-handle">'+
+                                                '<i class="fas fa-ellipsis-v"></i> '+
+                                                '<i class="fas fa-ellipsis-v"></i>'+
+                                            '</span>'+
+                                        '</div>'+
+
                                         '<div class="col-lg-12 alert alert-info font-weight-bold preguntaTitulo">Pregunta '+contadorPregunta+'</div>'+
+                                        '<div style="display:none;">id'+data.idpreguntas+'id</div>'+
                                         '<div class="col-lg-6 form-group">'+
                                             '<div class="input-group input-group-sm">'+
                                                 '<div class="input-group-prepend">'+
@@ -500,7 +587,6 @@ function addPreguntas()
             $('.contenedorCard').append(html);
         }
     });
-    
 }
 function actualizarAlternativa(elem)
 {

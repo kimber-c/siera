@@ -15,6 +15,7 @@ class M_preguntas extends Model
         'idpreguntas',
         'descripcion',
         'criterio',
+        'orden',
         'evaluacion_idevaluacion',
         'grados_idgrados',
         'area_idarea',
