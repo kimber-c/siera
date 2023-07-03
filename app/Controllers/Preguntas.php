@@ -142,8 +142,42 @@ class Preguntas extends BaseController
     }
     public function cambiarOrden()
     {
-        var_dump($this->request->getPost('idpreguntas'));
-        var_dump($this->request->getPost('newOrden'));
+        // var_dump($this->request->getPost('idpreguntas'));
+        // var_dump($this->request->getPost('newOrden')+1);
+        $ordenActual=$this->request->getPost('newOrden')+1;
+
+        $preguntas = $this->m_preguntas->select('preguntas.*')
+            ->where('evaluacion_idevaluacion', $_POST["idevaluacion"])
+            ->where('grados_idgrados', $_POST["grado"])
+            ->where('area_idarea', $_POST["area"])
+            ->orderBy('orden', 'asc')
+            ->get()->getResult();
+
+        $j=1;
+        for ($i=0; $i < count($preguntas); $i++) 
+        { 
+            // $data = ['orden' => $j];
+            if($preguntas[$i]->idpreguntas==$this->request->getPost('idpreguntas'))
+            {
+                $data = ['orden' => $ordenActual];
+                $estado = $this->m_preguntas->update($preguntas[$i]->idpreguntas,$data);
+                if(!$estado) 
+                    echo json_encode(["msg"=>"Algo salio mal.","estado"=>false]);
+            }
+            else
+            {
+                if($preguntas[$i]->orden==$ordenActual)
+                {
+                    $j=$j+1;
+                }
+                $data = ['orden' => $j];
+                $estado = $this->m_preguntas->update($preguntas[$i]->idpreguntas,$data);
+                if(!$estado) 
+                    echo json_encode(["msg"=>"Algo salio mal.","estado"=>false]);
+            }
+            $j=$j+1;
+        }
+
         exit();
     }
 }

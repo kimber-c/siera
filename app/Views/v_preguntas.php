@@ -398,6 +398,9 @@ sortable = new Sortable(example2,
 	    { 
 	        url: "<?php echo base_url('preguntas/cambiarOrden');?>",
 	        data: {
+		        idevaluacion:idevaluacion,
+		        grado:$('#grado').val(),
+		        area:$('#area').val(),
 		        newOrden:event.newIndex,
 		        idpreguntas:array[1],
 		    },

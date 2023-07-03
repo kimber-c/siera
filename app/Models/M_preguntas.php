@@ -37,6 +37,7 @@ class M_preguntas extends Model
             ->where('evaluacion_idevaluacion', $idevaluacion)
             ->where('grados_idgrados', $grado)
             ->where('area_idarea', $area)
+            ->orderBy('orden', 'asc')
             ->get();
 
         return $query->getResult();
