@@ -249,6 +249,8 @@ function configurar()
     $('.contenedorCard>div').remove();
     contadorPregunta=1;
     $('.catidadPreguntas').html('Preguntas 0');
+    // $('.configurar').html('<i class="fa fa-spinner fa-spin fa-fw"></i> Cargando');
+    // $('.configurar').attr('disabled',true);
     var data = {
         idevaluacion:idevaluacion,
         grado:$('#grado').val(),
@@ -284,6 +286,10 @@ function configurar()
         url: "<?php echo base_url('preguntas/listarCard');?>",
         data: data,
         method: 'post',
+        beforeSend: function() {
+		    $('.configurar').html('<i class="fa fa-spinner fa-spin fa-fw"></i> Cargando');
+    		$('.configurar').attr('disabled',true);
+		},
         success: function(r){
             console.log(r.alternativas);
             ppp=r.alternativas;
@@ -296,6 +302,11 @@ function configurar()
                     idpreguntas = r.preguntas[i].idpreguntas;
                     html = '<div class="col-lg-9">'+
                                 '<div class="card" style="border-left: 5px solid #007bff;">'+
+// -------
+	                            	'<div class="overlay dark overlayPreguntas">'+
+										'<i class="fa fa-spinner fa-spin fa-fw"></i>'+
+									'</div>'+
+// -------
                                     '<div class="card-body">'+
                                         '<div class="row contenedorAlternativasCadaPregunta'+idpreguntas+'">'+
 
@@ -391,7 +402,9 @@ function configurar()
                         $(".contenedorAlternativasCadaPregunta"+id).append(html);
                     }
                 }
-
+$('.configurar').html('<i class="fa fa-search"></i> Seleccionar');
+$('.configurar').attr('disabled',false);
+$('.overlayPreguntas').css('display','none');
             }, 2000);
             
         }
@@ -526,6 +539,7 @@ function buildAlternativas(id)
                             '</div>';
                 }
                 $(".contenedorAlternativasCadaPregunta"+id).append(html);
+                $('.overlayPreguntas').css('display','none');
                 window.scrollTo(0, document.body.scrollHeight);
             }
         });
@@ -583,6 +597,11 @@ function addPreguntas()
             var returnAlternativas = buildAlternativas(data.idpreguntas);
             let html = '<div class="col-lg-9">'+
                             '<div class="card" style="border-left: 5px solid #007bff;">'+
+// -------
+	                            '<div class="overlay dark overlayPreguntas">'+
+									'<i class="fa fa-spinner fa-spin fa-fw"></i>'+
+								'</div>'+
+// -------
                                 '<div class="card-body">'+
                                     '<div class="row contenedorAlternativasCadaPregunta'+data.idpreguntas+'">'+
 
