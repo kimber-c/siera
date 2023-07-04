@@ -49,16 +49,18 @@ class Alternativas extends BaseController
     {
         // var_dump($this->request->getPost('alternativas')[0]['alternativa']);
         // exit();
+        $validez=1;
         for ($i=0; $i < $this->request->getPost('cantAlternativas'); $i++) 
         { 
             $data = [
                 'alternativa' => $this->request->getPost('alternativas')[$i]['alternativa'],
-                'validez' => 0,
+                'validez' => $validez,
                 'preguntas_idpreguntas' => $this->request->getPost('idpreguntas'),  
             ];
             $result = $this->m_alternativas->insert($data);
             if(!$result) 
                 echo json_encode(["msg"=>"Algo salio mal.","estado"=>false]);
+            $validez=0;
         }
         $evaluacion = $this->m_alternativas->where('preguntas_idpreguntas', $this->request->getPost('idpreguntas'))->get()->getResult();
         echo json_encode($evaluacion);

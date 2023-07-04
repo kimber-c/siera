@@ -54,7 +54,7 @@
         <div class="col-lg-12">
             <div class="row">
                 <div class="col-lg-12 col-sm-12 col-12 m-auto">
-                    <h3 class="evaluacion"><i class="fa fa-building"></i> Configuracion de las alternativas</h3>
+                    <h3 class="evaluacion"><i class="fa fa-building"></i></h3>
                 </div>
                 <!-- <div class="col-lg-6 col-sm-6 col-12 m-auto">
                     <button class="btn btn-sm btn-light float-right border shadow" onclick="accion(true);">
@@ -97,6 +97,13 @@
             </div>
         </div>
     </div>
+</div>
+<div class="container-fluid msjConfiguracionAlternativas" style="display: none;">
+	<div class="alert alert-warning">
+		<p class="m-0 text-center font-weight-bold">Registre la configuracion de alternativas para el grado y area, 
+			<a href="#" class="btn btn-link font-weight-bold text-warning p-0">Alternativas</a>
+		</p>
+	</div>
 </div>
 <div class="container-fluid">
     <div class="row justify-content-center contenedorCard" id="example2" style="display: none;">
@@ -256,9 +263,20 @@ function configurar()
             let data = JSON.parse(r);
             // console.log(data);
             configAlternativas = data;
-            $('.contenedorCard').css('display','flex');
-            $('.addPreguntas').css('display','flex');
-            $('.div-flotante').css('display','block');
+            if(configAlternativas.length!=0)
+            {
+	            $('.addPreguntas').css('display','flex');
+	            $('.contenedorCard').css('display','flex');
+	            $('.div-flotante').css('display','block');
+	            $('.msjConfiguracionAlternativas').css('display','none');
+            }
+            else
+            {
+            	$('.addPreguntas').css('display','none');
+	            $('.contenedorCard').css('display','none');
+	            $('.div-flotante').css('display','none');
+	            $('.msjConfiguracionAlternativas').css('display','block');
+            }
         }
     });
     jQuery.ajax(
@@ -348,7 +366,6 @@ function configurar()
                 {
                     for(i=0;i<r.alternativas.length;i++)
                     {
-                        
                         let alternativa = configAlternativas[j].alternativa;
                         // console.log('valor de j :'+j);
                         j++;
@@ -383,6 +400,7 @@ function configurar()
     // $('.contenedorCard').css('display','flex');
     // $('.addPreguntas').css('display','flex');
 }
+var prueba;
 sortable = new Sortable(example2, 
 {
   	onEnd: function (event) {
@@ -394,6 +412,14 @@ sortable = new Sortable(example2,
         // cambiarOrden(event);
         const cadena = event.item.textContent;
 		const array = cadena.split("id");
+		prueba = event.target.children;
+		let cardOrdenado = event.target.children;
+		var miArray = [];
+		// Iterar usando un bucle for
+		for (var i = 0; i < cardOrdenado.length; i++) 
+		{
+		  	miArray.push(prueba[i].textContent);
+		}
         jQuery.ajax(
 	    { 
 	        url: "<?php echo base_url('preguntas/cambiarOrden');?>",
@@ -403,6 +429,7 @@ sortable = new Sortable(example2,
 		        area:$('#area').val(),
 		        newOrden:event.newIndex,
 		        idpreguntas:array[1],
+		        ordenPreguntas:miArray,
 		    },
 	        method: 'post',
 	        success: function(r){
@@ -473,9 +500,16 @@ function buildAlternativas(id)
             success: function(r){
                 // console.log(r);
                 let data = JSON.parse(r);
+                // console.log('-----------');
+                console.log(data);
+                // console.log('-----------');
                 for(i=0;i<configAlternativas.length;i++)
                 {
                     let alternativa = configAlternativas[i].alternativa;
+                    let validez = data[i].validez=='1'?'checked':'';
+                    console.log('-----------');
+	                console.log(validez);
+	                console.log('-----------');
                     html +='<div class="col-lg-11 form-group">'+
                                 '<div class="input-group input-group-sm">'+
                                     '<div class="input-group-prepend">'+
@@ -486,7 +520,7 @@ function buildAlternativas(id)
                             '</div>'+
                             '<div class="col-lg-1 mt-1">'+
                                 '<div class="custom-control custom-radio">'+
-                                    '<input class="custom-control-input" type="radio" id="alternativa'+data[i].idalternativas+'" name="radioPregunta'+id+'" onclick="actualizarPreguntaCorrecta(this);">'+
+                                    '<input class="custom-control-input" type="radio" id="alternativa'+data[i].idalternativas+'" name="radioPregunta'+id+'" onclick="actualizarPreguntaCorrecta(this);" '+validez+'>'+
                                     '<label for="alternativa'+data[i].idalternativas+'" class="custom-control-label"></label>'+
                                 '</div>'+
                             '</div>';
