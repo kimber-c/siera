@@ -447,29 +447,32 @@ sortable = new Sortable(example2,
 	        method: 'post',
 	        success: function(r){
 	            console.log(r);
+	            $.each($('.preguntaTitulo'), function( index, value ) {
+	                $(this).html('Pregunta '+(index+1));
+	            });
 	        }
 	    });
       }
 });
-function cambiarOrden(event)
-{
-	var id = event.item;
-	var newOrden = event.newIndex;
-	var data = {
-        newOrden:newOrden,
-        idpreguntas:id,
-    };
-	// alert('cambiaremos el orden de las tarjetas');
-	jQuery.ajax(
-    { 
-        url: "<?php echo base_url('preguntas/cambiarOrden');?>",
-        data: data,
-        method: 'post',
-        success: function(r){
-            console.log(r);
-        }
-    });
-}
+// funcion sin uso
+// function cambiarOrden(event)
+// {
+// 	var id = event.item;
+// 	var newOrden = event.newIndex;
+// 	var data = {
+//         newOrden:newOrden,
+//         idpreguntas:id,
+//     };
+// 	jQuery.ajax(
+//     { 
+//         url: "<?php echo base_url('preguntas/cambiarOrden');?>",
+//         data: data,
+//         method: 'post',
+//         success: function(r){
+//             console.log(r);
+//         }
+//     });
+// }
 function eliminarCard(elem)
 {
 	var data = {
