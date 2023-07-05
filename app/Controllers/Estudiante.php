@@ -5,16 +5,22 @@ namespace App\Controllers;
 use CodeIgniter\I18n\Time;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use App\Models\M_estudiante;
+use App\Models\M_detalleie;
 
 class Estudiante extends BaseController
 {
     public function __construct() 
     {
         $this->m_estudiante = new M_estudiante();
+        $this->m_detalleie = new M_detalleie();
 	}
     public function index()
     {
         return view('template/secciones/header').view('v_estudiante').view('template/secciones/footer');
+    }
+    public function cargamasiva()
+    {
+        return view('template/secciones/header').view('v_cargamasiva').view('template/secciones/footer');
     }
     public function registrar()
     {
@@ -96,92 +102,88 @@ class Estudiante extends BaseController
      
        
     }
-    public function cargaMasiva()
+    public function subirArchivo()
     {
-        return view('template/secciones/header').view('iiee/cargaMasiva').view('template/secciones/footer');
-    }
-    // public function subirArchivo()
-    // {
-    //     $provincias = array(
-    //         "abancay" => 1,
-    //         "andahuaylas" => 2,
-    //         "aymaraes" => 3,
-    //         "grau" => 4,
-    //         "antabamba" => 5,
-    //         "chincheros" => 6,
-    //         "cotabamba" => 7,
-    //         "huancarama" => 8,
-    //     );
-    //     // echo ($provincias['antabamba']);
-    //     // exit();
-
-    //     // --------------------
-    //     $file = $this->request->getFile('file');
-    //     if ($file->isValid() && !$file->hasMoved()) 
-    //     {
-    //         if(unlink('cargamasiva/iiee/cargamasiva.xlsx'))
-    //             $file->move('cargamasiva/iiee');
-    //         else
-    //             return $this->response->setJSON(['estado' => false, 'msg' => 'Error al momento de cargar archivo']);
-    //         // return $this->response->setJSON(['estado' => true, 'msg' => 'Archivo cargado con éxito']);
-    //     } else 
-    //     {
-    //         return $this->response->setJSON(['estado' => false, 'msg' => 'Error al cargar el archivo']);
-    //     }
-    //     // Obtener el nombre y la ubicación del archivo de Excel
-    //     $file = 'cargamasiva/iiee/cargamasiva.xlsx';
-    //     // Cargar el archivo de Excel
-    //     $spreadsheet = IOFactory::load($file);
-    //     // Obtener la hoja de cálculo activa
-    //     $sheet = $spreadsheet->getActiveSheet();
-    //     // Obtener el número de filas y columnas en la hoja de cálculo
-    //     $highestRow = $sheet->getHighestRow();
-    //     $highestColumn = $sheet->getHighestColumn();
-    //     $highestColumnIndex = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::columnIndexFromString($highestColumn);
-    //     // Recorrer las filas y columnas para leer los datos
-    //     $data = array();
-    //     for ($row = 2; $row <= $highestRow; ++$row) {
-    //         // for ($col = 1; $col <= $highestColumnIndex; ++$col) {
-    //         //     $cellValue = $sheet->getCellByColumnAndRow($col, $row)->getValue();
-    //         //     $data[$row][$col] = $cellValue;
-    //         // }
-    //             // -------------------------------------
-    //         $nivel = $sheet->getCellByColumnAndRow(4, $row)->getValue()=='primaria'?1:2;
-    //         $gestion = $sheet->getCellByColumnAndRow(5, $row)->getValue()=='publico'?1:2;
-            
-    //         $data = [
-    //             'codmodular' => $sheet->getCellByColumnAndRow(1, $row)->getValue(),
-    //             'cod_local' => $sheet->getCellByColumnAndRow(2, $row)->getValue(),
-    //             'descripcion' => $sheet->getCellByColumnAndRow(3, $row)->getValue(),
-    //             'nivel' => $nivel,
-    //             'gestion' => $gestion,
-    //             'direccion' => $sheet->getCellByColumnAndRow(6, $row)->getValue(),
-    //             'localidad' => $sheet->getCellByColumnAndRow(7, $row)->getValue(),
-    //             'area_geografica' => $sheet->getCellByColumnAndRow(8, $row)->getValue(),
-    //             'provincia_idprovincia' => $provincias[strval($sheet->getCellByColumnAndRow(9, $row)->getValue())],
-    //             'distrito_iddistrito' => 1,
-    //             'ejecutora_idejecutora' => $provincias[strval($sheet->getCellByColumnAndRow(11, $row)->getValue())],
-    //         ];
-    //         $existingData = $this->m_iiee->where('codmodular', $data['codmodular'])->first();
-    //         // echo '<pre>';
-    //         // print_r($existingData);
-    //         // echo '</pre>';
-    //         if ($existingData) 
-    //         {
-    //             $this->m_iiee->update($existingData['codmodular'], $data);
-    //             if ($this->m_iiee->affectedRows() == 0) {
-    //                 return $this->response->setJSON(['estado' => false, 'msg' => 'Error al actualizar el registro']);
-    //             }
-    //         } 
-    //         else 
-    //         {
-    //             $result = $this->m_iiee->insert($data);
-    //             if($result!=0) 
-    //             {   return $this->response->setJSON(['estado' => false, 'msg' => 'Algo salio mal al momento de guardar los registros.']);}
-    //         }
-            
+        $file = $this->request->getFile('file');
+        if($file->isValid() && !$file->hasMoved()) 
+        {
+            if(unlink('cargamasiva/estudiante/cargamasiva_estudiantes.xlsx'))
+                $file->move('cargamasiva/estudiante');
+            else
+                return $this->response->setJSON(['estado' => false, 'msg' => 'Error al momento de cargar archivo']);
+        } 
+        else 
+        {
+            return $this->response->setJSON(['estado' => false, 'msg' => 'Error al cargar el archivo']);
+        }
         
-    //     return $this->response->setJSON(['estado' => true, 'msg' => 'Archivo cargado con éxito']);
-    // }
+        $file = 'cargamasiva/estudiante/cargamasiva_estudiantes.xlsx';
+        $spreadsheet = IOFactory::load($file);
+        $sheet = $spreadsheet->getActiveSheet();
+        $highestRow = $sheet->getHighestRow();
+        $highestColumn = $sheet->getHighestColumn();
+        $highestColumnIndex = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::columnIndexFromString($highestColumn);
+// $listaDie = $this->m_detalleie->select('detalleie.*')
+//     ->where('iiee_codmodular', '1234567')
+//     ->where('grados_idgrados', '1')
+//     ->where('seccion_idseccion', 'a')
+//     ->get()->getRow();
+
+//     var_dump($listaDie->iiee_codmodular);
+        for ($row = 2; $row < $highestRow; ++$row) 
+        {
+            // for ($col = 1; $col <= $highestColumnIndex; ++$col) {
+            //     $cellValue = $sheet->getCellByColumnAndRow($col, $row)->getValue();
+            //     $data[$row][$col] = $cellValue;
+            // }
+// -------------------------------------
+            // echo '<pre>';
+            // print_r($data);
+            // echo '</pre>';
+
+            $listaDie = $this->m_detalleie->select('detalleie.*')
+                ->where('iiee_codmodular', $sheet->getCellByColumnAndRow(1, $row)->getValue())
+                ->where('grados_idgrados', $sheet->getCellByColumnAndRow(2, $row)->getValue())
+                ->where('seccion_idseccion', $sheet->getCellByColumnAndRow(3, $row)->getValue())
+                ->get()->getRow();
+
+            // var_dump($listaDie!=null);
+            if($listaDie==null)
+            {
+                $dataDie = [
+                    'iiee_codmodular' => $sheet->getCellByColumnAndRow(1, $row)->getValue(),
+                    'grados_idgrados' => $sheet->getCellByColumnAndRow(2, $row)->getValue(),
+                    'seccion_idseccion' => $sheet->getCellByColumnAndRow(3, $row)->getValue(),
+                ];
+                // var_dump($dataDie);
+                $result = $this->m_detalleie->insert($dataDie);
+                if(!$result) 
+                    echo json_encode(["msg"=>"Algo salio mal.","estado"=>false]);
+                $listaDie = $this->m_detalleie->select('detalleie.*')
+                    ->where('iiee_codmodular', $sheet->getCellByColumnAndRow(1, $row)->getValue())
+                    ->where('grados_idgrados', $sheet->getCellByColumnAndRow(2, $row)->getValue())
+                    ->where('seccion_idseccion', $sheet->getCellByColumnAndRow(3, $row)->getValue())
+                    ->get()->getRow();
+            }
+            // var_dump('llego hasta aki');
+            $dataEst = [
+                'dni' => $sheet->getCellByColumnAndRow(4, $row)->getValue(),
+                'nombres' => $sheet->getCellByColumnAndRow(5, $row)->getValue(),
+                'apellidos' => $sheet->getCellByColumnAndRow(6, $row)->getValue(),
+                'estado' => '1',
+                'fecha_registro' => new Time('now', 'UTC'),
+                'detalleie_iddetalleie' => $listaDie->iddetalleie,
+            ];
+            // var_dump($dataEst);
+            $result = $this->m_estudiante->insert($dataEst);
+            if(!$result) 
+                echo json_encode(["msg"=>"Algo salio mal.","estado"=>false]);
+
+            // var_dump($listaDie);
+            
+        }
+        // exit();
+        return $this->response->setJSON(['estado' => true, 'msg' => 'Archivo cargado con éxito']);
+    }
     
 }

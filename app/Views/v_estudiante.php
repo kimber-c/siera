@@ -20,7 +20,7 @@
                         <i class="fa fa-plus"></i> 
                         Nuevo
                     </button>
-                    <a href="<?php echo base_url('iiee/cargaMasiva');?>" class="btn btn-sm btn-light float-right border shadow mr-4">
+                    <a href="<?php echo base_url('estudiante/cargaMasiva');?>" class="btn btn-sm btn-light float-right border shadow mr-4">
                         <i class="fa fa-upload"></i> 
                         Carga masiva
                     </a>

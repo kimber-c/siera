@@ -153,17 +153,12 @@ class Iiee extends BaseController
         {
             return $this->response->setJSON(['estado' => false, 'msg' => 'Error al cargar el archivo']);
         }
-        // Obtener el nombre y la ubicación del archivo de Excel
         $file = 'cargamasiva/iiee/cargamasiva.xlsx';
-        // Cargar el archivo de Excel
         $spreadsheet = IOFactory::load($file);
-        // Obtener la hoja de cálculo activa
         $sheet = $spreadsheet->getActiveSheet();
-        // Obtener el número de filas y columnas en la hoja de cálculo
         $highestRow = $sheet->getHighestRow();
         $highestColumn = $sheet->getHighestColumn();
         $highestColumnIndex = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::columnIndexFromString($highestColumn);
-        // Recorrer las filas y columnas para leer los datos
         $data = array();
         for ($row = 2; $row <= $highestRow; ++$row) {
             // for ($col = 1; $col <= $highestColumnIndex; ++$col) {
@@ -206,22 +201,8 @@ class Iiee extends BaseController
             }
             
         
-            // $result = $this->m_iiee->insert($data);
-            // if($result!=0) 
-            // {   return $this->response->setJSON(['estado' => false, 'msg' => 'Algo salio mal al momento de guardar los registros.']);}
         // -------------------------------------------------------------
         }
-        // $result = $this->m_iiee->insertBatch($data);
-        // if (!$result) {
-        //     return $this->response->setJSON(['estado' => false, 'msg' => 'Algo salió mal al momento de guardar los registros.']);
-        // }
-
-        // Aquí puedes hacer lo que desees con los datos, como mostrarlos o procesarlos
-
-        // Ejemplo: mostrar los datos en la pantalla
-        // echo '<pre>';
-        // print_r($data);
-        // echo '</pre>';
         return $this->response->setJSON(['estado' => true, 'msg' => 'Archivo cargado con éxito']);
     }
     
