@@ -1,10 +1,8 @@
 <style type="text/css">
-    
- td{
-
+ /*td{
     margin: 0px !important;
     padding: 0px !important;
- }
+ }*/
 </style>
 
 <!-- <h1>aka estara el iiee</h1> -->
@@ -42,7 +40,7 @@
                     <div class="row">
                         <div class="col-md-12 table-responsive contenedorRegistros p-0" style="display: none;">
                             <table id="registros" class="table table-hover dt-responsive nowrap">
-                                <thead class="thead-light">
+                                <thead class="thead-dark">
                                     <tr>
                                         <th class="text-center" data-priority="1">#</th>
                                         <th class="text-center" data-priority="2">DNI</th>
@@ -150,6 +148,15 @@ function limpiarForm()
 
     $("#formValidate")[0].reset();
     $(".select2").val("0").trigger("change.select2");
-
 }
+// function initDatatable2(idTabla)
+// {
+//     $('#'+idTabla).DataTable( {
+//         "autoWidth":false,
+//         "responsive":true,
+//         "ordering": true,
+//         "lengthMenu": [[5, 10,25, -1], [5, 10,25, "Todos"]],   
+//         // "order": [[ 1, 'desc' ]],
+//     } );
+// }
 </script>

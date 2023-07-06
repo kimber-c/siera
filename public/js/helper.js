@@ -5,7 +5,7 @@ function initDatatable(idTabla)
     $('#'+idTabla).DataTable( {
         "autoWidth":false,
         "responsive":true,
-        "ordering": false,
+        "ordering": true,
         "lengthMenu": [[5, 10,25, -1], [5, 10,25, "Todos"]],   
         // "order": [[ 1, 'desc' ]],
         "language": {

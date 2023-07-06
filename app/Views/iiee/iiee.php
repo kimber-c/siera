@@ -33,7 +33,7 @@
                     <div class="row">
                         <div class="col-md-12 table-responsive contenedorRegistros p-0" style="display: none;">
                             <table id="registros" class="table table-hover dt-responsive nowrap">
-                                <thead class="thead-light">
+                                <thead class="thead-dark">
                                     <tr>
                                         <th class="text-center" data-priority="1">Cod.Modular</th>
                                         <th class="text-center" data-priority="2">Cod.Local</th>
@@ -56,7 +56,7 @@
     </div>
 </div>
 <?php include 'modals.php';?>
-<?php include 'asignacion.php';?>
+
 <script>
 var tablaDeRegistros;
 $(document).ready( function () {
@@ -88,7 +88,7 @@ function fillRegistros()
                     '<td>' + novDato(data[i].nombreEjecutora) + '</td>' +
                     '<td>'+
                     '<div class="btn-group btn-group-sm" role="group">'+
-                        '<button type="button" class="btn text-secondary" title="Editar registro" onclick="asignar(this);" data-id="'+data[i].codmodular+'"><i class="fa fa-gear"></i></button>'+
+                        // '<button type="button" class="btn text-secondary" title="Editar registro" onclick="asignar(this);" data-id="'+data[i].codmodular+'"><i class="fa fa-gear"></i></button>'+
                         '<button type="button" class="btn text-secondary" title="Editar registro" onclick="consultar(this);" data-id="'+data[i].codmodular+'"><i class="fa fa-edit" ></i></button>'+
                         '<button type="button" class="btn text-danger" title="Eliminar registro" onclick="eliminar(this);" data-id="'+data[i].codmodular+'"><i class="fa fa-trash"></i></button>'+
                     '</div>'+

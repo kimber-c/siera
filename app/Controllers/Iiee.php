@@ -93,6 +93,7 @@ class Iiee extends BaseController
         // $validation->setRules($rules);
         // if ($validation->withRequest($this->request)->run()) 
         // {
+
             $data = [
                 'codmodular' => $this->request->getPost('codmodular'),
                 'cod_local' => $this->request->getPost('cod_local'),
@@ -106,6 +107,8 @@ class Iiee extends BaseController
                 'distrito_iddistrito' => $this->request->getPost('distrito'),
                 'ejecutora_idejecutora' => $this->request->getPost('ugel'),
             ];
+            // var_dump($data);
+            // exit();
             $estado = $this->m_iiee->update($this->request->getPost('codmodular'),$data);
             if($estado)
                 echo json_encode(["msg"=>"Se guardo los cambios.","estado"=>true]);

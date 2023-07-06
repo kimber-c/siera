@@ -9,10 +9,7 @@ class M_iiee extends Model
 {
     protected $table = 'iiee';
     protected $primaryKey = 'codmodular';
-    
     protected $returnType = 'array';
-    // protected $useSoftDeletes = false;
-
     protected $allowedFields = [
         'codmodular',
         'cod_local',
@@ -27,13 +24,4 @@ class M_iiee extends Model
         'ejecutora_idejecutora',
         'fecha_registro',
     ];
-
-    // protected $useTimestamps = false;
-    // protected $createdField = 'fr';
-    // protected $updatedField = 'fa';
-
-    // protected $validationRules = [];
-    // protected $validationMessages = [];
-    // protected $skipValidation = false;
-
 }

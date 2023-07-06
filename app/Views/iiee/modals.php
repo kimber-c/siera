@@ -151,7 +151,6 @@ function accion(ban)
         $('#codmodular').prop('disabled',true);
     }
     $('#modalIe').modal('show');
-    // 8.30 9 de julio 7.30 dni
 }
 function fillEjecutoras()
 {
@@ -254,6 +253,9 @@ function segunAccion()
                 msjRee(data);
             }
         });
+        console.log('ssssssssssss');
+        console.log(data(true));
+        console.log('ssssssssssss');
     }
 }
 function consultar(elem)
