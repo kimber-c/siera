@@ -102,7 +102,8 @@ class Estudiante extends BaseController
      
        
     }
-    public function subirArchivo()
+    // funcion en des uso
+    public function subirArchivoOld()
     {
         $file = $this->request->getFile('file');
         if($file->isValid() && !$file->hasMoved()) 
@@ -173,6 +174,51 @@ class Estudiante extends BaseController
                 'estado' => '1',
                 'fecha_registro' => new Time('now', 'UTC'),
                 'detalleie_iddetalleie' => $listaDie->iddetalleie,
+            ];
+            // var_dump($dataEst);
+            $result = $this->m_estudiante->insert($dataEst);
+            if(!$result) 
+                echo json_encode(["msg"=>"Algo salio mal.","estado"=>false]);
+
+            // var_dump($listaDie);
+            
+        }
+        // exit();
+        return $this->response->setJSON(['estado' => true, 'msg' => 'Archivo cargado con éxito']);
+    }
+    public function subirArchivo()
+    {
+        $file = $this->request->getFile('file');
+        if($file->isValid() && !$file->hasMoved()) 
+        {
+            if(unlink('cargamasiva/estudiante/cargamasiva_estudiantes.xlsx'))
+                $file->move('cargamasiva/estudiante');
+            else
+                return $this->response->setJSON(['estado' => false, 'msg' => 'Error al momento de cargar archivo']);
+        } 
+        else 
+        {
+            return $this->response->setJSON(['estado' => false, 'msg' => 'Error al cargar el archivo']);
+        }
+        
+        $file = 'cargamasiva/estudiante/cargamasiva_estudiantes.xlsx';
+        $spreadsheet = IOFactory::load($file);
+        $sheet = $spreadsheet->getActiveSheet();
+        $highestRow = $sheet->getHighestRow();
+        $highestColumn = $sheet->getHighestColumn();
+        $highestColumnIndex = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::columnIndexFromString($highestColumn);
+
+        for ($row = 2; $row < $highestRow; ++$row) 
+        {
+            $dataEst = [
+                'dni' => $sheet->getCellByColumnAndRow(4, $row)->getValue(),
+                'nombres' => $sheet->getCellByColumnAndRow(5, $row)->getValue(),
+                'apellidos' => $sheet->getCellByColumnAndRow(6, $row)->getValue(),
+                'estado' => '1',
+                'sexo' => $sheet->getCellByColumnAndRow(7, $row)->getValue(),
+                'iiee_codmodular' => $sheet->getCellByColumnAndRow(1, $row)->getValue(),
+                'grados_idgrados' => $sheet->getCellByColumnAndRow(2, $row)->getValue(),
+                'seccion_idseccion' => $sheet->getCellByColumnAndRow(3, $row)->getValue(),
             ];
             // var_dump($dataEst);
             $result = $this->m_estudiante->insert($dataEst);

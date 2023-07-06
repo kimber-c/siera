@@ -19,8 +19,12 @@ class M_estudiante extends Model
         'nombres',
         'apellidos',
         'estado',
-        'fecha_registro',
-        'detalleie_iddetalleie',
+        'sexo',
+        // 'fecha_registro',
+        'iiee_codmodular',
+        'grados_idgrados',
+        'seccion_idseccion',
+        // 'detalleie_iddetalleie',
     ];
 
     protected $validationRules = [];
