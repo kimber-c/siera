@@ -26,7 +26,7 @@
                     <div class="row">
                         <div class="col-md-12 table-responsive contenedorRegistros p-0" style="display: none;">
                             <table id="registros" class="table table-hover dt-responsive nowrap">
-                                <thead class="thead-light">
+                                <thead class="thead-dark">
                                     <tr>
                                         <th class="text-center" data-priority="2">Provincia</th>
                                         <th class="text-center" data-priority="2">Descripcion</th>

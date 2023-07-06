@@ -4,7 +4,7 @@
         <div class="col-lg-12">
             <div class="row">
                 <div class="col-lg-6 col-sm-6 col-12 m-auto">
-                    <h3><i class="fa fa-building"></i> Instituciones educativas</h3>
+                    <h3><i class="fa fa-school"></i> Instituciones educativas</h3>
                 </div>
                 <div class="col-lg-6 col-sm-6 col-12 m-auto">
                     <button class="btn btn-sm btn-light float-right border shadow" onclick="accion(true);">
@@ -79,7 +79,7 @@ function fillRegistros()
             for (var i = 0; i < data.length; i++) 
             {
                 html += '<tr class="text-center">' +
-                    '<td>' + novDato(data[i].codmodular) + '</td>' +
+                    '<td class="font-weight-bold">' + novDato(data[i].codmodular) + '</td>' +
                     '<td>' + novDato(data[i].cod_local) + '</td>' +
                     '<td>' + novDato(data[i].descripcion) + '</td>' +
                     '<td>' + novDato(data[i].direccion) + '</td>' +

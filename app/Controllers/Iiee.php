@@ -82,6 +82,7 @@ class Iiee extends BaseController
         // echo 'entro';
         $ie = $this->m_iiee->where('codmodular', $_POST["id"])->get()->getResult();
         // var_dump($ie);
+        // exit();
         echo json_encode($ie[0]);
     }
     public function actualizar()

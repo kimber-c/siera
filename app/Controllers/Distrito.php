@@ -79,4 +79,12 @@ class Distrito extends BaseController
         else
             echo json_encode(["msg"=>"Algo salio mal.","estado"=>false]);
     }
+    public function listarSegunProvincia()
+    {
+        // var_dump($this->request->getPost('id'));
+        $datos = $this->m_distrito->select('distrito.*')
+            ->where('provincia_idprovincia',$this->request->getPost('id'))
+            ->get()->getResult();
+        echo json_encode($datos);
+    }
 }

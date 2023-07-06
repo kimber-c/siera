@@ -324,7 +324,7 @@
                             
                             <li class="nav-item">
                                 <a href="<?php echo base_url('iiee');?>" class="nav-link bg-secondary sba9">
-                                    <i class="nav-icon fa-solid fa-building"></i>
+                                    <i class="nav-icon fa-solid fa-school"></i>
                                     <p>Institucion educativa</p>
                                 </a>
                             </li>

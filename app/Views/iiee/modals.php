@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header py-1 border-transparent" style="background-color: rgba(0, 0, 0, 0.03);">
-                <h5 class="modal-title" id="exampleModalLongTitle"><i class="fa fa-building"></i> Nueva institucion educativa</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle"><i class="fa fa-school"></i> Nueva institucion educativa</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -14,7 +14,7 @@
                         <label for="codmodular" class="m-0">Codigo modular: <span class="text-danger">*</span></label>
                         <div class="input-group input-group-sm">
                             <div class="input-group-prepend">
-                                <span class="input-group-text font-weight-bold"><i class="fa fa-building"></i></span>
+                                <span class="input-group-text font-weight-bold"><i class="fa fa-school"></i></span>
                             </div>
                             <input type="text" class="form-control input soloNumeros" id="codmodular" name="codmodular" maxlength="7">
                         </div>
@@ -32,7 +32,7 @@
                         <label for="descripcion" class="m-0">Nombre: <span class="text-danger">*</span></label>
                         <div class="input-group input-group-sm">
                             <div class="input-group-prepend">
-                                <span class="input-group-text font-weight-bold"><i class="fa fa-building"></i></span>
+                                <span class="input-group-text font-weight-bold"><i class="fa fa-school"></i></span>
                             </div>
                             <input type="text" class="form-control input" id="descripcion" name="descripcion">
                         </div>
@@ -41,7 +41,7 @@
                         <label for="nivel" class="m-0">Nivel: <span class="text-danger">*</span></label>
                         <div class="input-group input-group-sm">
                             <div class="input-group-prepend">
-                                <span class="input-group-text font-weight-bold"><i class="fa fa-building"></i></span>
+                                <span class="input-group-text font-weight-bold"><i class="fa fa-graduation-cap"></i></span>
                             </div>
                             <select name="nivel" id="nivel" class="form-control sValidate input">
                                 <option value="1" selected>Primaria</option>
@@ -53,7 +53,7 @@
                         <label for="gestion" class="m-0">Gestion: <span class="text-danger">*</span></label>
                         <div class="input-group input-group-sm">
                             <div class="input-group-prepend">
-                                <span class="input-group-text font-weight-bold"><i class="fa fa-building-lock"></i></span>
+                                <span class="input-group-text font-weight-bold"><i class="fa fa-school-lock"></i></span>
                             </div>
                             <!-- <input type="text" class="form-control input" id="gestion" name="gestion"> -->
                             <select name="gestion" id="gestion" class="form-control">
@@ -124,12 +124,30 @@
 <script>
 var nombreAccion;
 $(document).ready( function () {
-    fillDistrito();
     fillProvincia();
+    // fillDistrito();
     fillEjecutoras();
+    // $('#distrito').select2({placeholder:"Seleccione una distrito.",width:"resolve",});
+    // $('#distrito').prop('disabled',true);
 } );
 $('.segunAccion').on('click',function(){
     segunAccion();
+});
+$('#provincia').on('change',function(){
+    jQuery.ajax(
+    { 
+        url: "<?php echo base_url('distrito/listarSegunProvincia');?>",
+        data: {id:$(this).val()},
+        method: 'post',
+        success: function(result){
+            $('#distrito').empty();
+            $.each(JSON.parse(result),function(indice,fila){
+                $('#distrito').append("<option value='"+fila.iddistrito+"'>"+fila.descripcion+"</option>");
+            });
+            $('#distrito').trigger('change');
+            $('#distrito').prop('disabled',false);
+        }
+    });
 });
 function accion(ban)
 {
@@ -141,6 +159,8 @@ function accion(ban)
         $('.guardar').html('<i class="fa fa-save"></i> Guardar');
         nombreAccion = 'registrar';
         $('#codmodular').prop('disabled',false);
+        $('#distrito').select2({placeholder:"Seleccione una distrito.",width:"resolve",});
+        $('#distrito').prop('disabled',true);
     }
     else
     {
@@ -166,20 +186,20 @@ function fillEjecutoras()
         }
     });
 }
-function fillDistrito()
-{
-    jQuery.ajax(
-    { 
-        url: "<?php echo base_url('distrito/listar');?>",
-        method: 'get',
-        success: function(result){
-            $.each(JSON.parse(result),function(indice,fila){
-                $('#distrito').append("<option value='"+fila.iddistrito+"'>"+fila.descripcion+"</option>");
-            });
-            $('#distrito').select2({placeholder:"Seleccione una distrito.",width:"resolve",});
-        }
-    });
-}
+// function fillDistrito()
+// {
+//     jQuery.ajax(
+//     { 
+//         url: "<?php echo base_url('distrito/listar');?>",
+//         method: 'get',
+//         success: function(result){
+//             $.each(JSON.parse(result),function(indice,fila){
+//                 $('#distrito').append("<option value='"+fila.iddistrito+"'>"+fila.descripcion+"</option>");
+//             });
+//             $('#distrito').select2({placeholder:"Seleccione una distrito.",width:"resolve",});
+//         }
+//     });
+// }
 function fillProvincia()
 {
     jQuery.ajax(
@@ -278,7 +298,25 @@ function consultar(elem)
             $('#localidad').val(data.localidad);
             $('#area_geografica').val(data.area_geografica);
             $('#provincia').val(data.provincia_idprovincia).change();
+
             $('#distrito').val(data.distrito_iddistrito).change();
+            jQuery.ajax(
+            { 
+                url: "<?php echo base_url('distrito/listarSegunProvincia');?>",
+                data: {id:data.provincia_idprovincia},
+                method: 'post',
+                success: function(result){
+                    $('#distrito').empty();
+                    $.each(JSON.parse(result),function(indice,fila){
+                        $('#distrito').append("<option value='"+fila.iddistrito+"'>"+fila.descripcion+"</option>");
+                    });
+                    $('#distrito').trigger('change');
+                    $('#distrito').prop('disabled',false);
+                    $('#distrito').val(data.distrito_iddistrito).change();
+                }
+            });
+
+
             $('#ugel').val(data.ejecutora_idejecutora).change();
             // $('#modalIe').modal('show');
 
