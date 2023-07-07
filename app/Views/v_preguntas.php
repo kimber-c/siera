@@ -375,6 +375,7 @@ function configurar()
             {
                 if(r.alternativas.length!=0)
                 {
+                    console.log('cantidad de alternativas antes de llenar alter--'+r.alternativas.length);
                     for(i=0;i<r.alternativas.length;i++)
                     {
                         let alternativa = configAlternativas[j].alternativa;
@@ -400,6 +401,7 @@ function configurar()
                                     '</div>'+
                                 '</div>';
                         $(".contenedorAlternativasCadaPregunta"+id).append(html);
+                        // console.log('alternativa')
                     }
                 }
 $('.configurar').html('<i class="fa fa-search"></i> Seleccionar');
