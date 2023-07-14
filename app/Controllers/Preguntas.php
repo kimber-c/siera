@@ -118,6 +118,7 @@ class Preguntas extends BaseController
         else
             echo json_encode(["msg"=>"Algo salio mal.","estado"=>false]);
     }
+    
     public function listarCard()
     {
         $listarAlternativas = $this->m_preguntas->listarAlternativas(
