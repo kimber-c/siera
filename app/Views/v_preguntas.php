@@ -178,11 +178,87 @@
         </div> -->
     </div>
 </div>
+<div class="col-lg-9" style="display: none;">
+    <div class="card" style="border-left: 5px solid #007bff;">
+        <!-- <div class="overlay dark overlayPreguntas">
+            <i class="fa fa-spinner fa-spin fa-fw"></i>
+        </div> -->
+        <div class="card-body">
+            <div class="row aaa">
+                <div class="col-lg-12 font-weight-bold text-center">
+                    <span class="handle ui-sortable-handle">
+                        <i class="fas fa-ellipsis-v"></i> 
+                        <i class="fas fa-ellipsis-v"></i>
+                    </span>
+                </div>
+                <div class="col-lg-12 alert alert-info font-weight-bold preguntaTitulo">Pregunta contadorPregunta</div>
+                <div style="display:none;">ididpreguntasid</div>
+                <div class="col-lg-6 form-group">
+                    <div class="input-group input-group-sm">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text font-weight-bold"><i class="fa fa-city"></i></span>
+                        </div>
+                        <textarea cols="30" rows="3" class="form-control textareaPregunta" data-id="idpreguntas" placeholder="Pregunta" onblur="actualizarPregunta(this);">cascsa</textarea>
+                    </div>
+                </div>
+                <div class="col-lg-6 form-group">
+                    <div class="input-group input-group-sm">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text font-weight-bold"><i class="fa fa-city"></i></span>
+                        </div>
+                        <textarea cols="30" rows="3" class="form-control" data-id="idpreguntas" placeholder="Criterio" onblur="actualizarPregunta(this);">cscsacs</textarea>
+                    </div>
+                </div>
+                
+                <!-- ----- -->
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-9 form-group kevins">
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text font-weight-bold text-uppercase">a</span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Alternativa a" onblur="actualizarAlternativa(this);" data-id="98" value="--1a">
+                                <div class="input-group-append">
+                                    <span class="input-group-text py-0">
+                                        <div class="custom-control custom-radio">
+                                            <input class="custom-control-input" type="radio" id="alternativa98" name="radioPregunta42" onclick="actualizarPreguntaCorrecta(this);" checked="">
+                                            <label for="alternativa98" class="custom-control-label"></label>
+                                        </div>
+                                    </span>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="col-lg-1 mt-1">
+                            <div class="custom-control custom-radio">
+                                <input class="custom-control-input" type="radio" id="alternativa98" name="radioPregunta42" onclick="actualizarPreguntaCorrecta(this);" checked="">
+                                <label for="alternativa98" class="custom-control-label"></label>
+                            </div>
+                        </div> -->
+                        <div class="col-lg-2">
+                            <button type="button" class="btn text-danger pt-1"><i class="fa fa-circle-xmark fa-lg"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-12">
+                    <button type="button" class="btn btn-outline-info btn-sm addOpcion"><i class="fa fa-plus"></i> Añadir opcion</button>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer py-1 border-transparent">
+            <p class="text-danger text-center eliminarCard" onclick="eliminarCard(this);" data-id="idpreguntas"><i class="fa fa-trash fa-lg"></i></p>
+        </div>
+    </div>
+</div>
 
 <script>
+    
 var contadorPregunta=1;
 var idevaluacion = '';
 var configAlternativas = '';
+var letras = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 $(document).ready( function () {
     $('.overlayPagina').css("display","none");
     fillGrado();
@@ -196,6 +272,68 @@ $('.configurar').on('click',function(){
 $('.addPreguntas').on('click',function(){
     addPreguntas();
 });
+var xxx;
+function addOpcion(elem)
+{
+    let id = $(elem).attr('data-id')
+    let indice = 0;
+    $(".contenedorAlternativasCadaPregunta"+id).find('.textAlternativa').each(function(index, elemento) {indice++;});
+    let alternativa = letras[indice];
+
+    jQuery.ajax(
+    {
+        url: "<?php echo base_url('alternativas/addOpcion');?>",
+        data: {idpreguntas:$(elem).attr('data-id'),alternativa:alternativa},
+        method: 'post',
+        success: function(r){
+            let data = JSON.parse(r);
+            // console.log(r);
+            // console.log(data);
+            let idalternativas = data.idalternativas;
+            let validez = data.validez=='1'?'checked':'';
+
+            let html ='<div class="col-lg-10 form-group '+idalternativas+'">'+
+                    '<div class="input-group input-group-sm">'+
+                        '<div class="input-group-prepend">'+
+                            '<span class="input-group-text font-weight-bold textAlternativa">'+alternativa+'</span>'+
+                        '</div>'+
+                        '<input type="text" class="form-control" placeholder="Alternativa '+alternativa+'" onblur="actualizarAlternativa(this);" data-id="'+idalternativas+'">'+
+                    '</div>'+
+                '</div>'+
+                '<div class="col-lg-1 mt-1 '+idalternativas+'">'+
+                    '<div class="custom-control custom-radio">'+
+                        '<input class="custom-control-input" type="radio" id="alternativa'+idalternativas+'" name="radioPregunta'+id+'" onclick="actualizarPreguntaCorrecta(this);" '+validez+'>'+
+                        '<label for="alternativa'+idalternativas+'" class="custom-control-label"></label>'+
+                    '</div>'+
+                '</div>'+
+                '<div class="col-lg-1 '+idalternativas+'">'+
+                    '<button type="button" class="btn text-danger pt-1" onclick="eliminarOpcion(this);" data-id="'+idalternativas+'"><i class="fa fa-circle-xmark fa-lg"></i></button>'+
+                '</div>';
+            $(".contenedorAlternativasCadaPregunta"+id).append(html);
+        }
+    });
+}
+var pruebita;
+function eliminarOpcion(elem)
+{
+    // let id = $(elem).attr('data-id');
+    jQuery.ajax(
+    {
+        url: "<?php echo base_url('alternativas/eliminarOpcion');?>",
+        data: {id:$(elem).attr('data-id')},
+        method: 'post',
+        success: function(r){
+            let data = JSON.parse(r);
+            pruebita=data;
+            console.log(r);
+            $('.'+data.idalternativas).remove();
+            $(".contenedorAlternativasCadaPregunta"+pruebita.preguntas_idpreguntas).find('.textAlternativa').each(function(index, elemento) {
+                $(elemento).html(letras[index]);
+            });
+            // console.log(data);
+        }
+    });
+}
 function fillLastEvaluacion()
 {
     jQuery.ajax(
@@ -265,20 +403,25 @@ function configurar()
             let data = JSON.parse(r);
             // console.log(data);
             configAlternativas = data;
-            if(configAlternativas.length!=0)
-            {
-	            $('.addPreguntas').css('display','flex');
-	            $('.contenedorCard').css('display','flex');
-	            $('.div-flotante').css('display','block');
-	            $('.msjConfiguracionAlternativas').css('display','none');
-            }
-            else
-            {
-            	$('.addPreguntas').css('display','none');
-	            $('.contenedorCard').css('display','none');
-	            $('.div-flotante').css('display','none');
-	            $('.msjConfiguracionAlternativas').css('display','block');
-            }
+            
+            // if(configAlternativas.length!=0)
+            // {
+	           //  $('.addPreguntas').css('display','flex');
+	           //  $('.contenedorCard').css('display','flex');
+	           //  $('.div-flotante').css('display','block');
+	           //  $('.msjConfiguracionAlternativas').css('display','none');
+            // }
+            // else
+            // {
+            // 	$('.addPreguntas').css('display','none');
+	           //  $('.contenedorCard').css('display','none');
+	           //  $('.div-flotante').css('display','none');
+	           //  $('.msjConfiguracionAlternativas').css('display','block');
+            // }
+            $('.addPreguntas').css('display','flex');
+            $('.contenedorCard').css('display','flex');
+            $('.div-flotante').css('display','block');
+            $('.msjConfiguracionAlternativas').css('display','none');
         }
     });
     jQuery.ajax(
@@ -336,6 +479,11 @@ function configurar()
                                                 '</div>'+
                                             '</div>'+
                                         '</div>'+
+                                        '<div class="row">'+
+                                            '<div class="col-lg-12">'+
+                                                '<button type="button" class="btn btn-outline-info btn-sm" data-id="'+idpreguntas+'" onclick="addOpcion(this);"><i class="fa fa-plus"></i> Añadir opcion</button>'+
+                                            '</div>'+
+                                        '</div>'+
                                     '</div>'+
                                     '<div class="modal-footer py-1 border-transparent">'+
                                         '<p class="text-danger text-center eliminarCard" onclick="eliminarCard(this);" data-id="'+idpreguntas+'"><i class="fa fa-trash fa-lg"></i></p>'+
@@ -378,27 +526,31 @@ function configurar()
                     console.log('cantidad de alternativas antes de llenar alter--'+r.alternativas.length);
                     for(i=0;i<r.alternativas.length;i++)
                     {
-                        let alternativa = configAlternativas[j].alternativa;
+                        // let alternativa = configAlternativas[j].alternativa;
+                        let alternativa = r.alternativas[i].alternativa;
                         // console.log('valor de j :'+j);
                         j++;
-                        if (j >= configAlternativas.length) 
-                        {j = 0;}
+                        // if (j >= configAlternativas.length) 
+                        // {j = 0;}
                         idalternativas = r.alternativas[i].idalternativas;
                         id = r.alternativas[i].preguntas_idpreguntas;
                         validez = r.alternativas[i].validez=='1'?'checked':'';
-                        html ='<div class="col-lg-11 form-group kevins">'+
+                        html ='<div class="col-lg-10 form-group '+idalternativas+'">'+
                                     '<div class="input-group input-group-sm">'+
                                         '<div class="input-group-prepend">'+
-                                            '<span class="input-group-text font-weight-bold">'+alternativa+'</span>'+
+                                            '<span class="input-group-text font-weight-bold textAlternativa">'+alternativa+'</span>'+
                                         '</div>'+
                                         '<input type="text" class="form-control" placeholder="Alternativa '+alternativa+'" onblur="actualizarAlternativa(this);" data-id="'+idalternativas+'" value="'+novDato(r.alternativas[i].descripcion)+'">'+
                                     '</div>'+
                                 '</div>'+
-                                '<div class="col-lg-1 mt-1">'+
+                                '<div class="col-lg-1 mt-1 '+idalternativas+'">'+
                                     '<div class="custom-control custom-radio">'+
                                         '<input class="custom-control-input" type="radio" id="alternativa'+idalternativas+'" name="radioPregunta'+id+'" onclick="actualizarPreguntaCorrecta(this);" '+validez+'>'+
                                         '<label for="alternativa'+idalternativas+'" class="custom-control-label"></label>'+
                                     '</div>'+
+                                '</div>'+
+                                '<div class="col-lg-1 '+idalternativas+'">'+
+                                    '<button type="button" class="btn text-danger pt-1" onclick="eliminarOpcion(this);" data-id="'+idalternativas+'"><i class="fa fa-circle-xmark fa-lg"></i></button>'+
                                 '</div>';
                         $(".contenedorAlternativasCadaPregunta"+id).append(html);
                         // console.log('alternativa')
@@ -599,13 +751,13 @@ function addPreguntas()
         method: 'post',
         success: function(r){
             let data = JSON.parse(r);
-            var returnAlternativas = buildAlternativas(data.idpreguntas);
+            // var returnAlternativas = buildAlternativas(data.idpreguntas);
             let html = '<div class="col-lg-9">'+
                             '<div class="card" style="border-left: 5px solid #007bff;">'+
 // -------
-	                            '<div class="overlay dark overlayPreguntas">'+
-									'<i class="fa fa-spinner fa-spin fa-fw"></i>'+
-								'</div>'+
+	       //                      '<div class="overlay dark overlayPreguntas">'+
+								// 	'<i class="fa fa-spinner fa-spin fa-fw"></i>'+
+								// '</div>'+
 // -------
                                 '<div class="card-body">'+
                                     '<div class="row contenedorAlternativasCadaPregunta'+data.idpreguntas+'">'+
@@ -637,6 +789,11 @@ function addPreguntas()
                                         '</div>'+
                                         // returnAlternativas+
                                     '</div>'+
+                                    '<div class="row">'+
+                                        '<div class="col-lg-12">'+
+                                            '<button type="button" class="btn btn-outline-info btn-sm addOpcion" data-id="'+data.idpreguntas+'" onclick="addOpcion(this);"><i class="fa fa-plus"></i> Añadir opcion</button>'+
+                                        '</div>'+
+                                    '</div>'+
                                 '</div>'+
                                 '<div class="modal-footer py-1 border-transparent">'+
                                     '<p class="text-danger text-center eliminarCard" onclick="eliminarCard(this);" data-id="'+data.idpreguntas+'"><i class="fa fa-trash fa-lg"></i></p>'+
@@ -646,6 +803,7 @@ function addPreguntas()
             $('.catidadPreguntas').html('Preguntas '+contadorPregunta);
             contadorPregunta++;
             $('.contenedorCard').append(html);
+            window.scrollTo(0, document.body.scrollHeight);
         }
     });
 }
