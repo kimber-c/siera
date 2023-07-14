@@ -313,10 +313,9 @@ function addOpcion(elem)
         }
     });
 }
-var pruebita;
+// var pruebita;
 function eliminarOpcion(elem)
 {
-    // let id = $(elem).attr('data-id');
     jQuery.ajax(
     {
         url: "<?php echo base_url('alternativas/eliminarOpcion');?>",
@@ -324,10 +323,10 @@ function eliminarOpcion(elem)
         method: 'post',
         success: function(r){
             let data = JSON.parse(r);
-            pruebita=data;
+            // pruebita=data;
             console.log(r);
             $('.'+data.idalternativas).remove();
-            $(".contenedorAlternativasCadaPregunta"+pruebita.preguntas_idpreguntas).find('.textAlternativa').each(function(index, elemento) {
+            $(".contenedorAlternativasCadaPregunta"+data.preguntas_idpreguntas).find('.textAlternativa').each(function(index, elemento) {
                 $(elemento).html(letras[index]);
             });
             // console.log(data);
